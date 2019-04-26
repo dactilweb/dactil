@@ -72,4 +72,11 @@ public class DactilController {
         
         return "panelcontrol";
     }
+    @RequestMapping("logout")
+    public String logoutController(SessionStatus cerrarSesion,Model model){
+        cerrarSesion.setComplete();
+        Usuarios usuarios= new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        return "index";
+    }
 }
