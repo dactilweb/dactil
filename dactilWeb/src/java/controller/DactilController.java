@@ -12,7 +12,8 @@ import javax.validation.Valid;
 
 import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
-
+import model.Usuarios;
+import model.UsuariosDAO;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,5 +40,36 @@ public class DactilController {
         
         return "index";
     }
-    
+    @RequestMapping(value="login",method=RequestMethod.GET)
+    public String loginController(Model model){
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        return "login";
+    }
+    @RequestMapping(value="login",method=RequestMethod.POST)
+    public String recuperarpersona (@ModelAttribute("usuarios") Usuarios usuarios, Model model){
+        UsuariosDAO UsuariosDAO= new UsuariosDAO();
+        boolean pasar= UsuariosDAO.recuperarpersona(usuarios);
+        String nombre =usuarios.getEmail_cliente();
+        String password = usuarios.getContrasena_cliente();
+        //for(Producte p:listaProducto){
+          //  JOptionPane.showMessageDialog(null, p.getProd_nom());
+        //}
+        if(pasar){
+            //entrar como admin
+           if(1==usuarios.getNivel()){
+               return "panelcontrol";
+           }
+            return "index";
+        }else{
+            return "login";
+        }
+       
+    }
+    //Acceso a panel de control si eres usuario administrador (1)
+    @RequestMapping(value="panelcontrol",method=RequestMethod.GET)
+    public String PanelController(Model model){
+        
+        return "panelcontrol";
+    }
 }
