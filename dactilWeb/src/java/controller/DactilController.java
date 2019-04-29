@@ -72,11 +72,31 @@ public class DactilController {
         
         return "panelcontrol";
     }
-    @RequestMapping("logout")
+
+    
+    @RequestMapping(value="crearUsuario",method=RequestMethod.GET)
+    public String crearUsuarioController(Model model){
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        return "crearUsuario";
+    }
+@RequestMapping(value="nuevoUsuario",method=RequestMethod.POST)
+    public String nuevoUsuario (@Valid @ModelAttribute("usuarios") Usuarios usuarios,BindingResult resultado, Model model) throws SQLException{
+        if(resultado.hasErrors()){
+            model.addAttribute("usuarios",usuarios);
+             return "crearUsuario";
+        }else{
+             UsuariosDAO usuariosDAO= new UsuariosDAO();
+        usuariosDAO.nuevoUsuario(usuarios);
+       return "login";
+        }
+    }
+    /*
+     @RequestMapping("logout")
     public String logoutController(SessionStatus cerrarSesion,Model model){
         cerrarSesion.setComplete();
         Usuarios usuarios= new Usuarios();
         model.addAttribute("usuarios",usuarios);
         return "index";
-    }
+*/
 }
