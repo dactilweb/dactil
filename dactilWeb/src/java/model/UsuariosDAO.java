@@ -5,11 +5,14 @@
  */
 package model;
 
+import controller.DactilController;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -80,6 +83,58 @@ public class UsuariosDAO {
    
         
         
+    }
+  //prueba
+    public void eliminarPersona(Usuarios usuarios) throws SQLException {
+         int id_cliente=0;
+         sql = "SELECT `id_cliente` FROM `tbl_clientes` WHERE `tbl_clientes`.`id_cliente` = "+usuarios;
+          try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                id_cliente=rs.getInt("id_cliente");
+            }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DactilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+         
+          sql = "DELETE FROM `tbl_clientes` WHERE `tbl_clientes`.`id_cliente` = "+usuarios;
+          try {
+              cn.setAutoCommit(false);
+            PreparedStatement pst = cn.prepareStatement(sql);
+            
+            int n = pst.executeUpdate();
+            cn.commit();
+        } catch (SQLException ex) {
+            cn.rollback();
+            Logger.getLogger(DactilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+        sql = "DELETE FROM `tbl_clientes` WHERE `tbl_clientes`.`id_cliente` = "+usuarios;
+        
+        try {
+             cn.setAutoCommit(false);
+            PreparedStatement pst = cn.prepareStatement(sql);
+          
+            int n = pst.executeUpdate();
+            cn.commit();
+        } catch (SQLException ex) {
+              cn.rollback();
+            Logger.getLogger(DactilController.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+          sql = "DELETE FROM `tbl_clientes` WHERE `tbl_clientes`.`id_cliente` = "+usuarios;
+          try {
+               cn.setAutoCommit(false);
+            PreparedStatement pst = cn.prepareStatement(sql);
+            int n = pst.executeUpdate();
+            cn.commit();
+        } catch (SQLException ex) {
+             cn.rollback();
+            Logger.getLogger(DactilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }
 
 }
