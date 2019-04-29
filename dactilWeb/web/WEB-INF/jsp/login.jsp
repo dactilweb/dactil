@@ -53,7 +53,6 @@
             <form:input path="contrasena_cliente" id="contrasena_cliente" type="password"/> <br/>
             <div class="col-sm-2 col-form-label" align="left">
             <input type="submit" value="Acceder" class="btn btn-success"/>
-           
             </div>
         </form:form> 
         </div>
