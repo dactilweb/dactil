@@ -34,7 +34,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/")
 @SessionAttributes({"nombre"})
 public class DactilController {
-   
+    ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
         
@@ -98,5 +98,22 @@ public class DactilController {
         Usuarios usuarios= new Usuarios();
         model.addAttribute("usuarios",usuarios);
         return "index";
+    
+    
 */
+    
+       @RequestMapping(value="verUsers",method=RequestMethod.GET)
+    public String recuperarUsuarios (Model model){
+        UsuariosDAO udao = new UsuariosDAO();
+        udao.getListaUsuarios(listaUsuarios);
+        model.addAttribute("listaUsuarios",listaUsuarios);
+        return "verUsers";
+    }
+    @RequestMapping(value = "eliminar", method = RequestMethod.GET)
+    public RedirectView eliminarUsuarioController(@RequestParam("id") int id) throws SQLException {   
+        UsuariosDAO udao = new UsuariosDAO();
+        RedirectView respuesta = new RedirectView("verUsers");
+        udao.eliminarPersona(id);
+        return respuesta;
+    }
 }

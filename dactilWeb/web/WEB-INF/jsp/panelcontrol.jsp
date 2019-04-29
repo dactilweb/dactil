@@ -14,6 +14,7 @@
     <body>
         <h1>Panel de control</h1>
         <a href="pedidos"><h5>Ver pedidos</h5></a>
+        <a href="verUsers"><h5>Ver Usuarios</h5></a>
         <a href="insertarProductos"><h5>Insertar Productos</h5></a>
         <a href="modificarProductos"><h5>Modificar Productos</h5></a>
          <a href="index"><h5>Ver pagina web</h5></a>
