@@ -12,41 +12,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Usuarios</title>
+        <title>Dactil: Productos</title>
     </head>
     <body>
-        <h1>Usuarios</h1>
+        <h1>Productos</h1>
         <table>
             <thead>
                 
                 <tr align="center">
                     <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Direccion cliente</th>
-                    <th>Direccion cliente 2</th>
-                    <th>Email cliente</th>
-                    <th>Telefono cliente</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Referencia</th>
+                    <th>Disponibilidad</th>
+                   
                     
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="users" items="${listaUsuarios}">
+                <c:forEach var="prod" items="${listaProductos}">
                     <tr align="center">
-                        <td>${users.nombre_cliente}</td>
-                        <td>${users.apellido_cliente}</td>
-                        <td>${users.apellido2_cliente}</td>
-                        <td>${users.direccion_cliente}</td>
-                        <td>${users.direccion2_cliente}</td>
-                        <td>${users.email_cliente}</td>
-                        <td>${users.telefono_cliente}</td>
-                        
+                        <td>${prod.nombre_producto}</td>
+                        <td>${prod.descripcion_producto}</td>
+                        <td>${prod.cantidad_producto}</td>
+                        <td>${prod.precio_producto}</td>
+                        <td>${prod.referencia_producto}</td>
+                        <td>${prod.disp_prod}</td>
+                       
                         <td>
-                            <a href="modificar?id=${users.id_cliente}"><button type="button" class="btn btn-info">Modificar</button></a>
+                            <a href="modificarProd?id=${prod.id_producto}"><button type="button" class="btn btn-info">Modificar</button></a>
                         
                         </td>
                         <td>
-                            <a href="eliminar?id=${users.id_cliente}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <a href="eliminarProd?id=${prod.id_producto}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                     </tr>
                 </c:forEach>
             </tbody>

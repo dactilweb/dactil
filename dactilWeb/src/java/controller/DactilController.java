@@ -37,6 +37,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @SessionAttributes({"nombre"})
 public class DactilController {
     ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
+    ArrayList<Productos> listaProductos = new ArrayList<Productos>();
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
         
@@ -149,12 +150,19 @@ public class DactilController {
        return "verProductos";
         }
     }
-     @RequestMapping(value = "eliminarprod", method = RequestMethod.GET)
+     @RequestMapping(value = "eliminarProd", method = RequestMethod.GET)
     public RedirectView eliminarProductoController(@RequestParam("id") int id) throws SQLException {   
         ProductosDAO pdao = new ProductosDAO();
         RedirectView respuesta = new RedirectView("verProductos");
         pdao.eliminarProducto(id);
         return respuesta;
     }
-    
+     @RequestMapping(value="verProductos",method=RequestMethod.GET)
+    public String productosController(Model model){
+        ProductosDAO prodao=new ProductosDAO();
+        prodao.getListaProductos(listaProductos);
+        model.addAttribute("listaProductos", listaProductos);
+         
+        return "verProductos";
+    }
 }

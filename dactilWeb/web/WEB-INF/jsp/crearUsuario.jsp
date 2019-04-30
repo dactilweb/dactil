@@ -15,7 +15,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dactil: Registro</title>
          <script type="text/javascript"> 
                $(document).ready(function(){
                     $("#boton").click(function(){
@@ -74,7 +74,7 @@
          </script>
     </head>
     <body>
-        <h1>ADD USER TEST</h1>
+        <h1>Formulario de Registro</h1>
            <form:form modelAttribute="usuarios" action="nuevoUsuario" method="POST">
             Nombre:
             <form:input path="nombre_cliente" id="nom_user" type="text"/>  
@@ -85,13 +85,13 @@
             <span id="error_cognom"></span>
             <form:errors path="apellido_cliente"/><br/>
              Apellido2
-            <form:input path="apellido2_cliente" id="cognom2_user" type="text"/> 
+            <form:input path="apellido2_cliente" id="cognom2_user" type="text"/> <br/>
              Direccion
-            <form:input path="direccion_cliente" id="direccio_user" type="text"/> 
+            <form:input path="direccion_cliente" id="direccio_user" type="text"/> <br/>
             <span id="error_direccion"></span>
-            <form:errors path="direccion_cliente"/><br/>
+            <form:errors path="direccion_cliente"/>
              Direccion2
-            <form:input path="direccion2_cliente" id="direccio2_user" type="text"/> 
+            <form:input path="direccion2_cliente" id="direccio2_user" type="text"/> <br/>
             Telefono 
             <form:input path="telefono_cliente" id="telefono_user" type="text"/> 
             <span id="error_telefono"></span>
@@ -106,5 +106,6 @@
              <span id="error_passwd" ></span><br/>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
         </form:form> 
+            <a href="login"><h5>Volver</h5></a>
     </body>
 </html>

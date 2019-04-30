@@ -20,8 +20,9 @@ public class Productos {
     private int cantidad_producto;
     private int precio_producto;
     private String referencia_producto;
-    private int telefono_cliente;
     private String foto_producto;
+    private int disponibilidad_producto;
+    private String disp_prod;
     public Productos() {
     }
 
@@ -73,14 +74,6 @@ public class Productos {
         this.referencia_producto = referencia_producto;
     }
 
-    public int getTelefono_cliente() {
-        return telefono_cliente;
-    }
-
-    public void setTelefono_cliente(int telefono_cliente) {
-        this.telefono_cliente = telefono_cliente;
-    }
-
     public String getFoto_producto() {
         return foto_producto;
     }
@@ -89,16 +82,34 @@ public class Productos {
         this.foto_producto = foto_producto;
     }
 
-    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, int precio_producto, String referencia_producto, int telefono_cliente, String foto_producto) {
+    public int getDisponibilidad_producto() {
+        return disponibilidad_producto;
+    }
+
+    public void setDisponibilidad_producto(int disponibilidad_producto) {
+        this.disponibilidad_producto = disponibilidad_producto;
+    }
+
+    public String getDisp_prod() {
+        return disp_prod;
+    }
+
+    public void setDisp_prod(String disp_prod) {
+        this.disp_prod = disp_prod;
+    }
+
+    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, int precio_producto, String referencia_producto, String foto_producto, int disponibilidad_producto, String disp_prod) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion_producto = descripcion_producto;
         this.cantidad_producto = cantidad_producto;
         this.precio_producto = precio_producto;
         this.referencia_producto = referencia_producto;
-        this.telefono_cliente = telefono_cliente;
         this.foto_producto = foto_producto;
+        this.disponibilidad_producto = disponibilidad_producto;
+        this.disp_prod = disp_prod;
     }
+
 
    
     
