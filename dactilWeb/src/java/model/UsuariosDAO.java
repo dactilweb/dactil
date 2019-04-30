@@ -114,6 +114,7 @@ public class UsuariosDAO {
         }
     }
     
+    
 
     public void eliminarPersona(int id) throws SQLException {
 
@@ -128,5 +129,40 @@ public class UsuariosDAO {
         }
 
     }
-
+    
+    
+    public Usuarios getUsuario (int id){
+        Usuarios usuario = new Usuarios();
+        sql= "SELECT * FROM tbl_clientes WHERE id_cliente="+id;
+        try {
+            Statement st=cn.createStatement();
+           
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+                usuario.setId_cliente(rs.getInt("id_cliente"));
+                usuario.setNombre_cliente(rs.getString("nombre_cliente"));
+                usuario.setApellido_cliente(rs.getString("apellido_cliente"));
+                usuario.setApellido2_cliente(rs.getString("apellido2_cliente"));
+                usuario.setDireccion_cliente(rs.getString("direccion_cliente"));
+                usuario.setDireccion2_cliente(rs.getString("direccion2_cliente"));
+                usuario.setEmail_cliente(rs.getString("email_cliente"));
+                usuario.setTelefono_cliente(rs.getInt("telefono_cliente"));             
+            }
+              rs.close();
+              
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return usuario;
+    }
+        public void modificarUsuarios(Usuarios usuarios) throws SQLException{
+            
+            sql="UPDATE `tbl_clientes` SET `nombre_cliente`='"+usuarios.getNombre_cliente()+"' ,`apellido_cliente`='"+usuarios.getApellido_cliente()+"' , `apellido2_cliente`='"+usuarios.getApellido2_cliente()+"' , `direccion_cliente`='"+usuarios.getDireccion_cliente()+"' , `direccion2_cliente`='"+usuarios.getDireccion2_cliente()+"' , `telefono_cliente`='"+usuarios.getTelefono_cliente()+"' , `email_cliente`='"+usuarios.getEmail_cliente()+"' WHERE id_cliente="+usuarios.getId_cliente();
+            try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+        }
 }

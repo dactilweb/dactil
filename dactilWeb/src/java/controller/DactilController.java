@@ -116,4 +116,19 @@ public class DactilController {
         udao.eliminarPersona(id);
         return respuesta;
     }
+    
+      @RequestMapping(value = "modificar", method = RequestMethod.GET)
+    public String modificarUsuarioController(@RequestParam("id") int id, Model model) {   
+        UsuariosDAO udao = new UsuariosDAO();
+       Usuarios usuarios = udao.getUsuario(id);
+        model.addAttribute("usuarios", usuarios);
+        return "modificarUsuario";
+    }
+     @RequestMapping(value="modificarUsuario",method = RequestMethod.POST)
+    public RedirectView modificarUsuarioController(@ModelAttribute("usuarios") Usuarios usuarios) throws SQLException {
+        RedirectView respuesta = new RedirectView("verUsers");
+        UsuariosDAO udao = new UsuariosDAO();
+        udao.modificarUsuarios(usuarios);
+        return respuesta;
+    }
 }
