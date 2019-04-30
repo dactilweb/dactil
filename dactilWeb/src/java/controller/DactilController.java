@@ -91,17 +91,14 @@ public class DactilController {
        return "login";
         }
     }
-    /*
+    
      @RequestMapping("logout")
     public String logoutController(SessionStatus cerrarSesion,Model model){
         cerrarSesion.setComplete();
         Usuarios usuarios= new Usuarios();
         model.addAttribute("usuarios",usuarios);
         return "index";
-    
-    
-*/
-    
+    }
        @RequestMapping(value="verUsers",method=RequestMethod.GET)
     public String recuperarUsuarios (Model model){
         UsuariosDAO udao = new UsuariosDAO();
