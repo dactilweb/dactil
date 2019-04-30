@@ -147,6 +147,9 @@ public class DactilController {
         }else{
              ProductosDAO pdao= new ProductosDAO();
              pdao.nuevoProducto(productos);
+             ProductosDAO prodao=new ProductosDAO();
+        prodao.getListaProductos(listaProductos);
+        model.addAttribute("listaProductos", listaProductos);
        return "verProductos";
         }
     }
