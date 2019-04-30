@@ -135,9 +135,10 @@ public class DactilController {
     public String crearProductoController(Model model){
         Productos productos = new Productos();
         model.addAttribute("productos",productos);
-        return "crearUsuario";
+        return "crearProducto";
     }
-@RequestMapping(value="nuevoUsuario",method=RequestMethod.POST)
+    
+@RequestMapping(value="nuevoProducto",method=RequestMethod.POST)
     public String nuevoProductoController (@Valid @ModelAttribute("productos") Productos productos,BindingResult resultado, Model model) throws SQLException{
         if(resultado.hasErrors()){
             model.addAttribute("productos",productos);

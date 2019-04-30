@@ -16,13 +16,13 @@
              <form:form modelAttribute="productos" action="nuevoProducto" method="POST">
             Nombre:
             <form:input path="nombre_producto" id="nombre_producto" type="text"/>  
-             Apellido
+            Descripcion:
             <form:input path="descripcion_producto" id="descripcion_producto" type="text"/> 
-             Apellido2
+            Cantidad:
             <form:input path="cantidad_producto" id="cantidad_producto" type="text"/> 
-             Direccion
+            Precio:
             <form:input path="precio_producto" id="precio_producto" type="text"/> 
-             Direccion2
+            Foto:
             <form:input path="foto_producto" id="foto_producto" type="text"/> 
             
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
