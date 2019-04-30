@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
+import model.Productos;
+import model.ProductosDAO;
 
 import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
@@ -127,5 +129,23 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
         udao.modificarUsuarios(usuarios);
         return respuesta;
+    }
+    
+        @RequestMapping(value="crearProducto",method=RequestMethod.GET)
+    public String crearProductoController(Model model){
+        Productos productos = new Productos();
+        model.addAttribute("productos",productos);
+        return "crearUsuario";
+    }
+@RequestMapping(value="nuevoUsuario",method=RequestMethod.POST)
+    public String nuevoProductoController (@Valid @ModelAttribute("productos") Productos productos,BindingResult resultado, Model model) throws SQLException{
+        if(resultado.hasErrors()){
+            model.addAttribute("productos",productos);
+             return "crearProducto";
+        }else{
+             ProductosDAO pdao= new ProductosDAO();
+             pdao.nuevoProducto(productos);
+       return "verproductos";
+        }
     }
 }
