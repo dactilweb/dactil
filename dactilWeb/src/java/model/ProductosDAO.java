@@ -43,6 +43,19 @@ public class ProductosDAO {
         }
 
     }
+         public void eliminarProducto(int id) throws SQLException {
+
+        sql = "DELETE FROM `tbl_productos` WHERE `tbl_productos`.`id_producto` = " + id;
+       
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+            int n = pst.executeUpdate(sql);
+        } catch (SQLException ex) {
+            
+            //enviar a pagina de error
+        }
+
+    }
 }
 
 

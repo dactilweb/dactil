@@ -146,7 +146,15 @@ public class DactilController {
         }else{
              ProductosDAO pdao= new ProductosDAO();
              pdao.nuevoProducto(productos);
-       return "verproductos";
+       return "verProductos";
         }
     }
+     @RequestMapping(value = "eliminarprod", method = RequestMethod.GET)
+    public RedirectView eliminarProductoController(@RequestParam("id") int id) throws SQLException {   
+        ProductosDAO pdao = new ProductosDAO();
+        RedirectView respuesta = new RedirectView("verProductos");
+        pdao.eliminarProducto(id);
+        return respuesta;
+    }
+    
 }
