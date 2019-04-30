@@ -16,7 +16,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><%! usuarios.getNombre_cliente();%></h1>
+        <h1>Modificar Usuarios</h1>
         <form:form modelAttribute="usuarios" action="modificarUsuario" method="POST">
 
             Nombre:
