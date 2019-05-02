@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
+import model.Factura;
+import model.FacturaDAO;
 import model.Productos;
 import model.ProductosDAO;
 
@@ -38,6 +40,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class DactilController {
     ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
     ArrayList<Productos> listaProductos = new ArrayList<Productos>();
+    ArrayList<Factura> listaFactura = new ArrayList<Factura>();
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
         
@@ -167,6 +170,14 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
          
         return "verProductos";
+    }
+    
+     @RequestMapping(value="verPedidos",method=RequestMethod.GET)
+    public String facturaController(Model model){
+        FacturaDAO fdao=new FacturaDAO();
+        fdao.getListaPedidos(listaFactura);
+        model.addAttribute("listaFactura",listaFactura);
+        return "verPedidos";
     }
     @RequestMapping(value = "modificarProd", method = RequestMethod.GET)
     public String modificarProductoController(@RequestParam("id") int id, Model model) {  

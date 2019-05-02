@@ -1,7 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,23 +14,37 @@
 
     <body>
         <h1>Pedidos realizados</h1>
-       <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">Esto es un modal</h4>
-			</div>
-			<div class="modal-body">
-				Texto del modal
-			</div>
-		</div>
-	</div>
-</div>
-        
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Ver Pedido</button>
-         
+       <table>
+            <thead>
+                
+                <tr align="center">
+                    <th>Numero Factura</th>
+                    <th>Nombre Cliente</th>
+                    <th>Fecha Factura</th>
+                    <th>Nombre Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad Compra</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="fact" items="${listaFactura}">
+                    <tr align="center">
+                        <td>${fact.id_factura}</td>
+                        <td>${fact.nombre_cliente} ${fact.apellido_cliente}</td>
+                        <td>${fact.fecha_factura}</td>
+                        <td>${fact.nombre_producto}</td>
+                        <td>${fact.precio_producto}</td>
+                        <td>${fact.cantidad_compra}</td>
+                       
+                        <td>
+                            <a href="modificarFact?id=${fact.id_factura}"><button type="button" class="btn btn-info">Modificar</button></a>
+                        
+                        </td>
+                        <td>
+                            <a href="eliminarFact?id=${fact.id_factura}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
     </body>
 </html>

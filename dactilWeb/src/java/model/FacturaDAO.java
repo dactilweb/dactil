@@ -21,102 +21,43 @@ import javax.swing.JOptionPane;
  * @author Manu
  */
 public class FacturaDAO {
+
     private Conexion con = new Conexion();
     private Connection cn = con.conectar();
     private String sql;
 
     public FacturaDAO() {
     }
-    public void getListaPedidos (ArrayList<Factura> listaFactura){
-        sql= "SELECT * FROM tbl_facturas";
+
+    public void getListaPedidos(ArrayList<Factura> listaFactura) {
+        sql = "SELECT tbl_productos.nombre_producto,tbl_facturas.id_cliente,tbl_facturas.estado_factura,tbl_productos.precio_producto, tbl_facturas.fecha_factura,tbl_facturas.id_factura, tbl_lineafactura.cantidad_compra, tbl_clientes.nombre_cliente, tbl_clientes.apellido_cliente\n"
+                + "FROM tbl_clientes INNER JOIN tbl_facturas ON tbl_clientes.id_cliente=tbl_facturas.id_cliente INNER JOIN tbl_lineafactura ON tbl_facturas.id_factura=tbl_lineafactura.id_factura INNER JOIN tbl_productos ON tbl_lineafactura.id_producto=tbl_productos.id_producto\n"
+                + "ORDER BY tbl_facturas.id_factura";
+        
         try {
-            Statement st=cn.createStatement();
-           
-            ResultSet rs=st.executeQuery(sql);
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
             listaFactura.clear();
             
-            while(rs.next()){
+            while (rs.next()) {
                 Factura factura = new Factura();
-                factura.setId_factura(rs.getInt(""));
-                producto.setProd_id(rs.getInt("prod_id"));
-                int id = rs.getInt("prod_id");
-                producto.setProd_nom(rs.getString("prod_nom"));
-                producto.setProd_foto(rs.getString("prod_foto"));
-                producto.setSerie_id(rs.getInt("serie_id"));
-                 int id_serie = rs.getInt("serie_id");
-                producto.setProd_descripcio(rs.getString("prod_descripcio"));
-                producto.setProd_descompte(rs.getInt("prod_descompte"));
-                producto.setProd_preu(rs.getInt("prod_preu"));
-                 
-                calculo= rs.getInt("prod_preu")*rs.getInt("prod_descompte");
-                precio= calculo/100;
-                tot= rs.getInt("prod_preu")-precio;
-                producto.setProd_preu_final(tot);
-              //query stock
-                String sql2 = "SELECT * FROM tbl_estoc WHERE prod_id="+id;
-                try {
-                     Statement sta=cn.createStatement();
-                    ResultSet rsa=sta.executeQuery(sql2);
-                    while(rsa.next()){
-                        id_lugar=rsa.getInt("lloc_id");
-                    producto.setProd_stock(rsa.getInt("cantidad"));
-                          }
-                     rsa.close();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                    }
-                //query ver la serie de productos
-                String sql3 = "SELECT * FROM tbl_serie WHERE serie_id="+id_serie;
-                try {
-                     Statement stb=cn.createStatement();
-                    ResultSet rsb=stb.executeQuery(sql3);
-                    while(rsb.next()){
-                    producto.setProd_serie(rsb.getString("serie_nom"));
-                    producto.setCat_id(rsb.getInt("categoria_id"));
-                    id_cat = rsb.getInt("categoria_id");
-                          }
-                     rsb.close();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                    }
-                //query ver la categoria de productos
-                String sql4 = "SELECT * FROM tbl_categoria WHERE categoria_id="+id_cat;
-               
-                try {
-                     Statement stc=cn.createStatement();
-                    ResultSet rsc=stc.executeQuery(sql4);
-                    while(rsc.next()){
-                    producto.setProd_categoria(rsc.getString("categoria_nom"));
-                   
-                          }
-                     rsc.close();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                    }
-                 //query ver lugar de productos
-                String sql5 = "SELECT * FROM tbl_lloc WHERE lloc_id="+id_lugar;
-                
-                try {
-                    Statement std=cn.createStatement();
-                    ResultSet rsd=std.executeQuery(sql5);
-                    while(rsd.next()){
-                        String lugar=rsd.getString("num_bloc")+" , "+rsd.getString("num_passadis")+" , "+rsd.getString("num_lleixa");
-                    producto.setProd_ubicacion(lugar);
-                   
-                          }
-                     rsd.close();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                    }
-               listaProducto.add(producto);
+                factura.setNombre_producto(rs.getString("nombre_producto"));
+                factura.setPrecio_producto(rs.getInt("precio_producto"));
+                factura.setFecha_factura(rs.getString("fecha_factura"));
+                factura.setCantidad_compra(rs.getInt("cantidad_compra"));
+                factura.setNombre_cliente(rs.getString("nombre_cliente"));
+                factura.setApellido_cliente(rs.getString("apellido_cliente"));
+                factura.setId_factura(rs.getInt("id_factura"));
+                factura.setEstado_factura(rs.getString("estado_factura"));
+                factura.setId_cliente(rs.getInt("id_cliente"));
+                listaFactura.add(factura);
             }
-              rs.close();
-              
-             
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+                rs.close();
+        }catch(Exception e){
+            
         }
     }
- 
 
+    
 }
+
