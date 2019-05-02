@@ -46,7 +46,7 @@
                         
                         </td>
                         <td>
-                            <a href="eliminar?id=${users.id_cliente}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <a href="eliminar?id=${users.id_cliente}"><button type="button" class="btn btn-danger">Deshabilitar</button></a></td>
                     </tr>
                 </c:forEach>
             </tbody>

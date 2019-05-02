@@ -190,4 +190,15 @@ public class UsuariosDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+            public void habilitarUser(int id) throws SQLException {
+
+         sql="UPDATE `tbl_clientes` SET `nivel`=2 WHERE id_cliente="+id;
+            try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+        
+
+    }
 }

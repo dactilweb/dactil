@@ -202,6 +202,13 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
         udao.getListaUsuariosAll(listaUsuarios);
         model.addAttribute("listaUsuarios",listaUsuarios);
-        return "verUsers";
+        return "verUsersAll";
+    }
+    @RequestMapping(value = "habilitar", method = RequestMethod.GET)
+    public RedirectView habilitarUsuarioController(@RequestParam("id") int id) throws SQLException {   
+        UsuariosDAO udao = new UsuariosDAO();
+        RedirectView respuesta = new RedirectView("verUsers");
+        udao.habilitarUser(id);
+        return respuesta;
     }
 }

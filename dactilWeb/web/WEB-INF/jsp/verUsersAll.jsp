@@ -45,6 +45,10 @@
                             <a href="modificar?id=${users.id_cliente}"><button type="button" class="btn btn-info">Modificar</button></a>
                         
                         </td>
+                        <td>
+                            <a href="habilitar?id=${users.id_cliente}"><button type="button" class="btn btn-warning">Habilitar</button></a>
+                        
+                        </td>
                         
                     </tr>
                 </c:forEach>
