@@ -89,7 +89,40 @@ public class ProductosDAO {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }   public Productos getProducto (int id){
+        Productos productos=new Productos();
+        sql="SELECT * FROM tbl_productos WHERE id_producto="+id;
+            try {
+                Statement st=cn.createStatement();
+                ResultSet rs=st.executeQuery(sql);
+                while(rs.next()){
+                    productos.setId_producto(rs.getInt("id_producto"));
+                    productos.setNombre_producto(rs.getString("nombre_producto"));
+                    productos.setDescripcion_producto(rs.getString("descripcion_producto"));
+                    productos.setCantidad_producto(rs.getInt("cantidad_producto"));
+                    productos.setPrecio_producto(rs.getInt("precio_producto"));
+                    productos.setFoto_producto(rs.getString("foto_producto"));
+                    productos.setReferencia_producto(rs.getString("referencia_producto"));
+                    productos.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
+                    if(rs.getInt("disponibilidad_producto")==1){
+                productos.setDisp_prod("Si");
+                }else{
+                    productos.setDisp_prod("No");
+                }
+                }
+            } catch (Exception e) {
+            }
+        return productos;
     }
+          public void modificarProductos(Productos productos) throws SQLException{
+            
+            sql="UPDATE `tbl_productos` SET `nombre_producto`='"+productos.getNombre_producto()+"' ,`descripcion_producto`='"+productos.getDescripcion_producto()+"' , `cantidad_producto`='"+productos.getCantidad_producto()+"', `precio_producto`='"+productos.getPrecio_producto()+", `foto_producto`='"+productos.getPrecio_producto()+"`referencia_producto`='"+productos.getReferencia_producto()+"' WHERE id_producto="+productos.getId_producto();
+            try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+        }
 }
 
 
