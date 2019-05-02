@@ -51,6 +51,8 @@
                 </c:forEach>
             </tbody>
         </table>
+        <a href="verUsersAll"><h5>Ver usuarios deshabilitados</h5></a>
         <a href="panelcontrol"><h5>Volver</h5></a>
+        
     </body>
 </html>

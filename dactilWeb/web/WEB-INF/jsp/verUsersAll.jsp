@@ -12,45 +12,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Productos disponibles</title>
+        <title>Dactil: Usuarios Deshabilitados</title>
     </head>
     <body>
-        <h1>Productos disponibles</h1>
+        <h1>Usuarios Deshabilitados</h1>
         <table>
             <thead>
                 
                 <tr align="center">
                     <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Referencia</th>
-                   
+                    <th>Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Direccion cliente</th>
+                    <th>Direccion cliente 2</th>
+                    <th>Email cliente</th>
+                    <th>Telefono cliente</th>
                     
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="prod" items="${listaProductos}">
+                <c:forEach var="users" items="${listaUsuarios}">
                     <tr align="center">
-                        <td>${prod.nombre_producto}</td>
-                        <td>${prod.descripcion_producto}</td>
-                        <td>${prod.cantidad_producto}</td>
-                        <td>${prod.precio_producto}</td>
-                        <td>${prod.referencia_producto}</td>
-                       
+                        <td>${users.nombre_cliente}</td>
+                        <td>${users.apellido_cliente}</td>
+                        <td>${users.apellido2_cliente}</td>
+                        <td>${users.direccion_cliente}</td>
+                        <td>${users.direccion2_cliente}</td>
+                        <td>${users.email_cliente}</td>
+                        <td>${users.telefono_cliente}</td>
+                        
                         <td>
-                            <a href="modificarProd?id=${prod.id_producto}"><button type="button" class="btn btn-info">Modificar</button></a>
+                            <a href="modificar?id=${users.id_cliente}"><button type="button" class="btn btn-info">Modificar</button></a>
                         
                         </td>
-                        <td>
-                            <a href="eliminarProd?id=${prod.id_producto}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                        
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <a href="crearProducto"><h5>Insertar Productos</h5></a>
-        <a href="verProductosAll"><h5>Mostrar todos</h5></a>
-        <a href="panelcontrol"><h5>Volver</h5></a>
-       
+        <a href="verUsers"><h5>Volver</h5></a>
     </body>
 </html>

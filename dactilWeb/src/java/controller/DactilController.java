@@ -182,4 +182,26 @@ public class DactilController {
         pdao.modificarProductos(productos);
         return respuesta;
     }
+    @RequestMapping(value="verProductosAll",method=RequestMethod.GET)
+    public String productosAllController(Model model){
+        ProductosDAO prodao=new ProductosDAO();
+        prodao.getListaProductosAll(listaProductos);
+        model.addAttribute("listaProductos", listaProductos);
+         
+        return "verProductosAll";
+    }
+    @RequestMapping(value = "eliminarProdDef", method = RequestMethod.GET)
+    public RedirectView eliminarProductoDefController(@RequestParam("id") int id) throws SQLException {   
+        ProductosDAO pdao = new ProductosDAO();
+        RedirectView respuesta = new RedirectView("verProductosAll");
+        pdao.eliminarProductoDef(id);
+        return respuesta;
+    }
+    @RequestMapping(value="verUsersAll",method=RequestMethod.GET)
+    public String recuperarUsuariosAll (Model model){
+        UsuariosDAO udao = new UsuariosDAO();
+        udao.getListaUsuariosAll(listaUsuarios);
+        model.addAttribute("listaUsuarios",listaUsuarios);
+        return "verUsers";
+    }
 }

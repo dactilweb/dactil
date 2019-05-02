@@ -12,10 +12,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Productos disponibles</title>
+        <title>Dactil: Todos los productos</title>
     </head>
     <body>
-        <h1>Productos disponibles</h1>
+        <h1>Todos los productos</h1>
         <table>
             <thead>
                 
@@ -25,6 +25,7 @@
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Referencia</th>
+                    <th>Disponibilidad</th>
                    
                     
                 </tr>
@@ -37,20 +38,19 @@
                         <td>${prod.cantidad_producto}</td>
                         <td>${prod.precio_producto}</td>
                         <td>${prod.referencia_producto}</td>
+                        <td>${prod.disp_prod}</td>
                        
                         <td>
                             <a href="modificarProd?id=${prod.id_producto}"><button type="button" class="btn btn-info">Modificar</button></a>
                         
                         </td>
                         <td>
-                            <a href="eliminarProd?id=${prod.id_producto}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <a href="eliminarProdDef?id=${prod.id_producto}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <a href="crearProducto"><h5>Insertar Productos</h5></a>
-        <a href="verProductosAll"><h5>Mostrar todos</h5></a>
+        <a href="verProductos"><h5>Mostrar Disponibles</h5></a>
         <a href="panelcontrol"><h5>Volver</h5></a>
-       
     </body>
 </html>

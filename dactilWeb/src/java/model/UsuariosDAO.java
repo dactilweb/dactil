@@ -37,7 +37,7 @@ public class UsuariosDAO {
         try {
             Statement st = cn.createStatement();
             ResultSet rs;
-            rs = st.executeQuery("select * from tbl_clientes where email_cliente='" + email + "' and contrasena_cliente='" + password + "'");
+            rs = st.executeQuery("select * from tbl_clientes where email_cliente='" + email + "' and contrasena_cliente='" + password + "' and nivel=1 OR nivel=2");
             if (rs.next()) {
                 usuarios.setNivel(rs.getInt("nivel"));
                 usuarios.setNombre_cliente(rs.getString("nombre_cliente"));
@@ -87,7 +87,7 @@ public class UsuariosDAO {
     
     
     public void getListaUsuarios (ArrayList<Usuarios> listaUsuarios){
-        sql= "SELECT * FROM tbl_clientes";
+        sql= "SELECT * FROM tbl_clientes WHERE nivel=1 OR nivel=2";
         try {
             Statement st=cn.createStatement();
            
@@ -118,15 +118,13 @@ public class UsuariosDAO {
 
     public void eliminarPersona(int id) throws SQLException {
 
-        sql = "DELETE FROM `tbl_clientes` WHERE `tbl_clientes`.`id_cliente` = " + id;
-       
-        try {
-            PreparedStatement pst = cn.prepareStatement(sql);
-            int n = pst.executeUpdate(sql);
-        } catch (SQLException ex) {
-            
-            //enviar a pagina de error
-        }
+         sql="UPDATE `tbl_clientes` SET `nivel`=3 WHERE id_cliente="+id;
+            try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+        
 
     }
     
@@ -165,4 +163,31 @@ public class UsuariosDAO {
             } catch (Exception e) {
             }
         }
+        public void getListaUsuariosAll (ArrayList<Usuarios> listaUsuarios){
+        sql= "SELECT * FROM tbl_clientes WHERE nivel=3";
+        try {
+            Statement st=cn.createStatement();
+           
+            ResultSet rs=st.executeQuery(sql);
+            listaUsuarios.clear();
+            while(rs.next()){
+                Usuarios usuario = new Usuarios();
+                usuario.setId_cliente(rs.getInt("id_cliente"));
+                usuario.setNombre_cliente(rs.getString("nombre_cliente"));
+                usuario.setApellido_cliente(rs.getString("apellido_cliente"));
+                usuario.setApellido2_cliente(rs.getString("apellido2_cliente"));
+                usuario.setDireccion_cliente(rs.getString("direccion_cliente"));
+                usuario.setDireccion2_cliente(rs.getString("direccion2_cliente"));
+                usuario.setEmail_cliente(rs.getString("email_cliente"));
+                usuario.setTelefono_cliente(rs.getInt("telefono_cliente"));             
+   
+               listaUsuarios.add(usuario);
+            }
+              rs.close();
+              
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }
