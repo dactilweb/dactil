@@ -168,4 +168,18 @@ public class DactilController {
          
         return "verProductos";
     }
+    @RequestMapping(value = "modificarProd", method = RequestMethod.GET)
+    public String modificarProductoController(@RequestParam("id") int id, Model model) {  
+        ProductosDAO pdao = new ProductosDAO();
+        Productos productos = pdao.getProducto(id);
+        model.addAttribute("productos", productos);
+        return "modificarProducto";
+    }
+     @RequestMapping(value="modificarProducto",method = RequestMethod.POST)
+    public RedirectView modificarProdController(@ModelAttribute("productos") Productos productos) throws SQLException {
+        RedirectView respuesta = new RedirectView("verProductos");
+        ProductosDAO pdao = new ProductosDAO();
+        pdao.modificarProductos(productos);
+        return respuesta;
+    }
 }

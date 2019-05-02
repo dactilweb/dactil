@@ -26,7 +26,10 @@
             <form:input path="precio_producto"/> <br/>
             Foto:
             <form:input path="foto_producto"/> <br/>
-
+            Numero de referencia:
+            <form:input path="referencia_producto"/> <br/>
+            
+            <form:hidden path="id_producto"/>
             <input type="submit" value="Modificar" class="btn btn-success" id="boton"/>
         </form:form>
             <a href="verProductos"><h5>Volver</h5></a>

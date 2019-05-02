@@ -24,6 +24,8 @@
             <form:input path="precio_producto" id="precio_producto" type="text"/> 
             Foto:
             <form:input path="foto_producto" id="foto_producto" type="text"/> 
+            Referencia:
+            <form:input path="referencia_producto" id="referencia_producto" type="text"/> 
             
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
         </form:form> 
