@@ -19,5 +19,7 @@
         <a href="verProductos"><h5>Ver Productos</h5></a>
          <a href="index"><h5>Ver pagina web</h5></a>
         <a href="logout"><h5>Cerrar sesión</h5></a>
+      
+
     </body>
 </html>
