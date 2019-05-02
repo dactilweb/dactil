@@ -12,6 +12,6 @@
         <p>hola</p>
         <p>Daniel pelaro</p>
          <a href="login">login</a>
-         <img src="nombreimagen" style="max-width:100%;">x
+         <img src="imagenes/arbret.png" style="max-width:100%;"/>
     </body>
 </html>
