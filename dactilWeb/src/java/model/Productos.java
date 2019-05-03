@@ -23,7 +23,21 @@ public class Productos {
     private String foto_producto;
     private int disponibilidad_producto;
     private String disp_prod;
+    private int id_subcategoria;
     public Productos() {
+    }
+
+    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, int precio_producto, String referencia_producto, String foto_producto, int disponibilidad_producto, String disp_prod, int id_subcategoria) {
+        this.id_producto = id_producto;
+        this.nombre_producto = nombre_producto;
+        this.descripcion_producto = descripcion_producto;
+        this.cantidad_producto = cantidad_producto;
+        this.precio_producto = precio_producto;
+        this.referencia_producto = referencia_producto;
+        this.foto_producto = foto_producto;
+        this.disponibilidad_producto = disponibilidad_producto;
+        this.disp_prod = disp_prod;
+        this.id_subcategoria = id_subcategoria;
     }
 
     public int getId_producto() {
@@ -98,19 +112,14 @@ public class Productos {
         this.disp_prod = disp_prod;
     }
 
-    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, int precio_producto, String referencia_producto, String foto_producto, int disponibilidad_producto, String disp_prod) {
-        this.id_producto = id_producto;
-        this.nombre_producto = nombre_producto;
-        this.descripcion_producto = descripcion_producto;
-        this.cantidad_producto = cantidad_producto;
-        this.precio_producto = precio_producto;
-        this.referencia_producto = referencia_producto;
-        this.foto_producto = foto_producto;
-        this.disponibilidad_producto = disponibilidad_producto;
-        this.disp_prod = disp_prod;
+    public int getId_subcategoria() {
+        return id_subcategoria;
     }
 
+    public void setId_subcategoria(int id_subcategoria) {
+        this.id_subcategoria = id_subcategoria;
+    }
 
-   
+    
     
 }
