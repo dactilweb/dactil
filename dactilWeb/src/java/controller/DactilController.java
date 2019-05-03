@@ -67,9 +67,7 @@ public class DactilController {
         if(pasar){
             model.addAttribute("us",usuarios);
             //entrar como admin
-           if(1==usuarios.getNivel()){
-               return "panelcontrol";
-           }
+          
             return "index";
         }else{
             return "login";
