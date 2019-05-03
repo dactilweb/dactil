@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Date;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 

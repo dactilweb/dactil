@@ -128,6 +128,9 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
        Usuarios usuarios = udao.getUsuario(id);
         model.addAttribute("usuarios", usuarios);
+        CategoriaDAO cdao=new CategoriaDAO();
+        cdao.getListaCat(listaCategoria);
+        model.addAttribute("listaCategoria", listaCategoria);
         return "modificarUsuario";
     }
      @RequestMapping(value="modificarUsuario",method = RequestMethod.POST)

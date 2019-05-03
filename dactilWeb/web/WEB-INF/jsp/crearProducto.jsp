@@ -33,7 +33,7 @@
             Categoria:
 		<form:select path="id_subcategoria">
                      <c:forEach var="cat" items="${listaCategoria}">
-			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} / ${cat.nombre_subcategoria}"/>
+			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} - ${cat.nombre_subcategoria}"/>
 			</c:forEach>
                 </form:select><br>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>

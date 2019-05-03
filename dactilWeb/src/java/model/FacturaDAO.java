@@ -43,7 +43,7 @@ public class FacturaDAO {
                 Factura factura = new Factura();
                 factura.setNombre_producto(rs.getString("nombre_producto"));
                 factura.setPrecio_producto(rs.getInt("precio_producto"));
-                JOptionPane.showMessageDialog(null,rs.getString("fecha_factura"));
+                factura.setFecha_factura(rs.getString("fecha_factura"));
                 factura.setCantidad_compra(rs.getInt("cantidad_compra"));
                 factura.setNombre_cliente(rs.getString("nombre_cliente"));
                 factura.setApellido_cliente(rs.getString("apellido_cliente"));
