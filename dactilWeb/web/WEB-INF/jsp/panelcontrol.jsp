@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- si no ha iniciado sesion se redirige a index, para esto es necesario el taglib-->
+<c:if test="${sessionScope.us == null}">
+    <% response.sendRedirect("index");%>
+</c:if>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -33,10 +34,16 @@
             <form:input path="telefono_cliente"/> <br/>
             Email:
             <form:input path="email_cliente"/> <br/>
+            Tipo de usuario:
+            <form:select path="nivel">
+                <form:option value="1" label="Administrador"/>
+                <form:option value="2" label="Usuario"/>
+            </form:select><br>
+            <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
+        
             <form:hidden path="id_cliente"/>
-                
             <input type="submit" value="Modificar" class="btn btn-success" id="boton"/>
-        </form:form>
+      </form:form> 
             <a href="verUsers"><h5>Volver</h5></a>
     </body>
 </html>

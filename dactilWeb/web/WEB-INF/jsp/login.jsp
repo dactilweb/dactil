@@ -5,7 +5,11 @@
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!--Si no ha iniciado sesion va a index --!>
+<c:if test="${sessionScope.us != null}">
+    <% response.sendRedirect("index");%>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

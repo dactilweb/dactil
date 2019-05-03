@@ -38,7 +38,7 @@ import org.springframework.web.servlet.view.RedirectView;
  */
 @Controller
 @RequestMapping("/")
-@SessionAttributes({"nombre"})
+@SessionAttributes({"us"})
 public class DactilController {
     ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
     ArrayList<Productos> listaProductos = new ArrayList<Productos>();
@@ -65,6 +65,7 @@ public class DactilController {
           //  JOptionPane.showMessageDialog(null, p.getProd_nom());
         //}
         if(pasar){
+            model.addAttribute("us",usuarios);
             //entrar como admin
            if(1==usuarios.getNivel()){
                return "panelcontrol";

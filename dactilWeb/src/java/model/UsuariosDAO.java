@@ -103,7 +103,7 @@ public class UsuariosDAO {
                 usuario.setDireccion2_cliente(rs.getString("direccion2_cliente"));
                 usuario.setEmail_cliente(rs.getString("email_cliente"));
                 usuario.setTelefono_cliente(rs.getInt("telefono_cliente"));             
-   
+                usuario.setNivel(rs.getInt("nivel"));
                listaUsuarios.add(usuario);
             }
               rs.close();
@@ -144,7 +144,8 @@ public class UsuariosDAO {
                 usuario.setDireccion_cliente(rs.getString("direccion_cliente"));
                 usuario.setDireccion2_cliente(rs.getString("direccion2_cliente"));
                 usuario.setEmail_cliente(rs.getString("email_cliente"));
-                usuario.setTelefono_cliente(rs.getInt("telefono_cliente"));             
+                usuario.setTelefono_cliente(rs.getInt("telefono_cliente"));     
+                usuario.setNivel(rs.getInt("nivel"));     
             }
               rs.close();
               
@@ -156,7 +157,7 @@ public class UsuariosDAO {
     }
         public void modificarUsuarios(Usuarios usuarios) throws SQLException{
             
-            sql="UPDATE `tbl_clientes` SET `nombre_cliente`='"+usuarios.getNombre_cliente()+"' ,`apellido_cliente`='"+usuarios.getApellido_cliente()+"' , `apellido2_cliente`='"+usuarios.getApellido2_cliente()+"' , `direccion_cliente`='"+usuarios.getDireccion_cliente()+"' , `direccion2_cliente`='"+usuarios.getDireccion2_cliente()+"' , `telefono_cliente`='"+usuarios.getTelefono_cliente()+"' , `email_cliente`='"+usuarios.getEmail_cliente()+"' WHERE id_cliente="+usuarios.getId_cliente();
+            sql="UPDATE `tbl_clientes` SET `nombre_cliente`='"+usuarios.getNombre_cliente()+"' ,`apellido_cliente`='"+usuarios.getApellido_cliente()+"' , `apellido2_cliente`='"+usuarios.getApellido2_cliente()+"' , `direccion_cliente`='"+usuarios.getDireccion_cliente()+"' , `direccion2_cliente`='"+usuarios.getDireccion2_cliente()+"' , `telefono_cliente`='"+usuarios.getTelefono_cliente()+"' , `email_cliente`='"+usuarios.getEmail_cliente()+"', `nivel`='"+usuarios.getNivel()+"' WHERE id_cliente="+usuarios.getId_cliente();
             try {
                 PreparedStatement modificar=cn.prepareStatement(sql);
                 int n=modificar.executeUpdate();
