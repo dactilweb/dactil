@@ -32,7 +32,7 @@ public class ProductosDAO {
             productos.setDisponibilidad_producto(2);
         }
         // Administrador administrador =new Administrador();
-        sql = "INSERT INTO `tbl_productos` (`nombre_producto`,`descripcion_producto`,`cantidad_producto`,`precio_producto`,`foto_producto`,`referencia_producto`,`disponibilidad_producto`) VALUES (?,?,?,?,?,?,?)";
+        sql = "INSERT INTO `tbl_productos` (`nombre_producto`,`descripcion_producto`,`cantidad_producto`,`precio_producto`,`foto_producto`,`referencia_producto`,`disponibilidad_producto`,`id_subcategoria`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             cn.setAutoCommit(false);
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -43,6 +43,7 @@ public class ProductosDAO {
             pst.setString(5, productos.getFoto_producto());
             pst.setString(6, productos.getReferencia_producto());
             pst.setInt(7, productos.getDisponibilidad_producto());
+            pst.setInt(8, productos.getId_subcategoria());
             int n = pst.executeUpdate();
             cn.commit();
         } catch (Exception e) {
@@ -87,6 +88,7 @@ public class ProductosDAO {
                 producto.setReferencia_producto(rs.getString("referencia_producto"));
                 
                 producto.setFoto_producto(rs.getString("foto_producto"));
+                producto.setId_subcategoria(rs.getInt("id_subcategoria"));
                listaProductos.add(producto);
             }
               rs.close();
@@ -119,7 +121,7 @@ public class ProductosDAO {
                 }
               
                 producto.setReferencia_producto(rs.getString("referencia_producto"));
-                
+                producto.setId_subcategoria(rs.getInt("id_subcategoria"));
                 producto.setFoto_producto(rs.getString("foto_producto"));
                listaProductos.add(producto);
             }
@@ -145,6 +147,7 @@ public class ProductosDAO {
                     productos.setFoto_producto(rs.getString("foto_producto"));
                     productos.setReferencia_producto(rs.getString("referencia_producto"));
                     productos.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
+                    productos.setId_subcategoria(rs.getInt("id_subcategoria"));
                     if(rs.getInt("disponibilidad_producto")==1){
                 productos.setDisp_prod("Si");
                 }else{

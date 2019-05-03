@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
+import model.Categoria;
+import model.CategoriaDAO;
 import model.Factura;
 import model.FacturaDAO;
 import model.Productos;
@@ -41,6 +43,7 @@ public class DactilController {
     ArrayList<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
     ArrayList<Productos> listaProductos = new ArrayList<Productos>();
     ArrayList<Factura> listaFactura = new ArrayList<Factura>();
+    ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
         
@@ -139,6 +142,9 @@ public class DactilController {
     public String crearProductoController(Model model){
         Productos productos = new Productos();
         model.addAttribute("productos",productos);
+        CategoriaDAO cdao=new CategoriaDAO();
+        cdao.getListaCat(listaCategoria);
+        model.addAttribute("listaCategoria", listaCategoria);
         return "crearProducto";
     }
     
@@ -150,8 +156,8 @@ public class DactilController {
         }else{
              ProductosDAO pdao= new ProductosDAO();
              pdao.nuevoProducto(productos);
-             ProductosDAO prodao=new ProductosDAO();
-        prodao.getListaProductos(listaProductos);
+             
+        pdao.getListaProductos(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
        return "verProductos";
         }
@@ -168,7 +174,6 @@ public class DactilController {
         ProductosDAO prodao=new ProductosDAO();
         prodao.getListaProductos(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
-         
         return "verProductos";
     }
     

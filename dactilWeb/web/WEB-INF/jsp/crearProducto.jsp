@@ -3,7 +3,7 @@
     Created on : 30-abr-2019, 16:34:30
     Author     : Manu
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,6 +30,12 @@
             <form:input path="foto_producto" id="foto_producto" type="text"/> <br>
             Referencia:
             <form:input path="referencia_producto" id="referencia_producto" type="text"/> <br>
+            Categoria:
+		<form:select path="id_subcategoria">
+                     <c:forEach var="cat" items="${listaCategoria}">
+			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} / ${cat.nombre_subcategoria}"/>
+			</c:forEach>
+                </form:select><br>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
         </form:form> 
             <a href="verProductos"><h5>Volver</h5></a>
