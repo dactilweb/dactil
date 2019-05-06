@@ -37,20 +37,6 @@
                         $("#error_descripcion").html("");                        
                     }
                     
-                     if( $("#cantidad_producto").val() === ""){
-                        $("#error_cantidad").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una cantidad para el nuevo producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
-                        pasar=false;
-                    }else{
-                        $("#error_cantidad").html("");                        
-                    }
-                    
-                      if( $("#precio_producto").val() === ""){
-                        $("#error_precio").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un precio para el nuevo producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
-                        pasar=false;
-                    }else{
-                        $("#error_precio").html("");                        
-                    }
-                    
                     if( $("#referencia_producto").val() === "" ){
                         $("#error_referencia").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una referencia para el nuevo producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");                   
                         pasar=false;
