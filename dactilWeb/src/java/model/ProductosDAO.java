@@ -164,7 +164,7 @@ public class ProductosDAO {
             }else{
                 productos.setDisponibilidad_producto(2);
             }
-            sql="UPDATE `tbl_productos` SET `nombre_producto`='"+productos.getNombre_producto()+"',`descripcion_producto`='"+productos.getDescripcion_producto()+"' ,`cantidad_producto`='"+productos.getCantidad_producto()+"',`precio_producto`='"+productos.getPrecio_producto()+"' , `foto_producto`='"+productos.getFoto_producto()+"' ,`referencia_producto`='"+productos.getReferencia_producto()+"' , `disponibilidad_producto`='"+productos.getDisponibilidad_producto()+"' WHERE id_producto="+productos.getId_producto();
+            sql="UPDATE `tbl_productos` SET `nombre_producto`='"+productos.getNombre_producto()+"',`descripcion_producto`='"+productos.getDescripcion_producto()+"' ,`cantidad_producto`='"+productos.getCantidad_producto()+"',`precio_producto`='"+productos.getPrecio_producto()+"' , `foto_producto`='"+productos.getFoto_producto()+"' ,`referencia_producto`='"+productos.getReferencia_producto()+"' , `disponibilidad_producto`='"+productos.getDisponibilidad_producto()+"' , `id_subcategoria`='"+productos.getId_subcategoria()+"' WHERE id_producto="+productos.getId_producto();
             try {
                 PreparedStatement modificar=cn.prepareStatement(sql);
                 int n=modificar.executeUpdate();

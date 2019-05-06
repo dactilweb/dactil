@@ -39,7 +39,7 @@
                 <form:option value="1" label="Administrador"/>
                 <form:option value="2" label="Usuario"/>
             </form:select><br>
-            <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
+          
         
             <form:hidden path="id_cliente"/>
             <input type="submit" value="Modificar" class="btn btn-success" id="boton"/>

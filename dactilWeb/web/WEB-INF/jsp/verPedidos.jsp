@@ -24,6 +24,7 @@
                     <th>Nombre Producto</th>
                     <th>Precio</th>
                     <th>Cantidad Compra</th> 
+                    <th>Estado</th> 
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,7 @@
                         <td>${fact.nombre_producto}</td>
                         <td>${fact.precio_producto}</td>
                         <td>${fact.cantidad_compra}</td>
+                        <td>${fact.estado_factura}</td>
                        
                         <td>
                             <a href="modificarFact?id=${fact.id_factura}"><button type="button" class="btn btn-info">Modificar</button></a>

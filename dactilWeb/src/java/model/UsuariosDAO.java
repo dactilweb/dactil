@@ -83,7 +83,6 @@ public class UsuariosDAO {
         }
 
     }
-    //prueba
     
     
     public void getListaUsuarios (ArrayList<Usuarios> listaUsuarios){
@@ -200,6 +199,32 @@ public class UsuariosDAO {
             } catch (Exception e) {
             }
         
+
+    }
+            public void nuevoUsuarioAdmin(Usuarios usuarios) throws SQLException {
+
+        // Administrador administrador =new Administrador();
+        sql = "INSERT INTO `tbl_clientes` (`nombre_cliente`,`apellido_cliente`,`apellido2_cliente`,`direccion_cliente`,`direccion2_cliente`,`telefono_cliente`,`email_cliente`,`contrasena_cliente`,`nivel`) VALUES (?,?,?,?,?,?,?,?,?)";
+        try {
+            cn.setAutoCommit(false);
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, usuarios.getNombre_cliente());
+            pst.setString(2, usuarios.getApellido_cliente());
+            pst.setString(3, usuarios.getApellido2_cliente());
+            pst.setString(4, usuarios.getDireccion_cliente());
+            pst.setString(5, usuarios.getDireccion2_cliente());
+            pst.setInt(6, usuarios.getTelefono_cliente());
+            pst.setString(7, usuarios.getEmail_cliente());
+            pst.setString(8, usuarios.getContrasena_cliente());
+            pst.setInt(9, usuarios.getNivel());
+
+            int n = pst.executeUpdate();
+            cn.commit();
+        } catch (Exception e) {
+            cn.rollback();
+            JOptionPane.showMessageDialog(null, e);
+
+        }
 
     }
 }

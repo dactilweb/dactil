@@ -14,7 +14,8 @@
     <body>
         <p>hola</p>
         <p>Daniel pelaro</p>
-         <a href="login">login</a>
+        <a href="login">login</a><br>
+         <a href="logout">cerrar sesion</a>
          <img src="imagenes/arbret.png" style="max-width:100%;"/>
     </body>
 </html>
