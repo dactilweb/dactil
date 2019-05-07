@@ -49,6 +49,9 @@ public class DactilController {
         ProductosDAO pdao= new ProductosDAO();
         pdao.getListaProductos(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
         return "index";
     }
     @RequestMapping(value="login",method=RequestMethod.GET)
@@ -95,7 +98,7 @@ public class DactilController {
         }else{
              UsuariosDAO usuariosDAO= new UsuariosDAO();
         usuariosDAO.nuevoUsuario(usuarios);
-       return "login";
+       return "index";
         }
     }
     

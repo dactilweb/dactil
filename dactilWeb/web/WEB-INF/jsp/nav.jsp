@@ -28,13 +28,20 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-      
+    <c:choose>
+        <c:when test="${sessionScope.us == null}">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Acceder
+            </button>
+        </c:when>
+    </c:choose>
+      <c:choose>
+              
+                <c:when test="${sessionScope.us != null}">
     <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
         <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
             <i class="fas fa-user"></i>
-            <c:choose>
-              
-                <c:when test="${sessionScope.us != null}">
+            
                     <div class="media-body"> ${us.getNombre_cliente()} &nbsp;</div>
              <div class="media-body"> ${us.getApellido_cliente()}</div>
         </a>
@@ -49,17 +56,7 @@
         </ul>
                 </c:when>
                 
-                <c:when test="${sessionScope.us == null}">
-                    <div class="media-body">
-                test
-            </div>
-            <i class="material-icons md-light ml-2 pmd-sm">test</i>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <a class="dropdown-item" href="login">Iniciar Sesion</a>
-            <a class="dropdown-item" href="crearUsuario">Registrarse</a>
-        </ul>
-                </c:when>
+              
             </c:choose>
         
     </div>
