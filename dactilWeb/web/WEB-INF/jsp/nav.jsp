@@ -28,6 +28,7 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
+      
     <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
         <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
             <i class="fas fa-user"></i>
@@ -60,7 +61,11 @@
         </ul>
                 </c:when>
             </c:choose>
-            
+        
     </div>
   </div>
 </nav>
+<div class="contenidoBanner">
+    <img class="banner" src="">
+    <div class="img"><img src="imagenes/il.png" class="img-fluid" alt="Responsive image"></div>
+</div>

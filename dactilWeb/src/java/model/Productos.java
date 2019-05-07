@@ -18,7 +18,7 @@ public class Productos {
     private String nombre_producto;
     private String descripcion_producto;
     private int cantidad_producto;
-    private int precio_producto;
+    private double precio_producto;
     private String referencia_producto;
     private String foto_producto;
     private int disponibilidad_producto;
@@ -27,7 +27,7 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, int precio_producto, String referencia_producto, String foto_producto, int disponibilidad_producto, String disp_prod, int id_subcategoria) {
+    public Productos(int id_producto, String nombre_producto, String descripcion_producto, int cantidad_producto, double precio_producto, String referencia_producto, String foto_producto, int disponibilidad_producto, String disp_prod, int id_subcategoria) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion_producto = descripcion_producto;
@@ -72,11 +72,11 @@ public class Productos {
         this.cantidad_producto = cantidad_producto;
     }
 
-    public int getPrecio_producto() {
+    public double getPrecio_producto() {
         return precio_producto;
     }
 
-    public void setPrecio_producto(int precio_producto) {
+    public void setPrecio_producto(double precio_producto) {
         this.precio_producto = precio_producto;
     }
 

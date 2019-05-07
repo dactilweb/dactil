@@ -46,7 +46,9 @@ public class DactilController {
     ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
-        
+        ProductosDAO pdao= new ProductosDAO();
+        pdao.getListaProductos(listaProductos);
+        model.addAttribute("listaProductos", listaProductos);
         return "index";
     }
     @RequestMapping(value="login",method=RequestMethod.GET)
@@ -56,28 +58,25 @@ public class DactilController {
         return "login";
     }
     @RequestMapping(value="login",method=RequestMethod.POST)
-    public String recuperarpersona (@ModelAttribute("usuarios") Usuarios usuarios, Model model){
+    public RedirectView recuperarpersona (@ModelAttribute("usuarios") Usuarios usuarios, Model model){
         UsuariosDAO UsuariosDAO= new UsuariosDAO();
         boolean pasar= UsuariosDAO.recuperarpersona(usuarios);
         String nombre =usuarios.getEmail_cliente();
         String password = usuarios.getContrasena_cliente();
-        //for(Producte p:listaProducto){
-          //  JOptionPane.showMessageDialog(null, p.getProd_nom());
-        //}
+      
         if(pasar){
             model.addAttribute("us",usuarios);
-            //entrar como admin
-          
-            return "index";
+             RedirectView respuesta = new RedirectView("index");
+            return respuesta;
         }else{
-            return "login";
+              RedirectView respuesta = new RedirectView("login");
+            return respuesta;
         }
        
     }
     //Acceso a panel de control si eres usuario administrador (1)
     @RequestMapping(value="panelcontrol",method=RequestMethod.GET)
     public String PanelController(Model model){
-        
         return "panelcontrol";
     }
 
@@ -101,11 +100,12 @@ public class DactilController {
     }
     
      @RequestMapping("logout")
-    public String logoutController(SessionStatus cerrarSesion,Model model){
+    public RedirectView logoutController(SessionStatus cerrarSesion,Model model){
         cerrarSesion.setComplete();
         Usuarios usuarios= new Usuarios();
         model.addAttribute("usuarios",usuarios);
-        return "index";
+        RedirectView respuesta = new RedirectView("index");
+        return respuesta;
     }
        @RequestMapping(value="verUsers",method=RequestMethod.GET)
     public String recuperarUsuarios (Model model){

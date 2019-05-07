@@ -39,7 +39,7 @@ public class ProductosDAO {
             pst.setString(1, productos.getNombre_producto());
             pst.setString(2, productos.getDescripcion_producto());
             pst.setInt(3, productos.getCantidad_producto());
-            pst.setInt(4, productos.getPrecio_producto());
+            pst.setDouble(4, productos.getPrecio_producto());
             pst.setString(5, productos.getFoto_producto());
             pst.setString(6, productos.getReferencia_producto());
             pst.setInt(7, productos.getDisponibilidad_producto());
@@ -77,7 +77,7 @@ public class ProductosDAO {
                 producto.setNombre_producto(rs.getString("nombre_producto"));
                 producto.setDescripcion_producto(rs.getString("descripcion_producto"));
                 producto.setCantidad_producto(rs.getInt("cantidad_producto"));
-                producto.setPrecio_producto(rs.getInt("precio_producto"));
+                producto.setPrecio_producto(rs.getDouble("precio_producto"));
                 producto.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
                 if(rs.getInt("disponibilidad_producto")==1){
                 producto.setDisp_prod("Si");
@@ -112,7 +112,7 @@ public class ProductosDAO {
                 producto.setNombre_producto(rs.getString("nombre_producto"));
                 producto.setDescripcion_producto(rs.getString("descripcion_producto"));
                 producto.setCantidad_producto(rs.getInt("cantidad_producto"));
-                producto.setPrecio_producto(rs.getInt("precio_producto"));
+                producto.setPrecio_producto(rs.getDouble("precio_producto"));
                 producto.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
                 if(rs.getInt("disponibilidad_producto")==1){
                 producto.setDisp_prod("Si");
@@ -143,7 +143,7 @@ public class ProductosDAO {
                     productos.setNombre_producto(rs.getString("nombre_producto"));
                     productos.setDescripcion_producto(rs.getString("descripcion_producto"));
                     productos.setCantidad_producto(rs.getInt("cantidad_producto"));
-                    productos.setPrecio_producto(rs.getInt("precio_producto"));
+                    productos.setPrecio_producto(rs.getDouble("precio_producto"));
                     productos.setFoto_producto(rs.getString("foto_producto"));
                     productos.setReferencia_producto(rs.getString("referencia_producto"));
                     productos.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
