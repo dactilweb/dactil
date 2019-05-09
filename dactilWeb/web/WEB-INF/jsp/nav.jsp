@@ -57,6 +57,10 @@
     </div>
   </div>
 </nav>
+     <% 
+       if(!titulo.equals("Detalle")){
+        
+    %>  
 <div class="contenidoBanner">
     <img class="banner" src="">
     <% 
@@ -117,7 +121,7 @@ if(subtitulo.equals("extApliques")){
        <div class="img"><img src="imagenes/piscinas.png" class="img-fluid" alt="Responsive image"></div>
        <%
     }
-    
+    }
     %>
     
 </div>

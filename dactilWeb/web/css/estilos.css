@@ -51,6 +51,42 @@ border: 0px solid #000000;
     padding-right: 10%!important;
     padding-left: 10% !important;
 }
+.verProducto{
+    height: 300px;
+}
+.referencia{
+    color:#686868;
+    font-size: 13px;
+    
+}
+.contenidoProducto {
+    padding-top: 1%;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+    background-color: white;
+    margin-top: 1%;
+    border-radius: 20px 20px 0px 0px;
+    -moz-border-radius: 20px 20px 0px 0px;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    border: 0px solid #000000;
+}
+.anadirCarrito{
+     padding-top: 1%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-bottom: 3%;
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+    background-color: #f8f9fa;
+    margin-top: 1%;
+    border-radius: 20px 20px 0px 0px;
+    -moz-border-radius: 20px 20px 0px 0px;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    border: 0px solid #000000;
+}
 /*footer*/
 .footer{
     margin-top: 7% !important;

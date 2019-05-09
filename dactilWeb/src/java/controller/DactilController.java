@@ -54,7 +54,6 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios",usuarios);
-        
         return "index";
     }
     @RequestMapping(value="interior",method=RequestMethod.GET)
@@ -330,7 +329,6 @@ public class DactilController {
         ProductosDAO prodao=new ProductosDAO();
         prodao.getListaProductosAll(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
-         
         return "verProductosAll";
     }
     @RequestMapping(value = "eliminarProdDef", method = RequestMethod.GET)
@@ -364,5 +362,15 @@ public class DactilController {
     public String nuevoUsuarioAdmin (@Valid @ModelAttribute("usuarios") Usuarios usuarios,BindingResult resultado, Model model) throws SQLException{
        model.addAttribute("usuarios",usuarios);
              return "crearUsuarioAdmin";
+    }
+    @RequestMapping(value = "verProducto", method = RequestMethod.GET)
+    public String verProductoController(@RequestParam("id") int id, Model model) {  
+        ProductosDAO pdao = new ProductosDAO();
+        Productos productos = pdao.getProducto(id);
+        model.addAttribute("productos", productos);
+        model.addAttribute("titulo","Detalle");
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        return "verProducto";
     }
 }
