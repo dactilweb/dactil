@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% String titulo = (String) request.getAttribute("titulo"); %>
+<% String subtitulo = (String) request.getAttribute("subtitulo"); %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="index">Dactil</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,7 +41,7 @@
              <div class="media-body"> ${us.getApellido_cliente()}</div>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <a class="dropdown-item" href="javascript:void(0);">Editar Perfil</a>
+            <a class="dropdown-item" href="#">Editar Perfil</a>
             <c:choose>
                 <c:when test="${us.getNivel() == 1}">
                      <a class="dropdown-item" href="panelcontrol">Panel de Control</a>
@@ -60,10 +61,24 @@
     <img class="banner" src="">
     <% 
     if(titulo.equals("Interior")){
+        if(subtitulo.equals("bombillas")){
+    %>
+    <div class="img"><img src="imagenes/bombillas.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }if(subtitulo.equals("lamparas")){
+    %>
+    <div class="img"><img src="imagenes/lamparas.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }if(subtitulo.equals("tirasled")){
+    %>
+    <div class="img"><img src="imagenes/tled.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }if(subtitulo.equals("interior")){
        %> 
        <div class="img"><img src="imagenes/interior.png" class="img-fluid" alt="Responsive image"></div>
        <%
     }
+}
     %>
        <% 
     if(titulo.equals("Inicio")){
@@ -74,9 +89,26 @@
     %>
        <% 
     if(titulo.equals("Exterior")){
+        if(subtitulo.equals("extLed")){
+    %>
+    <div class="img"><img src="imagenes/extled.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }
+    if(subtitulo.equals("extFocoLed")){
+    %>
+    <div class="img"><img src="imagenes/extfoco.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }
+if(subtitulo.equals("extApliques")){
+    %>
+    <div class="img"><img src="imagenes/apliques.png" class="img-fluid" alt="Responsive image"></div>
+    <%
+    }
+    if(subtitulo.equals("exterior")){
        %> 
        <div class="img"><img src="imagenes/exterior.png" class="img-fluid" alt="Responsive image"></div>
        <%
+           }
     }
     %>
        <% 
@@ -85,6 +117,7 @@
        <div class="img"><img src="imagenes/piscinas.png" class="img-fluid" alt="Responsive image"></div>
        <%
     }
+    
     %>
     
 </div>

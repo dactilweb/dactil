@@ -32,7 +32,7 @@
             <a class="nav-link" href="interiorBomb">Bombillas LED</a>
         </li>
       <li <% out.println((subtitulo.equals("lamparas"))?"class='nav-item active'":""); %>>
-            <a class="nav-link" href="interiorLamp">Lamparas</a>
+            <a class="nav-link" href="interiorLamp">Lámparas</a>
         </li>
     <li <% out.println((subtitulo.equals("tirasled"))?"class='nav-item active'":""); %>>
             <a class="nav-link" href="interiorTLed">Tiras LED</a>
