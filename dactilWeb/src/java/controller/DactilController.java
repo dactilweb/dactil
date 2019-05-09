@@ -44,10 +44,129 @@ public class DactilController {
     ArrayList<Productos> listaProductos = new ArrayList<Productos>();
     ArrayList<Factura> listaFactura = new ArrayList<Factura>();
     ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
+    String apartado="";
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
         ProductosDAO pdao= new ProductosDAO();
-        pdao.getListaProductos(listaProductos);
+        model.addAttribute("titulo","Inicio");
+        apartado="inicio";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="interior",method=RequestMethod.GET)
+    public String interiorController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Interior");
+         model.addAttribute("subtitulo","interior");
+        apartado="interior";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="interiorBomb",method=RequestMethod.GET)
+    public String interiorBombController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Interior");
+        model.addAttribute("subtitulo","bombillas");
+        apartado="bombillasled";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="interiorLamp",method=RequestMethod.GET)
+    public String interiorLampController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Interior");
+        model.addAttribute("subtitulo","lamparas");
+        apartado="lamparas";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="interiorTLed",method=RequestMethod.GET)
+    public String interiorTLedController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Interior");
+        model.addAttribute("subtitulo","tirasled");
+        apartado="tirasled";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+        @RequestMapping(value="exterior",method=RequestMethod.GET)
+    public String exteriorController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Exterior");
+        model.addAttribute("subtitulo","exterior");
+        apartado="exterior";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="exteriorLed",method=RequestMethod.GET)
+    public String exteriorLedController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Exterior");
+        model.addAttribute("subtitulo","extLed");
+        apartado="exteriorLed";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="exteriorFocos",method=RequestMethod.GET)
+    public String exteriorFocosController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Exterior");
+        model.addAttribute("subtitulo","extFocoLed");
+        apartado="exteriorFocos";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="exteriorApliques",method=RequestMethod.GET)
+    public String exteriorApliquesController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Exterior");
+        model.addAttribute("subtitulo","extApliques");
+        apartado="exteriorApliques";
+        pdao.getListaProductos(listaProductos,apartado);
+        model.addAttribute("listaProductos", listaProductos);
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios",usuarios);
+        
+        return "index";
+    }
+    @RequestMapping(value="piscinas",method=RequestMethod.GET)
+    public String piscinasController(Model model){
+        ProductosDAO pdao= new ProductosDAO();
+        model.addAttribute("titulo","Piscinas");
+        apartado="piscinas";
+        pdao.getListaProductos(listaProductos,apartado);
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios",usuarios);
@@ -162,7 +281,7 @@ public class DactilController {
              ProductosDAO pdao= new ProductosDAO();
              pdao.nuevoProducto(productos);
              
-        pdao.getListaProductos(listaProductos);
+        pdao.getListaProductos(listaProductos,apartado);
         model.addAttribute("listaProductos", listaProductos);
        return "verProductos";
         }
@@ -177,7 +296,7 @@ public class DactilController {
      @RequestMapping(value="verProductos",method=RequestMethod.GET)
     public String productosController(Model model){
         ProductosDAO prodao=new ProductosDAO();
-        prodao.getListaProductos(listaProductos);
+        prodao.getListaProductos(listaProductos,apartado);
         model.addAttribute("listaProductos", listaProductos);
         return "verProductos";
     }

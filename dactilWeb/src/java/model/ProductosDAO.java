@@ -63,8 +63,45 @@ public class ProductosDAO {
             }
 
     }
-         public void getListaProductos (ArrayList<Productos> listaProductos){
-        sql= "SELECT * FROM tbl_productos WHERE `disponibilidad_producto`=1";
+         public void getListaProductos (ArrayList<Productos> listaProductos,String apartado){
+        
+        if(apartado.equals("interior")){
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=1";
+
+        }
+        if(apartado.equals("exterior")){
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=2";
+
+        }
+        if(apartado.equals("inicio")){
+            sql= "SELECT * FROM tbl_productos WHERE `disponibilidad_producto`=1";
+        }
+        if(apartado.equals("piscinas")){
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=3";
+
+        }
+        if(apartado.equals("bombillasled")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=1";
+
+        }
+        if(apartado.equals("lamparas")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=2";
+
+        }
+        if(apartado.equals("tirasled")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=3";
+
+        }
+        if(apartado.equals("exteriorLed")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=4";
+
+        }if(apartado.equals("exteriorFocos")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=5";
+
+        }if(apartado.equals("exteriorApliques")){
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=6";
+
+        }
         try {
             Statement st=cn.createStatement();
            
@@ -98,6 +135,7 @@ public class ProductosDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }   
+         
           public void getListaProductosAll (ArrayList<Productos> listaProductos){
         sql= "SELECT * FROM tbl_productos WHERE disponibilidad_producto=1 OR disponibilidad_producto=2";
         try {
@@ -132,7 +170,7 @@ public class ProductosDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }   
-         public Productos getProducto (int id){
+        public Productos getProducto (int id){
         Productos productos=new Productos();
         sql="SELECT * FROM tbl_productos WHERE id_producto="+id;
             try {
@@ -158,6 +196,7 @@ public class ProductosDAO {
             }
         return productos;
     }
+        
           public void modificarProductos(Productos productos) throws SQLException{
             if(productos.getCantidad_producto()>0){
                 productos.setDisponibilidad_producto(1);
