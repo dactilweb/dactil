@@ -50,7 +50,7 @@
     </head>
     <body>
         <h1>Insertar Producto</h1>
-             <form:form modelAttribute="productos" action="nuevoProducto" method="POST">
+             <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data">
             Nombre:
             <form:input path="nombre_producto" id="nombre_producto" type="text"/>  <br>
             <span id="error_nombre"></span>
@@ -64,7 +64,7 @@
             <form:input path="precio_producto" id="precio_producto" type="text"/> <br>
             <span id="error_precio"></span>
             Foto:
-            <form:input path="foto_producto" id="foto_producto" type="text"/> <br>
+            <form:input type="file" name="file" size="50" path="fichero" id="fichero"></form:input><br>
             Referencia:
             <form:input path="referencia_producto" id="referencia_producto" type="text"/> <br>
             <span id="error_referencia"></span>

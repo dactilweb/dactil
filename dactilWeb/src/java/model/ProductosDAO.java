@@ -26,6 +26,7 @@ public class ProductosDAO {
     }
     
      public void nuevoProducto(Productos productos) throws SQLException {
+         
         if(productos.getCantidad_producto()>0){
             productos.setDisponibilidad_producto(1);
         }else{

@@ -5,6 +5,10 @@
  */
 package controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -28,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -214,7 +219,7 @@ public class DactilController {
             model.addAttribute("usuarios",usuarios);
              return "crearUsuario";
         }else{
-             UsuariosDAO usuariosDAO= new UsuariosDAO();
+        UsuariosDAO usuariosDAO= new UsuariosDAO();
         usuariosDAO.nuevoUsuario(usuarios);
        return "index";
         }
@@ -272,7 +277,14 @@ public class DactilController {
     }
     
 @RequestMapping(value="nuevoProducto",method=RequestMethod.POST)
-    public String nuevoProductoController (@Valid @ModelAttribute("productos") Productos productos,BindingResult resultado, Model model) throws SQLException{
+    public String nuevoProductoController (@Valid @ModelAttribute("productos") Productos productos,BindingResult resultado, Model model) throws SQLException, FileNotFoundException, IOException{
+       
+        CommonsMultipartFile uploaded = productos.getFichero();
+        productos.setFoto_producto(uploaded.getOriginalFilename());
+    	File localFile = new File("C:\\Users\\PC-OMEN\\Documents\\NetBeansProjects\\dactil\\dactilWeb\\build\\web\\imgProductos\\"+uploaded.getOriginalFilename());
+    	FileOutputStream os = null;
+        os = new FileOutputStream(localFile);
+    	os.write(uploaded.getBytes());
         if(resultado.hasErrors()){
             model.addAttribute("productos",productos);
              return "crearProducto";
