@@ -221,6 +221,35 @@ public class ProductosDAO {
             }
 
     }
+          public void getListaSimilares (ArrayList<Productos> listaSimilares,int id){
+        sql= "SELECT * FROM tbl_productos WHERE tbl_productos.id_subcategoria=(SELECT tbl_subcategoria.id_subcategoria FROM tbl_subcategoria INNER JOIN tbl_productos ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria WHERE tbl_productos.id_producto="+id+") AND id_producto<>"+id;
+        
+        try {
+            Statement st=cn.createStatement();
+           
+            ResultSet rs=st.executeQuery(sql);
+            listaSimilares.clear();
+           
+            while(rs.next()){
+                Productos productos=new Productos();
+                productos.setId_producto(rs.getInt("id_producto"));
+                productos.setNombre_producto(rs.getString("nombre_producto"));
+                productos.setDescripcion_producto(rs.getString("descripcion_producto"));
+                productos.setCantidad_producto(rs.getInt("cantidad_producto"));
+                productos.setPrecio_producto(rs.getDouble("precio_producto"));
+                productos.setFoto_producto(rs.getString("foto_producto"));
+                productos.setReferencia_producto(rs.getString("referencia_producto"));
+                productos.setDisponibilidad_producto(rs.getInt("disponibilidad_producto"));
+                productos.setId_subcategoria(rs.getInt("id_subcategoria"));
+               listaSimilares.add(productos);
+            }
+              rs.close();
+              
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    } 
 }
 
 

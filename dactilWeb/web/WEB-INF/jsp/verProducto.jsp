@@ -31,11 +31,46 @@
         <div class="anadirCarrito">
             <h1>${productos.getPrecio_producto()}€</h1>
             <p class="referencia">IVA INCLUIDO</p>
+            
+            <form:form modelAttribute="lineaFactura" action="nuevaLinea" method="POST">
+            Cantidad:
+            <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="0"/>  <br>
+            <span id="error_nombre"></span>
+            <form:hidden path="id_producto"/>
+            <input type="submit" value="Añadir" class="btn btn-success" id="boton"/>
+        </form:form> 
+            
         </div>
     </div>
   </div>
 </div>
-           
+            <h2>Productos Similares</h2>
+           <div class="row">
+  
+     <c:forEach var="prod" items="${listaSimilares}">
+     <div class="col-sm-3">
+    <div class="card">
+        
+        <img class="card-img-top" src="imagenes/lede27.jpg" alt="Card image cap">
+      <div class="card-body">
+         
+        <h5 class="card-title">${prod.nombre_producto}</h5>
+        <p class="card-text">${prod.cantidad_producto} Articulos disponibles</p>
+        <p class="card-text">${prod.precio_producto}€ / Coste unidad</p><br><br>
+        <div class="">
+            <a class="btn btn-primary" href="añadirCarrito?id=${prod.id_producto}" role="button"> <i class="fas fa-shopping-cart"></i> Añadir al carrito</a><br>
+    <a href="verProducto?id=${prod.id_producto}" class="card-link"><i class="fas fa-info-circle"></i> Ver más</a>
+ 
+  </div>
+      </div>
+    </div>
+  </div>
+     </c:forEach>
+          
+     
+     
+     
+</div>
            
        </div>
    

@@ -113,6 +113,5 @@ if(titulo.equals("Piscinas")){
         
 <jsp:include page="footer.jsp" />
 
-<jsp:include page="modales.jsp" />
     </body>
 </html>

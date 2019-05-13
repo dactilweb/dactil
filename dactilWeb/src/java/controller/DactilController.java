@@ -17,6 +17,7 @@ import model.Categoria;
 import model.CategoriaDAO;
 import model.Factura;
 import model.FacturaDAO;
+import model.LineaFactura;
 import model.Productos;
 import model.ProductosDAO;
 
@@ -49,6 +50,7 @@ public class DactilController {
     ArrayList<Productos> listaProductos = new ArrayList<Productos>();
     ArrayList<Factura> listaFactura = new ArrayList<Factura>();
     ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
+    ArrayList<Productos> listaSimilares = new ArrayList<Productos>();
     String apartado="";
    @RequestMapping(value="index",method=RequestMethod.GET)
     public String indexController(Model model){
@@ -217,11 +219,11 @@ public class DactilController {
     public String nuevoUsuario (@Valid @ModelAttribute("usuarios") Usuarios usuarios,BindingResult resultado, Model model) throws SQLException{
         if(resultado.hasErrors()){
             model.addAttribute("usuarios",usuarios);
-             return "crearUsuario";
+             return "index";
         }else{
         UsuariosDAO usuariosDAO= new UsuariosDAO();
         usuariosDAO.nuevoUsuario(usuarios);
-       return "index";
+       return "login";
         }
     }
     
@@ -281,7 +283,7 @@ public class DactilController {
        
         CommonsMultipartFile uploaded = productos.getFichero();
         productos.setFoto_producto(uploaded.getOriginalFilename());
-    	File localFile = new File("C:\\Users\\PC-OMEN\\Documents\\NetBeansProjects\\dactil\\dactilWeb\\build\\web\\imgProductos\\"+uploaded.getOriginalFilename());
+    	File localFile = new File("C:/Users/PC-OMEN/Documents/NetBeansProjects/dactil/dactilWeb/web/imgProductos/"+uploaded.getOriginalFilename());
     	FileOutputStream os = null;
         os = new FileOutputStream(localFile);
     	os.write(uploaded.getBytes());
@@ -380,9 +382,13 @@ public class DactilController {
         ProductosDAO pdao = new ProductosDAO();
         Productos productos = pdao.getProducto(id);
         model.addAttribute("productos", productos);
+        pdao.getListaSimilares(listaSimilares,id);
+        model.addAttribute("listaSimilares", listaSimilares);
         model.addAttribute("titulo","Detalle");
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios",usuarios);
+        LineaFactura lineaFactura = new LineaFactura();
+        model.addAttribute("lineaFactura", lineaFactura);
         return "verProducto";
     }
 }
