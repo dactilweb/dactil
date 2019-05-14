@@ -152,62 +152,88 @@ if(subtitulo.equals("extApliques")){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
-                Registrarse 
-            </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Registrarse</button>
+
       </div>
     </div>
   </div>
 </div>
     <!-- Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
+        <div class="modal-header">
+        <h5 class="modal-title" id="bd-example-modal-lg">Registro</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-         <form:form modelAttribute="usuarios" action="nuevoUsuario" method="POST">
+         <div class="modal-body">
+       <form:form modelAttribute="usuarios" action="nuevoUsuario" method="POST">
              <div class="form-group">
-            Nombre:
+
+<div class="row">
+    <div class="col-md-6">
+         Nombre:
             <form:input path="nombre_cliente" id="nom_user" type="text" class="form-control"/>  
             <span id="error_nombre"></span>
             <form:errors path="nombre_cliente"/><br/>
-             Apellido
+    </div>
+    <div class="col-md-6">
+         Apellido:
             <form:input path="apellido_cliente" id="cognom_user" type="text" class="form-control"/> 
             <span id="error_cognom"></span>
             <form:errors path="apellido_cliente"/><br/>
-             Apellido2
+    </div>
+    <div class="col-md-6">
+         Apellido2:
             <form:input path="apellido2_cliente" id="cognom2_user" type="text" class="form-control"/> <br/>
-             Direccion
-            <form:input path="direccion_cliente" id="direccio_user" type="text" class="form-control"/> <br/>
-            <span id="error_direccion"></span>
-            <form:errors path="direccion_cliente"/>
-             Direccion2
-            <form:input path="direccion2_cliente" id="direccio2_user" type="text" class="form-control"/> <br/>
-            Telefono 
+    </div>
+    <div class="col-md-6">
+      
+            Telefono:
             <form:input path="telefono_cliente" id="telefono_user" type="text" class="form-control"/> 
             <span id="error_telefono"></span>
             <form:errors path="telefono_cliente"/><br/>
-             Email
+    </div>
+    <div class="col-md-12">
+        Direccion:
+            <form:input path="direccion_cliente" id="direccio_user" type="text" class="form-control"/> <br/>
+            <span id="error_direccion"></span>
+            <form:errors path="direccion_cliente"/>
+    </div>
+    <div class="col-md-12">
+       Direccion2:
+            <form:input path="direccion2_cliente" id="direccio2_user" type="text" class="form-control"/> <br/>
+    </div>
+    
+    <div class="col-md-6">
+      
+             Email:
             <form:input path="email_cliente" id="email_user" type="email" class="form-control"/> 
             <span id="error_email"></span>
             <form:errors path="email_cliente"/><br/>
+    </div>
+    <div class="col-md-6">
+      
             Contraseña:
             <form:input path="contrasena_cliente" id="passwd_user" type="password" class="form-control"/>     
             <form:errors path="contrasena_cliente"/>
              <span id="error_passwd" ></span><br/>
-            <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
+    </div>
+</div>
+            <input type="submit" value="Crear" class="btn btn-primary" id="boton"/>
              </div>
         </form:form> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+       
+
       </div>
     </div>
   </div>
 </div>
+
     
