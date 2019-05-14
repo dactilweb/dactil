@@ -139,14 +139,15 @@ if(subtitulo.equals("extApliques")){
       </div>
       <div class="modal-body">
        <form:form modelAttribute="usuarios" action="login" method="POST">
-         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-            <form:input path="email_cliente" id="email_cliente" type="text"/> <br/>
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
-            <form:input path="contrasena_cliente" id="contrasena_cliente" type="password"/> <br/>
-            <div class="col-sm-2 col-form-label" align="left">
-            
-            <input type="submit" value="Acceder" class="btn btn-success"/>
+         
+         <div class="form-group">
+             <label for="inputEmail3" >Email</label>
+            <form:input path="email_cliente" class="form-control" id="email_cliente" type="text"/> <br/>
+            <label for="inputPassword3" class="">Contraseña</label>
+            <form:input path="contrasena_cliente" class="form-control" id="contrasena_cliente" type="password"/> <br/>
             </div>
+            <input type="submit" value="Acceder" class="btn btn-primary"/>
+            
         </form:form>       
       </div>
       <div class="modal-footer">
@@ -170,35 +171,37 @@ if(subtitulo.equals("extApliques")){
       </div>
       <div class="modal-body">
          <form:form modelAttribute="usuarios" action="nuevoUsuario" method="POST">
+             <div class="form-group">
             Nombre:
-            <form:input path="nombre_cliente" id="nom_user" type="text"/>  
+            <form:input path="nombre_cliente" id="nom_user" type="text" class="form-control"/>  
             <span id="error_nombre"></span>
             <form:errors path="nombre_cliente"/><br/>
              Apellido
-            <form:input path="apellido_cliente" id="cognom_user" type="text"/> 
+            <form:input path="apellido_cliente" id="cognom_user" type="text" class="form-control"/> 
             <span id="error_cognom"></span>
             <form:errors path="apellido_cliente"/><br/>
              Apellido2
-            <form:input path="apellido2_cliente" id="cognom2_user" type="text"/> <br/>
+            <form:input path="apellido2_cliente" id="cognom2_user" type="text" class="form-control"/> <br/>
              Direccion
-            <form:input path="direccion_cliente" id="direccio_user" type="text"/> <br/>
+            <form:input path="direccion_cliente" id="direccio_user" type="text" class="form-control"/> <br/>
             <span id="error_direccion"></span>
             <form:errors path="direccion_cliente"/>
              Direccion2
-            <form:input path="direccion2_cliente" id="direccio2_user" type="text"/> <br/>
+            <form:input path="direccion2_cliente" id="direccio2_user" type="text" class="form-control"/> <br/>
             Telefono 
-            <form:input path="telefono_cliente" id="telefono_user" type="text"/> 
+            <form:input path="telefono_cliente" id="telefono_user" type="text" class="form-control"/> 
             <span id="error_telefono"></span>
             <form:errors path="telefono_cliente"/><br/>
              Email
-            <form:input path="email_cliente" id="email_user" type="text"/> 
+            <form:input path="email_cliente" id="email_user" type="email" class="form-control"/> 
             <span id="error_email"></span>
             <form:errors path="email_cliente"/><br/>
             Contraseña:
-            <form:input path="contrasena_cliente" id="passwd_user" type="password"/>     
+            <form:input path="contrasena_cliente" id="passwd_user" type="password" class="form-control"/>     
             <form:errors path="contrasena_cliente"/>
              <span id="error_passwd" ></span><br/>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
+             </div>
         </form:form> 
       </div>
       <div class="modal-footer">
