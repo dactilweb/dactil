@@ -4,6 +4,14 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+    <context-param>
+        <param-name>urlpaypal</param-name>
+        <param-value>www.sandbox.paypal.com/cgi-bin/webscr</param-value>
+    </context-param>
+    <context-param>
+        <param-name>urlretorno</param-name>
+        <param-value>http://localhost:8080/EcommerceJFE/Cart?action=finish</param-value>
+    </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

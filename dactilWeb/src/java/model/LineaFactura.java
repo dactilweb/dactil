@@ -16,7 +16,15 @@ public class LineaFactura {
     private int cantidad_compra;
     
     public LineaFactura(){
+    
     }
+    
+    public float subTotal(int id){
+    ProductosDAO miproductodao = new ProductosDAO();
+    Productos producto;
+    producto = miproductodao.getProducto(id);
+    return (float) (producto.getPrecio_producto()*cantidad_compra);
+}
 
     public LineaFactura(int id_lineafactura, int id_factura, int id_producto, int cantidad_compra) {
         this.id_lineafactura = id_lineafactura;

@@ -57,6 +57,32 @@ public class FacturaDAO {
             
         }
     }
+    
+public int  crearFactura(int id_cliente) {
+     sql = "INSERT INTO `tbl_facturas` (`id_cliente`,`estado_factura`) VALUES (?,?)";
+        try {
+            Factura factura = new Factura();
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, id_cliente);
+            pst.setString(2, "activo");
+            int n = pst.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+         int id_factura=0;
+     sql="select id_factura from tbl_facturas order by id_factura desc limit 1";
+   try {
+           Statement st = cn.createStatement();
+           ResultSet rsz= st.executeQuery(sql);
+      rsz.next();
+      id_factura= rsz.getInt("id_factura");
+      return id_factura;
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, ex);
+           return 0;
+        }
+}
 
     
 }

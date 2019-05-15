@@ -32,7 +32,7 @@
             <h1>${productos.getPrecio_producto()}€</h1>
             <p class="referencia">IVA INCLUIDO</p>
             
-            <form:form modelAttribute="lineaFactura" action="nuevaLinea" method="POST">
+            <form:form modelAttribute="lineaFactura" action="carrito" method="POST">
             Cantidad:
             <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="0"/>  <br>
             <span id="error_nombre"></span>
