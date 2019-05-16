@@ -19,9 +19,9 @@
 <h5 class="headin5_amrc col_white_amrc pt2">Sobre Nosotros</h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
-<li><a href="#">¿Quiénes somos?</a></li>
+<li><a href="quienesomos">¿Quiénes somos?</a></li>
+<li><a href="dondestamos">¿Donde estamos?</a></li>
 <li><a href="#">¿Como funciona el envío?</a></li>
-<li><a href="#">¿Con quién trabajamos?</a></li>
 <li><a href="#">Garantías y devoluciones</a></li>
 </ul>
 <!--footer_ul_amrc ends here-->

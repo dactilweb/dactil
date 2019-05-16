@@ -232,6 +232,22 @@ public class DactilController {
     public String PanelController(Model model) {
         return "panelcontrol";
     }
+    
+     @RequestMapping(value = "quienesomos", method = RequestMethod.GET)
+    public String somosController(Model model) {
+         Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Quienes somos");
+        return "quienesomos";
+    }
+    
+     @RequestMapping(value = "dondestamos", method = RequestMethod.GET)
+    public String dondeController(Model model) {
+         Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Donde estamos");
+        return "dondestamos";
+    }
 
     @RequestMapping(value = "crearUsuario", method = RequestMethod.GET)
     public String crearUsuarioController(Model model) {
