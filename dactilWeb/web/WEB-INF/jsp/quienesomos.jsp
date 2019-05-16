@@ -15,13 +15,20 @@
         <div class="contenido">
         <h1>¿Quienes somos?</h1>
         
-        <p>Somos una empresa de iluminación. Fundada 
-            en la ciudad de Barcelona en el año 1990 por Tomas Dactil 
-            cuando a sus 26 años dejo su empleo en una pescadería para formar su propia
-            empresa de venta de iluminación gracias a el apoyo de su familia y de un crédito
-            bancario para jóvenes emprendedores. Al principio empezó a vender bombillas en un
-            local pero a partir de 2005 decidio crearse una pagina web y desde entonces
-            tambien se dedico a vender productos de forma online.
+        <p>
+            Dactil se fundó en 1990 en Barcelona, 
+            Tras la apertura de la primera tienda, nuestra constante pasión por la iluminación, 
+            la atención al detalle y el compromiso permanente hacia nuestros clientes, obtuvimos un
+            periodo perfecto de fuerte crecimiento. Gracias a todo ello, en el año 2005, llegó el nacimiento
+            de nuestra tienda online.
+            Hoy en día, con una experiencia de más de 20 años en la industria
+            de la iluminación, nuestro objetivo es ofrecer a las empresas y a particulares 
+            las soluciones óptimas para obtener una iluminación eficiente, económica y, sobre todo,
+            sostenible con el medio ambiente. Por este motivo, en nuestra amplia gama de productos,
+            ofrecemos marcas de prestigio con calidad certificada. Además, ofrecemos diseños de 
+            iluminación profesionales para ayudar a nuestros clientes en la delicada fase del plan
+            de iluminación, proponiendo productos de iluminación que integran las tecnologías más
+            avanzadas del mercado.
         </p>
         </div>
         
