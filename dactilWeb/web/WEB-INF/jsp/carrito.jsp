@@ -9,7 +9,7 @@
         <jsp:include page="style.jsp" />
     </head>
     <body>
-
+ <jsp:include page="nav.jsp" />
        
        <div class="contenidoProducto">
            <div class="container">

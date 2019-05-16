@@ -445,6 +445,10 @@ public class DactilController {
      */
     @RequestMapping(value = "carritover", method = RequestMethod.GET)
     public String verCarritoController(Model model) {
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Carrito");
+         
         return "carrito";
     }
 
