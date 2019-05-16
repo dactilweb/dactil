@@ -10,11 +10,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style type="text/css">
+            .titulo{
+                text-align: center;
+            }
+
+            .descripcion{
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
+        <div class="titulo">
         <h1>¿Quienes somos?</h1>
+        </div>
 
-       
+       <div class="descripcion">
         <h3>Somos una empresa de iluminación. Fundada 
             en la ciudad de Barcelona en el año 1990 por Tomas Dactil 
             cuando a sus 26 años dejo su empleo en una pescadería para formar su propia
@@ -23,6 +34,7 @@
             local pero a partir de 2005 decidio crearse una pagina web y desde entonces
             tambien se dedico a vender productos de forma online.
         </h3>
+        </div>
         
         
     </body>
