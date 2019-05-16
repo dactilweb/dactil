@@ -443,9 +443,9 @@ public class DactilController {
      */
     @RequestMapping(value = "carrito", method = RequestMethod.POST)
     public String nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, @ModelAttribute("us") Usuarios usuario) {
-            if (usuario!=null) {
-
-            if (this.creacionfactura) {
+             
+        try {
+             if (this.creacionfactura) {
                 FacturaDAO fdao = new FacturaDAO();
                 this.id_facturaactual = fdao.crearFactura(usuario.getId_cliente());
                 creacionfactura = false;
@@ -454,8 +454,7 @@ public class DactilController {
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
             lineafacturadao.insertarLineaFactura(lineaFactura);
             return "carrito";
-
-        } else {
+        } catch (Exception e) {
             return "login";
         }
 
