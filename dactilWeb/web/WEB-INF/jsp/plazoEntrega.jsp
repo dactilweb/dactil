@@ -16,7 +16,6 @@
         <h1>Plazos de entrega</h1>
        
         </div>
-        
         <jsp:include page="footer.jsp" />
 
     </body>
