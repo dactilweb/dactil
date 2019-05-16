@@ -37,7 +37,7 @@
             <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="0"/>  <br>
             <span id="error_nombre"></span>
             <form:hidden path="id_producto"/>
-            <input type="submit" value="Añadir" class="btn btn-success" id="boton"/>
+            <input type="submit" value="Añadir" class="btn btn-success" id="boton"/> 
         </form:form> 
             
         </div>

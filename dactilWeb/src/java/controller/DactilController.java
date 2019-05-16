@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 import javax.validation.Valid;
 import model.Categoria;
@@ -71,6 +72,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
+
         return "index";
     }
 
@@ -219,7 +221,7 @@ public class DactilController {
             return respuesta;
         } else {
             RedirectView respuesta = new RedirectView("login");
-             model.addAttribute("us", null);
+            model.addAttribute("us", null);
             return respuesta;
         }
 
@@ -441,22 +443,31 @@ public class DactilController {
      * @param usuario
      * @return
      */
+    @RequestMapping(value = "carritover", method = RequestMethod.GET)
+    public String verCarritoController(Model model) {
+        return "carrito";
+    }
+
     @RequestMapping(value = "carrito", method = RequestMethod.POST)
-    public String nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, @ModelAttribute("us") Usuarios usuario) {
-             
-        try {
-             if (this.creacionfactura) {
+    public RedirectView nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView();
+        HttpSession misession = (HttpSession) request.getSession();
+        RedirectView respuesta = new RedirectView("carritover");
+        if (misession.getAttribute("us") == null) {
+            JOptionPane.showMessageDialog(null, "manolo");
+            respuesta.setUrl("login");
+        } else {
+            Usuarios user = (Usuarios) misession.getAttribute("us");
+            if (this.creacionfactura) {
                 FacturaDAO fdao = new FacturaDAO();
-                this.id_facturaactual = fdao.crearFactura(usuario.getId_cliente());
+                this.id_facturaactual = fdao.crearFactura(user.getId_cliente());
                 creacionfactura = false;
             }
             lineaFactura.setId_factura(id_facturaactual);
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
             lineafacturadao.insertarLineaFactura(lineaFactura);
-            return "carrito";
-        } catch (Exception e) {
-            return "login";
+            respuesta.setUrl("carritover");
         }
-
+        return respuesta;
     }
 }
