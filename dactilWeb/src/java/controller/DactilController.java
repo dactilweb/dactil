@@ -248,6 +248,20 @@ public class DactilController {
         model.addAttribute("titulo", "Donde estamos");
         return "dondestamos";
     }
+       @RequestMapping(value = "plazoEntrega", method = RequestMethod.GET)
+    public String plazoController(Model model) {
+         Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Plazo Entrega");
+        return "plazoEntrega";
+    }
+      @RequestMapping(value = "formaPago", method = RequestMethod.GET)
+    public String formaController(Model model) {
+         Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Forma Entrega");
+        return "formaPago";
+    }
      @RequestMapping(value = "funcionEnvio", method = RequestMethod.GET)
     public String envioController(Model model) {
          Usuarios usuarios = new Usuarios();

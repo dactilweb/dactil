@@ -32,8 +32,8 @@
 <h5 class="headin5_amrc col_white_amrc pt2">Trámite del pedido</h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
-<li><a href="#">Formas de pago</a></li>
-<li><a href="#">Plazos de entrega</a></li>
+<li><a href="formaPago">Formas de pago</a></li>
+<li><a href="plazoEntrega">Plazos de entrega</a></li>
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
