@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>¿Quienes somos?</title>
+        <title>Envíos</title>
      
             <jsp:include page="style.jsp" />
             <style>
@@ -20,6 +20,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+             <div class="contenido2">
         <h1>Funcionamiento del envío</h1>
         
         <p>Todos nuestros productos se envian a la puerta del cliente
@@ -34,7 +35,7 @@
           <br>
         <h2>¡Con un metodo de envio como este todo son ventajas!</h2>
         </div>
-        
+        </div>
         <jsp:include page="footer.jsp" />
 
     </body>

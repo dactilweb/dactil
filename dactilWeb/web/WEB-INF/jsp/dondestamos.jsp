@@ -9,6 +9,7 @@
                 text-align: center;
             }
            
+           
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>¿Donde estamos?</title>
@@ -18,6 +19,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+            <div class="contenido2">
         <h1>¿Donde estamos?</h1>
         
         <div class="mapa">
@@ -29,6 +31,7 @@
         <h3>Lunes-Sabado</h3>
         <h4>08:00-23:00</h4>
         </div>
+            </div> 
         </div>
         <jsp:include page="footer.jsp" />
 

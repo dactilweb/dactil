@@ -259,14 +259,14 @@ public class DactilController {
     public String formaController(Model model) {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Forma Entrega");
+        model.addAttribute("titulo", "Forma_Entrega");
         return "formaPago";
     }
      @RequestMapping(value = "funcionEnvio", method = RequestMethod.GET)
     public String envioController(Model model) {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Funcionamiento Envio");
+        model.addAttribute("titulo", "Funcionamiento_Envio");
         return "funcionEnvio";
     }
     
@@ -274,7 +274,7 @@ public class DactilController {
     public String garantiaController(Model model) {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Garantias y Devoluciones");
+        model.addAttribute("titulo", "Garantias_y_Devoluciones");
         return "garantiasyDevoluciones";
     }
     

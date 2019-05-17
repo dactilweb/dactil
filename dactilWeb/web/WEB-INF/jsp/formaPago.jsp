@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>forma pago</title>
+        <title>Formas de Pago</title>
           <style>
                 .imagenenvio{
                   height: 260px;
@@ -22,6 +22,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+             <div class="contenido2">
         <h1>¿Cuáles son las formas de pago para pedidos Online?</h1>
         <br><br>
         <p>
@@ -33,7 +34,7 @@
         </p>
         <img src="imagenes/formaspago.png"class="imagenenvio"/>
         </div>
-         
+        </div>
         
         <jsp:include page="footer.jsp" />
     </body>

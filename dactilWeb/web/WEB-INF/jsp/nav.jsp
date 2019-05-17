@@ -131,10 +131,24 @@ if(titulo.equals("Quienes_somos")){
     <div class="img"><img src="imagenes/qsomos.png" class="img-fluid" alt="Responsive image"></div>
         <%
         }
-
 if(titulo.equals("Donde_estamos")){
         %>
     <div class="img"><img src="imagenes/dondestamos.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+        }
+if(titulo.equals("Garantias_y_Devoluciones")){
+        %>
+    <div class="img"><img src="imagenes/garydev.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+        }
+if(titulo.equals("Forma_Entrega")){
+        %>
+    <div class="img"><img src="imagenes/fpago.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+        }
+if(titulo.equals("Funcionamiento_Envio")){
+        %>
+    <div class="img"><img src="imagenes/envios.png" class="img-fluid" alt="Responsive image"></div>
         <%
         }
 }

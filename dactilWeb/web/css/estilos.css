@@ -31,15 +31,15 @@ body{
     background-color: white ;
     height: 150px;
     margin-top: 1%;
-   border-radius: 20px 20px 0px 0px;
--moz-border-radius: 20px 20px 0px 0px;
--webkit-border-radius: 20px 20px 0px 0px;
-border: 0px solid #000000; 
+    border-radius: 20px 20px 0px 0px;
+    -moz-border-radius: 20px 20px 0px 0px;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    border: 0px solid #000000; 
 }
 .logobanner{
     height:90%;
     margin-top: 0.5%;
-    
+
 }
 .banner{
     height: 100%;
@@ -57,7 +57,7 @@ border: 0px solid #000000;
 .referencia{
     color:#686868;
     font-size: 13px;
-    
+
 }
 .contenidoProducto {
     padding-top: 1%;
@@ -74,7 +74,7 @@ border: 0px solid #000000;
     border: 0px solid #000000;
 }
 .anadirCarrito{
-     padding-top: 1%;
+    padding-top: 1%;
     padding-right: 5%;
     padding-left: 5%;
     padding-bottom: 3%;
@@ -88,21 +88,26 @@ border: 0px solid #000000;
     border: 0px solid #000000;
 }
 .card{
-  -webkit-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
--moz-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.03);
     border: 10px solid transparent !important;
 }
 #usuarios{
-        margin-right: 10%;
+    margin-right: 10%;
     margin-left: 10%;
 
 }
+.contenido2{
+    margin-top: 5%;
+    padding-top: 0%!important;
+}
+
 /*footer*/
 .footer{
     margin-top: 7% !important;
     background-color: white !important;
-    
+
 }
 .col_white_amrc { color:black;}
 footer { width:100%; background-color:#263238; min-height:250px; padding:10px 0px 25px 0px ;}
@@ -123,13 +128,13 @@ footer p { font-size:13px; color:#black; padding-bottom:0px; margin-bottom:8px;}
 
 .bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
 .foote_bottom_ul_amrc {
-	list-style-type:none;
-	padding:0px;
-	display:table;
-	margin-top: 10px;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-left: auto;
+    list-style-type:none;
+    padding:0px;
+    display:table;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
 }
 .foote_bottom_ul_amrc li { display:inline;}
 .foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}

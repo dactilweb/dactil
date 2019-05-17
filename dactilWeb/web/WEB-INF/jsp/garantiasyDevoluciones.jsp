@@ -12,7 +12,7 @@
                 }
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>¿Quienes somos?</title>
+        <title>Garantías y devoluciones</title>
      
             <jsp:include page="style.jsp" />
        
@@ -20,6 +20,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+             <div class="contenido2">
         <h1>Garantias y devoluciones</h1>
         <br>
         <p>
@@ -37,7 +38,7 @@
         </p>
         <img src="imagenes/garantia.png"class="imagenenvio"/>
         </div>
-        
+        </div>
         <jsp:include page="footer.jsp" />
 
     </body>

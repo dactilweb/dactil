@@ -13,6 +13,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+             <div class="contenido2">
         <h1>¿Quienes somos?</h1>
         
         <p>
@@ -30,6 +31,7 @@
             de iluminación, proponiendo productos de iluminación que integran las tecnologías más
             avanzadas del mercado.
         </p>
+        </div>
         </div>
         
         <jsp:include page="footer.jsp" />
