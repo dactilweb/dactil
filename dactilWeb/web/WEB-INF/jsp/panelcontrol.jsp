@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- si no ha iniciado sesion se redirige a index, para esto es necesario el taglib-->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:if test="${sessionScope.us == null}">
     <% response.sendRedirect("index");%>
 </c:if>
@@ -14,14 +14,18 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
         <title>Panel de Control</title>
+        <jsp:include page="style.jsp" />
     </head>
 
     <body>
-        <h1>Panel de control</h1>
+         <jsp:include page="nav.jsp" />
+         <div class="contenido">
+             <div class="contenido2">
         <a href="verPedidos"><h5>Ver Pedidos</h5></a>
         <a href="verUsers"><h5>Ver Usuarios</h5></a>
         <a href="verProductos"><h5>Ver Productos</h5></a>
-        <a href="index"><h5>Ver pagina web</h5></a>
-        <a href="logout"><h5>Cerrar sesión</h5></a>
+         </div>
+         </div>
+          <jsp:include page="footer.jsp" />
     </body>
 </html>

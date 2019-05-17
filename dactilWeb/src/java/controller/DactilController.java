@@ -230,12 +230,15 @@ public class DactilController {
     //Acceso a panel de control si eres usuario administrador (1)
     @RequestMapping(value = "panelcontrol", method = RequestMethod.GET)
     public String PanelController(Model model) {
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Panel");
         return "panelcontrol";
     }
     
      @RequestMapping(value = "quienesomos", method = RequestMethod.GET)
     public String somosController(Model model) {
-         Usuarios usuarios = new Usuarios();
+        Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Quienes_somos");
         return "quienesomos";

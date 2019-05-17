@@ -21,6 +21,14 @@
             <li <% out.println((titulo.equals("Piscinas"))?"class='nav-item active'":""); %>>
                 <a class="nav-link" href="piscinas">Iluminación Piscinas</a>
             </li>
+            <c:choose>
+                            <c:when test="${us.getNivel() == 1}">
+                              <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
+                <a class="nav-link" href="panelcontrol">Panel De Control</a>
+            </li>
+                            </c:when>
+                        </c:choose>
+            
 
         </ul>
         <c:choose>
@@ -42,11 +50,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                         <a class="dropdown-item" href="editarPerfil">Editar Perfil</a>
-                        <c:choose>
-                            <c:when test="${us.getNivel() == 1}">
-                                <a class="dropdown-item" href="panelcontrol">Panel de Control</a>
-                            </c:when>
-                        </c:choose>
+                        
                         <a class="dropdown-item" href="logout">Cerrar Sesion</a>
                     </ul>
                 </c:when>
@@ -149,6 +153,11 @@ if(titulo.equals("Forma_Entrega")){
 if(titulo.equals("Funcionamiento_Envio")){
         %>
     <div class="img"><img src="imagenes/envios.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+        }
+if(titulo.equals("Panel")){
+        %>
+    <div class="img"><img src="imagenes/panelcontrol.png" class="img-fluid" alt="Responsive image"></div>
         <%
         }
 }
