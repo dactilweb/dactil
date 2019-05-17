@@ -13,8 +13,15 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
-        <h1>Formas de pago</h1>
-       
+        <h1>¿Cuáles son las formas de pago para pedidos Online?</h1>
+        <br><br>
+        <p>
+            
+            <b>Puedes pagar tu compra online con:</b><br><br>
+
+            Tu tarjeta de crédito o débito (VISA o Mastercard).<br><br>
+    A través de tu cuenta PayPal. Con PayPal, puedes pagar de forma segura todas tus compras en IKEA.es sin costes adicionales.
+        </p>
         </div>
         
         <jsp:include page="footer.jsp" />

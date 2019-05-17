@@ -21,7 +21,6 @@
 <ul class="footer_ul_amrc">
 <li><a href="quienesomos">¿Quiénes somos?</a></li>
 <li><a href="dondestamos">¿Donde estamos?</a></li>
-<li><a href="funcionEnvio">¿Como funciona el envío?</a></li>
 <li><a href="garantiasyDevoluciones">Garantías y devoluciones</a></li>
 </ul>
 <!--footer_ul_amrc ends here-->
@@ -33,7 +32,8 @@
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
 <li><a href="formaPago">Formas de pago</a></li>
-<li><a href="plazoEntrega">Plazos de entrega</a></li>
+<li><a href="funcionEnvio">¿Como funciona el Envío?</a></li>
+
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
