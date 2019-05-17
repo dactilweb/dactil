@@ -7,7 +7,7 @@
 <h5 class="headin5_amrc col_white_amrc pt2">Encuentranos</h5>
 <!--headin5_amrc-->
 <p class="mb10">Tenemos un pequeño negocio situado en barcelona y abrimos de Lunes a Sábado de 8.00h-23.00h</p>
-<p><i class="fa fa-location-arrow"></i> Carrer Parcerisses, 4I, 08014 Barcelona </p>
+<p><i class="fa fa-location-arrow"></i> Carrer Parcerisa,41, 08014 Barcelona </p>
 <p><i class="fa fa-phone"></i>  +34-932332145  </p>
 <p><i class="fa fa fa-envelope"></i> info@dactil.com  </p>
 
