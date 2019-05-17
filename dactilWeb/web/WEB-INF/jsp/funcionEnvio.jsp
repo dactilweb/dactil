@@ -9,8 +9,8 @@
      
             <jsp:include page="style.jsp" />
             <style>
-                .test{
-                  height: 400px;
+                .imagenenvio{
+                  height: 420px;
                   text-align: center;
                   width: 100%;
                 }
@@ -28,9 +28,9 @@
             pedidos son Seur, GLS y ASM unas grandes compañias muy profesionales que haran que
             tu pedido llegue en el tiempo especificado en perfectas condiciones.
         </p>
-        <div class="imagen">
-          <img src="https://www.lacasadelalampara.com/wp-content/uploads/2016/09/pasos-de-compra-facil-ventajas-en-la-casa-de-la-lampara-nueva-1024x486.jpg"class="test"/>
-        </div>
+        
+          <img src="imagenes/envio.png"class="imagenenvio"/>
+        
           <br>
         <h2>¡Con un metodo de envio como este todo son ventajas!</h2>
         </div>
