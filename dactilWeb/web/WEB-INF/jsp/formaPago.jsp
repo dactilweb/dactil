@@ -6,6 +6,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>forma pago</title>
+          <style>
+                .imagenenvio{
+                  height: 260px;
+                  text-align: center;
+                  width: 60%;
+                  margin-left: 20%;
+                }
+                
+            </style>
      
             <jsp:include page="style.jsp" />
        
@@ -19,10 +28,12 @@
             
             <b>Puedes pagar tu compra online con:</b><br><br>
 
-            Tu tarjeta de crédito o débito (VISA o Mastercard).<br><br>
+            Tu tarjeta de crédito o débito (VISA, Mastercard, American Express, Discover Network, etc.).<br><br>
     A través de tu cuenta PayPal. Con PayPal, puedes pagar de forma segura todas tus compras en IKEA.es sin costes adicionales.
         </p>
+        <img src="imagenes/formaspago.png"class="imagenenvio"/>
         </div>
+         
         
         <jsp:include page="footer.jsp" />
     </body>

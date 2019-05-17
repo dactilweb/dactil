@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+                .imagenenvio{
+                  height: 310px;
+                  text-align: center;
+                  width: 100%;
+                }
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>¿Quienes somos?</title>
      
@@ -14,7 +21,7 @@
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
         <h1>Garantias y devoluciones</h1>
-        
+        <br>
         <p>
             La Garantía total está incluida en nuestros productos sin costes extra. Podrás consultar la duración en la página del producto. El plazo empieza en el momento que se hace la factura de compra del producto.<br>
             Para poder solicitar la Garantía:<br>
@@ -28,6 +35,7 @@
             No reembolsamos ningún otro montante de dinero que no sea el coste de las actuales bombillas o luminarias, que se compraron con nosotros. Por ejemplo: Costes de instalación (horas de trabajo, mano de obra, etc) no están cubiertos.<br>
             Si tu producto está en Garantía enviaremos las nuevas lámparas para reemplazar aquellas con defecto.<br>
         </p>
+        <img src="imagenes/garantia.png"class="imagenenvio"/>
         </div>
         
         <jsp:include page="footer.jsp" />
