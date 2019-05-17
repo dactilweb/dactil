@@ -11,12 +11,11 @@
     <body>
  <jsp:include page="nav.jsp" />
        
-       <div class="contenidoProducto">
+       
            <div class="container">
-  
+                 
 </div>
-            
-       </div>
+      
    
     <jsp:include page="footer.jsp" />
     </body>

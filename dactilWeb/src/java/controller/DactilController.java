@@ -221,7 +221,7 @@ public class DactilController {
             return respuesta;
         } else {
             RedirectView respuesta = new RedirectView("login");
-            model.addAttribute("us", null);
+          
             return respuesta;
         }
 
@@ -237,7 +237,7 @@ public class DactilController {
     public String somosController(Model model) {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Quienes somos");
+        model.addAttribute("titulo", "Quienes_somos");
         return "quienesomos";
     }
     
@@ -245,7 +245,7 @@ public class DactilController {
     public String dondeController(Model model) {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Donde estamos");
+        model.addAttribute("titulo", "Donde_estamos");
         return "dondestamos";
     }
        @RequestMapping(value = "plazoEntrega", method = RequestMethod.GET)
@@ -335,11 +335,17 @@ public class DactilController {
     }
 
     @RequestMapping(value = "modificarUsuario", method = RequestMethod.POST)
-    public RedirectView modificarUsuarioController(@ModelAttribute("usuarios") Usuarios usuarios) throws SQLException {
+    public RedirectView modificarUsuarioController(@ModelAttribute("usuarios") Usuarios usuarios,HttpServletRequest request) throws SQLException {
         RedirectView respuesta = new RedirectView("verUsers");
+         HttpSession misession = (HttpSession) request.getSession();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        if(user.getNivel()==2){
+            respuesta.setUrl("editarPerfil");
+            usuarios.setNivel(2);
+        }
         UsuariosDAO udao = new UsuariosDAO();
         udao.modificarUsuarios(usuarios);
-        return respuesta;
+         return respuesta;
     }
 
     @RequestMapping(value = "crearProducto", method = RequestMethod.GET)
@@ -494,7 +500,6 @@ public class DactilController {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Carrito");
-         
         return "carrito";
     }
 
@@ -504,7 +509,6 @@ public class DactilController {
         HttpSession misession = (HttpSession) request.getSession();
         RedirectView respuesta = new RedirectView("carritover");
         if (misession.getAttribute("us") == null) {
-            JOptionPane.showMessageDialog(null, "manolo");
             respuesta.setUrl("login");
         } else {
             Usuarios user = (Usuarios) misession.getAttribute("us");
@@ -519,5 +523,18 @@ public class DactilController {
             respuesta.setUrl("carritover");
         }
         return respuesta;
+    }
+     @RequestMapping(value = "editarPerfil", method = RequestMethod.GET)
+    public String editarPerfilController(Model model,HttpServletRequest request) {
+        UsuariosDAO udao = new UsuariosDAO();
+        HttpSession misession = (HttpSession) request.getSession();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        Usuarios usuarios = udao.getUsuario(user.getId_cliente());
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("titulo", "Editar Perfil");
+        CategoriaDAO cdao = new CategoriaDAO();
+        cdao.getListaCat(listaCategoria);
+        model.addAttribute("listaCategoria", listaCategoria);
+        return "editarPerfil";
     }
 }
