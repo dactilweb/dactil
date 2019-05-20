@@ -88,14 +88,14 @@ if(titulo.equals("Piscinas")){
      <div class="col-sm-3">
     <div class="card">
         
-        <img class="card-img-top" src="imagenes/lede27.jpg" alt="Card image cap">
+        <img class="card-img-top" src="imgProductos/${prod.foto_producto}" alt="Card image cap">
       <div class="card-body">
          
         <h5 class="card-title">${prod.nombre_producto}</h5>
         <p class="card-text">${prod.cantidad_producto} Articulos disponibles</p>
         <p class="card-text">${prod.precio_producto}€ / Coste unidad</p><br><br>
         <div class="">
-            <a class="btn btn-primary" href="añadirCarrito?id=${prod.id_producto}" role="button"> <i class="fas fa-shopping-cart"></i> Añadir al carrito</a><br>
+            <a class="btn btn-primary" href="addCarrito?id=${prod.id_producto}" role="button"> <i class="fas fa-shopping-cart"></i> Añadir al carrito</a><br>
     <a href="verProducto?id=${prod.id_producto}" class="card-link"><i class="fas fa-info-circle"></i> Ver más</a>
  
   </div>

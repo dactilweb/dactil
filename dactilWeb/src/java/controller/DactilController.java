@@ -56,8 +56,7 @@ public class DactilController {
     ArrayList<Factura> listaFactura = new ArrayList<>();
     ArrayList<Categoria> listaCategoria = new ArrayList<>();
     ArrayList<Productos> listaSimilares = new ArrayList<>();
-    private boolean creacionfactura = true;
-    private int id_facturaactual;
+    private int id_facturaactual=0;
     String apartado = "";
 
     public DactilController() {
@@ -73,7 +72,8 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+  
+         
         return "index";
     }
 
@@ -500,37 +500,73 @@ public class DactilController {
      * @return
      */
     @RequestMapping(value = "carritover", method = RequestMethod.GET)
-    public String verCarritoController(Model model) {
+    public String verCarritoController(Model model,HttpServletRequest request) {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Carrito");
-        
+        HttpSession misession = (HttpSession) request.getSession();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
         LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
-        lineafacturadao.getCarrito(14,this.listaCarrito);
-        model.addAttribute("litaCarrito", listaCarrito);
+        lineafacturadao.getCarrito(user.getId_cliente(),this.listaCarrito);
+        model.addAttribute("listaCarrito", listaCarrito);
         return "carrito";
     }
 
     @RequestMapping(value = "carrito", method = RequestMethod.POST)
     public RedirectView nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
-         JOptionPane.showMessageDialog(null,"he entrado");
         HttpSession misession = (HttpSession) request.getSession();
         RedirectView respuesta = new RedirectView("carritover");
+        FacturaDAO fdao = new FacturaDAO();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        try {
+         
+        id_facturaactual=fdao.recuperarIdFactura(user.getId_cliente());
+        } catch (Exception e) {
+        }
         if (misession.getAttribute("us") == null) {
             respuesta.setUrl("login");
         } else {
-            Usuarios user = (Usuarios) misession.getAttribute("us");
-            if (this.creacionfactura) {
-                FacturaDAO fdao = new FacturaDAO();
+           
+            if (id_facturaactual==0) {
+               
                 this.id_facturaactual = fdao.crearFactura(user.getId_cliente());
-                creacionfactura = false;
+                
             }
             lineaFactura.setId_factura(id_facturaactual);
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
             lineafacturadao.insertarLineaFactura(lineaFactura);
             //lineafacturadao.getCarrito(id_facturaactual,this.listaCarrito);
            
+            respuesta.setUrl("carritover");
+        }
+        return respuesta;
+    }
+       @RequestMapping(value = "addCarrito", method = RequestMethod.GET)
+    public RedirectView nuevaLinea1Controller(@RequestParam("id") int id_producto,@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView();
+        HttpSession misession = (HttpSession) request.getSession();
+        RedirectView respuesta = new RedirectView("carritover");
+        FacturaDAO fdao = new FacturaDAO();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        try {
+        id_facturaactual=fdao.recuperarIdFactura(user.getId_cliente());
+        } catch (Exception e) {
+        }
+        if (misession.getAttribute("us") == null) {
+            respuesta.setUrl("login");
+        } else {
+           
+            if (id_facturaactual==0) {
+               
+                this.id_facturaactual = fdao.crearFactura(user.getId_cliente());
+                
+            }
+            lineaFactura.setId_factura(id_facturaactual);
+            lineaFactura.setCantidad_compra(1);
+            lineaFactura.setId_producto(id_producto);
+            LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
+            lineafacturadao.insertarLineaFactura(lineaFactura);
             respuesta.setUrl("carritover");
         }
         return respuesta;
@@ -542,7 +578,7 @@ public class DactilController {
         Usuarios user = (Usuarios) misession.getAttribute("us");
         Usuarios usuarios = udao.getUsuario(user.getId_cliente());
         model.addAttribute("usuarios", usuarios);
-        model.addAttribute("titulo", "Editar Perfil");
+        model.addAttribute("titulo", "Editar_Perfil");
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
         model.addAttribute("listaCategoria", listaCategoria);

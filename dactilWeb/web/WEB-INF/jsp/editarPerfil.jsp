@@ -2,6 +2,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<c:if test="${sessionScope.us == null}">
+    <% response.sendRedirect("index");%>
+</c:if>
+  
 <html>
     <head>
         <style>
@@ -18,6 +22,7 @@
     <body>
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
+            <div class="contenido2">
            <form:form modelAttribute="usuarios" action="modificarUsuario" method="POST">
             <div class="row">
                 <div class="col-md-6">
@@ -56,6 +61,7 @@
                 </div>
                 
             </div>
+        </div>
         </div>
         <jsp:include page="footer.jsp" />
 

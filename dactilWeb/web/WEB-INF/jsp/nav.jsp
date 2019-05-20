@@ -22,6 +22,13 @@
                 <a class="nav-link" href="piscinas">Iluminación Piscinas</a>
             </li>
             <c:choose>
+                            <c:when test="${us.getNivel() >=0}">
+                              <li <% out.println((titulo.equals("Carrito"))?"class='nav-item active'":""); %>>
+                <a class="nav-link" href="carritover">Ver carrito</a>
+            </li>
+                            </c:when>
+            </c:choose>
+            <c:choose>
                             <c:when test="${us.getNivel() == 1}">
                               <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
                 <a class="nav-link" href="panelcontrol">Panel De Control</a>
@@ -158,6 +165,11 @@ if(titulo.equals("Funcionamiento_Envio")){
 if(titulo.equals("Panel")){
         %>
     <div class="img"><img src="imagenes/panelcontrol.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+        }
+if(titulo.equals("Editar_Perfil")){
+        %>
+    <div class="img"><img src="imagenes/editperf.png" class="img-fluid" alt="Responsive image"></div>
         <%
         }
 }

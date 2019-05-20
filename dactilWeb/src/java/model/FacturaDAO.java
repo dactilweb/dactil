@@ -83,7 +83,27 @@ public int  crearFactura(int id_cliente) {
            return 0;
         }
 }
-
+public int recuperarIdFactura(int id_cliente){
+    sql="SELECT tbl_facturas.id_factura FROM tbl_facturas WHERE tbl_facturas.id_cliente="+id_cliente+" AND estado_factura='activo'";
+    try {
+            Statement st=cn.createStatement();
+           
+            ResultSet rs=st.executeQuery(sql);
+            int id_facturactual=0;
+            while(rs.next()){
+               Factura fact=new Factura();
+              id_facturactual = rs.getInt("id_factura");
+            
+            }
+              rs.close();
+              return id_facturactual;
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        return 0;
+        }
+   
+}
     
 }
 

@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -14,12 +13,11 @@
        
            <div class="contenido">
                <div class="contenido2">
-                   hola
+                
                <c:forEach var="linea" items="${listaCarrito}">
-                   <p>${linea.getId_Producto()}</p><br>
-                   <p>${linea.getNombre_Producto()}</p>
+                   <p>${linea.id_producto} ${linea.nombre_producto}</p>
                </c:forEach>     
-</div>
+            </div>
            </div>
       
    

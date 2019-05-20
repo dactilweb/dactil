@@ -16,23 +16,34 @@ public class ProductoLinea {
    private String descripcion_producto;
    private int cantidad_compra;
    private double precio_total;
-
+   private String nombre_producto;
     public ProductoLinea() {
     }
 
-    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, double precio_total) {
+    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto) {
         this.id_lineafactura = id_lineafactura;
         this.id_producto = id_producto;
         this.precio_producto = precio_producto;
         this.descripcion_producto = descripcion_producto;
         this.cantidad_compra = cantidad_compra;
         this.precio_total = calcularPrecioLinea();
+        this.nombre_producto = nombre_producto;
     }
+
+   
   public double calcularPrecioLinea(){
   
   return this.cantidad_compra*this.precio_producto;
   
   }
+
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
   
   
     public int getId_lineafactura() {

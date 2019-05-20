@@ -17,7 +17,7 @@
            <div class="container">
   <div class="row">
     <div class="col-sm">
-     <img class="verProducto" src="imagenes/lede27.jpg" alt="Card image cap">
+     <img class="verProducto" src="imgProductos/${productos.getFoto_producto()}" alt="Card image cap">
     </div>
     <div class="col-sm">
         <h1>${productos.getNombre_producto()}</h1>
@@ -34,7 +34,7 @@
             
             <form:form modelAttribute="lineaFactura" action="carrito" method="POST">
             Cantidad:
-            <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="0"/>  <br>
+            <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="1"/>  <br>
             <span id="error_nombre"></span>
             <form:hidden path="id_producto"/>
             <input type="submit" value="Añadir" class="btn btn-success" id="boton"/> 
@@ -51,7 +51,7 @@
      <div class="col-sm-3">
     <div class="card">
         
-        <img class="card-img-top" src="imagenes/lede27.jpg" alt="Card image cap">
+        <img class="card-img-top" src="imgProductos/${prod.getFoto_producto()}" alt="Card image cap">
       <div class="card-body">
          
         <h5 class="card-title">${prod.nombre_producto}</h5>

@@ -42,12 +42,13 @@ public class LineaFacturaDAO {
             Statement st=cn.createStatement();
            
             ResultSet rs=st.executeQuery(sql);
-            
+            listaCarrito.clear();
             while(rs.next()){
                 ProductoLinea productolinea=new ProductoLinea();
                /* usuario.setId_cliente(rs.getInt("id_cliente"));
                 usuario.setNombre_cliente(rs.getString("nombre_cliente"));
                 */
+               productolinea.setNombre_producto(rs.getString("nombre_producto"));
                productolinea.setId_producto(rs.getInt("id_producto"));
                productolinea.setId_lineafactura(rs.getInt("id_lineafactura"));
                productolinea.setCantidad_compra(rs.getInt("cantidad_compra"));
