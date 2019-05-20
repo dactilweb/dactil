@@ -102,7 +102,9 @@ body{
     margin-top: 5%;
     padding-top: 0%!important;
 }
-
+.fa-trash {
+    color: black !important;
+}
 /*footer*/
 .footer{
     margin-top: 7% !important;

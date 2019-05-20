@@ -17,10 +17,11 @@ public class ProductoLinea {
    private int cantidad_compra;
    private double precio_total;
    private String nombre_producto;
+   private int id_factura;
     public ProductoLinea() {
     }
 
-    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto) {
+    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto, int id_factura) {
         this.id_lineafactura = id_lineafactura;
         this.id_producto = id_producto;
         this.precio_producto = precio_producto;
@@ -28,7 +29,18 @@ public class ProductoLinea {
         this.cantidad_compra = cantidad_compra;
         this.precio_total = calcularPrecioLinea();
         this.nombre_producto = nombre_producto;
+        this.id_factura = id_factura;
     }
+
+    public int getId_factura() {
+        return id_factura;
+    }
+
+    public void setId_factura(int id_factura) {
+        this.id_factura = id_factura;
+    }
+
+   
 
    
   public double calcularPrecioLinea(){

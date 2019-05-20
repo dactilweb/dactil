@@ -503,6 +503,8 @@ public class DactilController {
     public String verCarritoController(Model model,HttpServletRequest request) {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
+        ProductoLinea productolinea = new ProductoLinea();
+        model.addAttribute("productolinea", productolinea);
         model.addAttribute("titulo", "Carrito");
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
@@ -584,4 +586,15 @@ public class DactilController {
         model.addAttribute("listaCategoria", listaCategoria);
         return "editarPerfil";
     }
+   
+    @RequestMapping(value = "eliminarCarrito", method = RequestMethod.GET)
+    public RedirectView eliminarCarritoController(@RequestParam("id") int id) throws SQLException {        
+        RedirectView respuesta = new RedirectView("carritover");
+        UsuariosDAO udao = new UsuariosDAO();
+        udao.eliminarPersona(id);
+        LineaFacturaDAO lfdao = new LineaFacturaDAO();
+        lfdao.eliminarLinea(id);
+        return respuesta;
+    }
+    
 }
