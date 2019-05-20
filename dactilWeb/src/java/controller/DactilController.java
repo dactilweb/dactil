@@ -21,6 +21,7 @@ import model.Factura;
 import model.FacturaDAO;
 import model.LineaFactura;
 import model.LineaFacturaDAO;
+import model.ProductoLinea;
 import model.Productos;
 import model.ProductosDAO;
 
@@ -49,7 +50,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @SessionAttributes("us")
 public class DactilController {
 
-    ArrayList<LineaFactura> listaCarrito = new ArrayList<>();
+    ArrayList<ProductoLinea> listaCarrito = new ArrayList<>();
     ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
     ArrayList<Productos> listaProductos = new ArrayList<>();
     ArrayList<Factura> listaFactura = new ArrayList<>();
@@ -503,12 +504,17 @@ public class DactilController {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Carrito");
+        
+        LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
+        lineafacturadao.getCarrito(14,this.listaCarrito);
+        model.addAttribute("litaCarrito", listaCarrito);
         return "carrito";
     }
 
     @RequestMapping(value = "carrito", method = RequestMethod.POST)
     public RedirectView nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
+         JOptionPane.showMessageDialog(null,"he entrado");
         HttpSession misession = (HttpSession) request.getSession();
         RedirectView respuesta = new RedirectView("carritover");
         if (misession.getAttribute("us") == null) {
@@ -523,6 +529,8 @@ public class DactilController {
             lineaFactura.setId_factura(id_facturaactual);
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
             lineafacturadao.insertarLineaFactura(lineaFactura);
+            //lineafacturadao.getCarrito(id_facturaactual,this.listaCarrito);
+           
             respuesta.setUrl("carritover");
         }
         return respuesta;

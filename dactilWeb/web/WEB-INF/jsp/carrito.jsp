@@ -12,9 +12,15 @@
  <jsp:include page="nav.jsp" />
        
        
-           <div class="container">
-                 
+           <div class="contenido">
+               <div class="contenido2">
+                   hola
+               <c:forEach var="linea" items="${listaCarrito}">
+                   <p>${linea.getId_Producto()}</p><br>
+                   <p>${linea.getNombre_Producto()}</p>
+               </c:forEach>     
 </div>
+           </div>
       
    
     <jsp:include page="footer.jsp" />
