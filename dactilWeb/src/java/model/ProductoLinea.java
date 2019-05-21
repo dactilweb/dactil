@@ -5,6 +5,8 @@
  */
 package model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manu
@@ -18,10 +20,12 @@ public class ProductoLinea {
    private double precio_total;
    private String nombre_producto;
    private int id_factura;
+   private String foto_producto;
+   private String referencia_producto;
     public ProductoLinea() {
     }
 
-    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto, int id_factura) {
+    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto, int id_factura,String foto_producto,String referencia_producto) {
         this.id_lineafactura = id_lineafactura;
         this.id_producto = id_producto;
         this.precio_producto = precio_producto;
@@ -30,8 +34,10 @@ public class ProductoLinea {
         this.precio_total = calcularPrecioLinea();
         this.nombre_producto = nombre_producto;
         this.id_factura = id_factura;
+        this.foto_producto=foto_producto;
+        this.referencia_producto=referencia_producto;
     }
-
+    
     public int getId_factura() {
         return id_factura;
     }
@@ -42,9 +48,9 @@ public class ProductoLinea {
 
    
 
-   
+ //eliminar  
   public double calcularPrecioLinea(){
-  
+  JOptionPane.showMessageDialog(null,this.cantidad_compra*this.precio_producto);
   return this.cantidad_compra*this.precio_producto;
   
   }
@@ -104,6 +110,22 @@ public class ProductoLinea {
 
     public void setPrecio_total(float precio_total) {
         this.precio_total = precio_total;
+    }
+
+    public String getFoto_producto() {
+        return foto_producto;
+    }
+
+    public void setFoto_producto(String foto_producto) {
+        this.foto_producto = foto_producto;
+    }
+
+    public String getReferencia_producto() {
+        return referencia_producto;
+    }
+
+    public void setReferencia_producto(String referencia_producto) {
+        this.referencia_producto = referencia_producto;
     }
     
     

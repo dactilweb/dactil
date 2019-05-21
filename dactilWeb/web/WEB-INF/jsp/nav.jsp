@@ -21,13 +21,7 @@
             <li <% out.println((titulo.equals("Piscinas"))?"class='nav-item active'":""); %>>
                 <a class="nav-link" href="piscinas">Iluminación Piscinas</a>
             </li>
-            <c:choose>
-                            <c:when test="${us.getNivel() >=0}">
-                              <li <% out.println((titulo.equals("Carrito"))?"class='nav-item active'":""); %>>
-                <a class="nav-link" href="carritover">Ver carrito</a>
-            </li>
-                            </c:when>
-            </c:choose>
+          
             <c:choose>
                             <c:when test="${us.getNivel() == 1}">
                               <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
@@ -48,6 +42,10 @@
         <c:choose>
 
             <c:when test="${sessionScope.us != null}">
+                <div class="ml-auto">
+                  
+                    <a class="nav-link" href="carritover"> <span style="color:black;"><i class="fas fa-shopping-cart"></i> </a>
+                </div>
                 <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
                     <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
                         <i class="fas fa-user"></i>
@@ -60,12 +58,13 @@
                         
                         <a class="dropdown-item" href="logout">Cerrar Sesion</a>
                     </ul>
+                      </div>
                 </c:when>
 
 
             </c:choose>
 
-        </div>
+      
     </div>
 </nav>
 <% 

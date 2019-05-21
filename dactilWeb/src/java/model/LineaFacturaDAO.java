@@ -36,7 +36,7 @@ public class LineaFacturaDAO {
         }  
     }
     public void getCarrito (int id,ArrayList<ProductoLinea> listaCarrito){
-        sql= "SELECT tbl_facturas.id_factura,tbl_lineafactura.id_lineafactura, tbl_productos.id_producto,tbl_productos.nombre_producto, tbl_productos.descripcion_producto, tbl_productos.precio_producto, tbl_productos.referencia_producto, tbl_productos.foto_producto, tbl_lineafactura.cantidad_compra\n" +
+        sql= "SELECT tbl_productos.referencia_producto,tbl_productos.foto_producto,tbl_facturas.id_factura,tbl_lineafactura.id_lineafactura, tbl_productos.id_producto,tbl_productos.nombre_producto, tbl_productos.descripcion_producto, tbl_productos.precio_producto, tbl_productos.referencia_producto, tbl_productos.foto_producto, tbl_lineafactura.cantidad_compra\n" +
 "FROM tbl_clientes INNER JOIN tbl_facturas ON tbl_clientes.id_cliente=tbl_facturas.id_cliente INNER JOIN tbl_lineafactura ON tbl_lineafactura.id_factura=tbl_facturas.id_factura INNER JOIN tbl_productos ON tbl_lineafactura.id_producto=tbl_productos.id_producto\n" +
 "WHERE tbl_facturas.id_cliente="+id+" AND tbl_facturas.estado_factura='activo'";
         try {
@@ -54,8 +54,10 @@ public class LineaFacturaDAO {
                productolinea.setId_producto(rs.getInt("id_producto"));
                productolinea.setId_lineafactura(rs.getInt("id_lineafactura"));
                productolinea.setCantidad_compra(rs.getInt("cantidad_compra"));
-               productolinea.setPrecio_producto(rs.getInt("precio_producto"));
+               productolinea.setPrecio_producto(rs.getDouble("precio_producto"));
                productolinea.setDescripcion_producto(rs.getString("descripcion_producto"));
+               productolinea.setFoto_producto(rs.getString("foto_producto"));
+               productolinea.setReferencia_producto(rs.getString("referencia_producto"));
                //añadir al arraylit 
                listaCarrito.add(productolinea);
             }

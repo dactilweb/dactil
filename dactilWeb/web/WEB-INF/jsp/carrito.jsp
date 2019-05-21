@@ -16,8 +16,8 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Nº Factura</th>
-                            <th scope="col">Producto</th>
+                            <th  scope="col">Producto</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Precio</th>
                             <th scope="col"></th>
@@ -26,16 +26,20 @@
                     <tbody>
                         <c:forEach var="linea" items="${listaCarrito}">
                             <tr>
-                                <td>${linea.id_factura}</td>
-                                <td>${linea.nombre_producto}</td>
+                                <td><img height="80" width="80" src="imgProductos/${linea.foto_producto}" alt="500" /> </td>
+                                <td>${linea.nombre_producto}<br><span style="color:grey;">${linea.referencia_producto}</span></td>
                                 <td>${linea.cantidad_compra}</td>
                                 <td>${linea.precio_producto}€</td>
-                                <td> 
-                                      <a href="eliminarCarrito?id=${linea.id_lineafactura}"> <i class="fas fa-trash"></i></a>
-                                      
-                                   </td>
+                                <td> <a href="eliminarCarrito?id=${linea.id_lineafactura}"> <i class="fas fa-trash"></i></a></td>
                             </tr>
                         </c:forEach>  
+                             <tr>
+                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total:</td>
+                                <td>${totalprecio}€</td>
+                            </tr>
                     </tbody>
                 </table>
 

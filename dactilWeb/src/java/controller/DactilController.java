@@ -510,6 +510,19 @@ public class DactilController {
         Usuarios user = (Usuarios) misession.getAttribute("us");
         LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
         lineafacturadao.getCarrito(user.getId_cliente(),this.listaCarrito);
+        double totalprecio = 0;
+        double subprecio = 0;
+        
+        for(ProductoLinea p:listaCarrito){
+            
+            subprecio=p.getCantidad_compra()*p.getPrecio_producto();
+            totalprecio= totalprecio+subprecio;
+         
+        }
+        totalprecio=totalprecio*100;
+        totalprecio=Math.floor(totalprecio);
+        totalprecio= totalprecio/100;
+        model.addAttribute("totalprecio",totalprecio);
         model.addAttribute("listaCarrito", listaCarrito);
         return "carrito";
     }
@@ -538,8 +551,6 @@ public class DactilController {
             lineaFactura.setId_factura(id_facturaactual);
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
             lineafacturadao.insertarLineaFactura(lineaFactura);
-            //lineafacturadao.getCarrito(id_facturaactual,this.listaCarrito);
-           
             respuesta.setUrl("carritover");
         }
         return respuesta;
