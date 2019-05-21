@@ -16,6 +16,29 @@
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" href="css/loginstyle.css">
+    <script type="text/javascript"> 
+               $(document).ready(function(){
+                    $("#boton").click(function(){
+                    //alert("hola");
+                    var pasar=true
+                    if( $("#inputEmail").val() === ""){
+                        $("#error_nombre").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una direccion de correo de usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                        pasar=false;
+                    }else{
+                        $("#error_nombre").html("");                        
+                    }               
+                    if( $("#inputPassword").val() === "" ){
+                        $("#error_passwd").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña correcta<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
+
+                     
+                        pasar=false;
+                    }else{
+                        $("#error_passwd").html("");                        
+                    }
+                    return pasar;
+                });
+            });
+         </script>
 
     </head>
    
@@ -27,8 +50,12 @@
         <form class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Iniciar Sesión</h1>
            <form:input path="email_cliente" id="inputEmail" type="text" class="form-control" placeholder="Dirección de correo electrónico"/> <br/>
+           <span id="error_nombre"></span>
+           <form:errors path="nombre_cliente"/><br/>
             <form:input path="contrasena_cliente" id="inputPassword" type="password" class="form-control" placeholder="Contraseña"/> <br/>
-            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Acceder</button>
+            <form:errors path="contrasena_cliente"/>
+            <span id="error_passwd" ></span><br/>
+            <button class="btn btn-success btn-block" id="boton" type="submit"><i class="fas fa-sign-in-alt"></i> Acceder</button>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
             <a href="index"><button class="btn btn-primary btn-block" type="button"><i class="fas fa-undo-alt"></i> Volver a página web</button></a>

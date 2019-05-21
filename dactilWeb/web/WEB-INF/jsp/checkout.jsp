@@ -13,6 +13,6 @@
         <input type="hidden" name="quantity${c}" value="${pro.p.cantidad}"/>
         
 </c:forEach>
-        <input type="image" src="https://www.sandob.paypal.com/es_ES/ES/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Paypal, la forma mas rapida y segura de pagar en internet"/>
-               <img alt=""  border="0"  src="https://www.sandob.paypal.com/es_ES/ES/i/scr/btn_buynow_LG.gif" width="1" height="1">
+        <input type="image" src="https://www.sandbox.paypal.com/es_ES/ES/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Paypal, la forma mas rapida y segura de pagar en internet"/>
+               <img alt=""  border="0"  src="https://www.sandbox.paypal.com/es_ES/ES/i/scr/btn_buynow_LG.gif" width="1" height="1">
       </form> 

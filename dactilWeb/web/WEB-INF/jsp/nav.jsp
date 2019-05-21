@@ -1,6 +1,85 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% String titulo = (String) request.getAttribute("titulo"); %>
 <% String subtitulo = (String) request.getAttribute("subtitulo"); %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#boton").click(function () {
+            //alert("hola");
+            var pasar = true
+            if ($("#nom_user").val() === "") {
+                $("#error_nombre").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_nombre").html("");
+            }
+
+            if ($("#cognom_user").val() === "") {
+                $("#error_cognom").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un apellido para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_cognom").html("");
+            }
+
+            if ($("#direccio_user").val() === "") {
+                $("#error_direccion").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una dirección para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_direccion").html("");
+            }
+
+            if ($("#telefono_user").val() === "") {
+                $("#error_telefono").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un telefono<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_telefono").html("");
+            }
+
+            var email = $("#email_user").val();
+            var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+            if (email === "" || !expre.test(email)) {
+                $("#error_email").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+
+                pasar = false;
+            } else {
+                $("#error_email").html("");
+            }
+
+
+            if ($("#passwd_user").val() === "") {
+                $("#error_passwd").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
+
+
+                pasar = false;
+            } else {
+                $("#error_passwd").html("");
+            }
+            return pasar;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#boton2").click(function () {
+            //alert("hola");
+            var pasar = true
+            if ($("#email_cliente").val() === "") {
+                $("#error_nombre").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una direccion de correo de usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_nombre").html("");
+            }
+            if ($("#contrasena_cliente").val() === "") {
+                $("#error_passwd").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña correcta<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
+
+
+                pasar = false;
+            } else {
+                $("#error_passwd").html("");
+            }
+            return pasar;
+        });
+    });
+</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index">Dactil</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,15 +100,15 @@
             <li <% out.println((titulo.equals("Piscinas"))?"class='nav-item active'":""); %>>
                 <a class="nav-link" href="piscinas">Iluminación Piscinas</a>
             </li>
-          
+
             <c:choose>
-                            <c:when test="${us.getNivel() == 1}">
-                              <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
-                <a class="nav-link" href="panelcontrol">Panel De Control</a>
-            </li>
-                            </c:when>
-                        </c:choose>
-            
+                <c:when test="${us.getNivel() == 1}">
+                    <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
+                        <a class="nav-link" href="panelcontrol">Panel De Control</a>
+                    </li>
+                </c:when>
+            </c:choose>
+
 
         </ul>
         <c:choose>
@@ -43,7 +122,7 @@
 
             <c:when test="${sessionScope.us != null}">
                 <div class="ml-auto">
-                  
+
                     <a class="nav-link" href="carritover"> <span style="color:black;"><i class="fas fa-shopping-cart"></i> </a>
                 </div>
                 <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
@@ -55,16 +134,16 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                         <a class="dropdown-item" href="editarPerfil">Editar Perfil</a>
-                        
+
                         <a class="dropdown-item" href="logout">Cerrar Sesion</a>
                     </ul>
-                      </div>
-                </c:when>
+                </div>
+            </c:when>
 
 
-            </c:choose>
+        </c:choose>
 
-      
+
     </div>
 </nav>
 <% 
@@ -195,10 +274,14 @@ if(titulo.equals("Editar_Perfil")){
                     <div class="form-group">
                         <label for="inputEmail3" >Email</label>
                         <form:input path="email_cliente" class="form-control" id="email_cliente" type="text"/> <br/>
+                        <span id="error_nombre"></span>
+                        <form:errors path="nombre_cliente"/><br/>
                         <label for="inputPassword3" class="">Contraseña</label>
                         <form:input path="contrasena_cliente" class="form-control" id="contrasena_cliente" type="password"/> <br/>
+                        <span id="error_passwd" ></span><br/>
+                        <form:errors path="contrasena_cliente"/>
                     </div>
-                    <input type="submit" value="Acceder" class="btn btn-primary"/>
+                    <input type="submit" id="boton2" value="Acceder" class="btn btn-primary"/>
 
                 </form:form>       
             </div>
