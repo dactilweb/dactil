@@ -7,7 +7,7 @@
     
 <c:forEach items="${sessionScope.listaCarrito}" var="pro">
     <c:set var="c" value"${c+1}"/>
-           <input type="hidden" name="item_name${c}" value="${pro.p.nombre}"/>
+           <input type="hidden" name="item_name${c}" value="${pro.nombre_producto}"/>
         <input type="hidden" name="item_number${c}" value="${pro.p.webid}"/>
         <input type="hidden" name="amount${c}"  value="${pro.p.precio}"/>
         <input type="hidden" name="quantity${c}" value="${pro.p.cantidad}"/>

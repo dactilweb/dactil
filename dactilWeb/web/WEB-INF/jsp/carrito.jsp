@@ -6,6 +6,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page="style.jsp" />
+        <style>
+            .paypalboton{
+                margin-left: 80%;
+               
+            }
+        </style>
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     </head>
     <body>
         <jsp:include page="nav.jsp" />
@@ -39,11 +46,39 @@
                                 <td></td>
                                 <td>Total:</td>
                                 <td>${totalprecio}€</td>
+                                <td> </td>
+                                
                             </tr>
                     </tbody>
                 </table>
+                                <div class="paypalboton">
+                                    <!--
+<form action="${initParam['urlpaypal']}" method="POST" target="_top">
+    <input type="hidden" name="business" value="10000189.joan23@fje.edu"/>
+    <input type="hidden" name="return"  value="10000189.joan23@fje.edu"/>
+    <input type="hidden" name="cmd" value="_cart"/>
+    <input type="hidden" name="upload" value="1"/>
 
+
+   
+        <input type="image" src="https://www.sandbox.paypal.com/es_ES/ES/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Paypal, la forma mas rapida y segura de pagar en internet"/>
+               <img alt=""  border="0"  src="https://www.sandbox.paypal.com/es_ES/ES/i/scr/btn_buynow_LG.gif" width="1" height="1">
+      </form>
+                                    -->
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+
+<input type="hidden" name="amount" value="${totalprecio}">
+<input type="hidden" name="item_name" value="FacturaDactil">
+<input type="hidden" name="hosted_button_id" value="KXXT29BTZHAYY">
+<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+                                </div>
             </div>
+                            
         </div>
 
 <div class="modal" tabindex="-1" role="dialog">
