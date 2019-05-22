@@ -10,7 +10,7 @@
     </context-param>
     <context-param>
         <param-name>urlretorno</param-name>
-        <param-value>http://localhost:8080/dactilWeb/Cart?action=finish</param-value>
+        <param-value>http://localhost:8085/dactilWeb/misPedidos?compra=1</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

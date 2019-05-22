@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
@@ -51,6 +53,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class DactilController {
 
     ArrayList<ProductoLinea> listaCarrito = new ArrayList<>();
+    ArrayList<ProductoLinea> listaPedidos = new ArrayList<>();
     ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
     ArrayList<Productos> listaProductos = new ArrayList<>();
     ArrayList<Factura> listaFactura = new ArrayList<>();
@@ -607,5 +610,28 @@ public class DactilController {
         lfdao.eliminarLinea(id);
         return respuesta;
     }
-    
+    @RequestMapping(value = "misPedidos", method = RequestMethod.GET)
+    public String misPedidosController(Model model,HttpServletRequest request,@RequestParam(defaultValue = "0") String compra) throws SQLException {
+        
+        
+        ProductosDAO pdao = new ProductosDAO();
+        model.addAttribute("titulo", "Mis_Pedidos");
+        apartado = "pedidos";
+        Usuarios usuarios = new Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        HttpSession misession = (HttpSession) request.getSession();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
+        lineafacturadao.getPedidos(user.getId_cliente(),this.listaPedidos);
+        if(compra.equals("1")){
+           FacturaDAO fdao = new FacturaDAO();
+           Date myDate = new Date();
+          String fechabd= new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+          
+           fdao.actualizarFactura(user.getId_cliente(),fechabd);
+        }
+        model.addAttribute("listaPedidos", listaPedidos);
+         
+        return "misPedidos";
+    }
 }

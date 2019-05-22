@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -104,6 +105,14 @@ public int recuperarIdFactura(int id_cliente){
         }
    
 }
-    
+    public void actualizarFactura(int id_cliente, String fechabd) throws SQLException{
+            
+            sql=" UPDATE tbl_facturas SET fecha_factura='"+fechabd+"', estado_factura=\"en proceso\" WHERE tbl_facturas.id_cliente="+id_cliente+" AND tbl_facturas.estado_factura='activo'";
+            try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+        }
 }
 

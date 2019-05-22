@@ -52,28 +52,26 @@
                     </tbody>
                 </table>
                                 <div class="paypalboton">
-                                    <!--
-<form action="${initParam['urlpaypal']}" method="POST" target="_top">
+                               <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST" target="_top">
     <input type="hidden" name="business" value="10000189.joan23@fje.edu"/>
-    <input type="hidden" name="return"  value="10000189.joan23@fje.edu"/>
-    <input type="hidden" name="cmd" value="_cart"/>
-    <input type="hidden" name="upload" value="1"/>
+    <input type="hidden" name="return" value="${initParam['urlretorno']}"/>
+<input type="hidden" name="cmd" value="_cart"/>
+<input type="hidden" name="upload" value="1"/>
+<input type="hidden" name="currency_code" value="EUR">
+<input type="hidden" name="lc" value="ES">
+<input type="hidden" name="country" value="ES">
+<c:forEach items="${listaCarrito}" var="linea">
+    <c:set var="c" value="${c+1}"/>
+    <input type="hidden" name="item_name_${c}" value="${linea.nombre_producto}" />
+    <input type="hidden" name="item_number_${c}" value="${linea.id_producto}" />
+    <input type="hidden" name="amount_${c}" value="${linea.precio_producto}" />
+    <input type="hidden" name="quantity_${c}" value="${linea.cantidad_compra}" />
+</c:forEach>
 
-
-   
-        <input type="image" src="https://www.sandbox.paypal.com/es_ES/ES/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Paypal, la forma mas rapida y segura de pagar en internet"/>
-               <img alt=""  border="0"  src="https://www.sandbox.paypal.com/es_ES/ES/i/scr/btn_buynow_LG.gif" width="1" height="1">
-      </form>
-                                    -->
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-
-<input type="hidden" name="amount" value="${totalprecio}">
-<input type="hidden" name="item_name" value="FacturaDactil">
-<input type="hidden" name="hosted_button_id" value="KXXT29BTZHAYY">
 <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 </form>
+
 
 
                                 </div>

@@ -134,7 +134,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                         <a class="dropdown-item" href="editarPerfil">Editar Perfil</a>
-
+                        <a class="dropdown-item" href="misPedidos">Mis Pedidos</a>
                         <a class="dropdown-item" href="logout">Cerrar Sesion</a>
                     </ul>
                 </div>

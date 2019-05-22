@@ -22,10 +22,12 @@ public class ProductoLinea {
    private int id_factura;
    private String foto_producto;
    private String referencia_producto;
+   private String estado_factura;
+   private String fecha_factura;
     public ProductoLinea() {
     }
 
-    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto, int id_factura,String foto_producto,String referencia_producto) {
+    public ProductoLinea(int id_lineafactura, int id_producto, double precio_producto, String descripcion_producto, int cantidad_compra, String nombre_producto, int id_factura,String foto_producto,String referencia_producto,String estado_factura,String fecha_factura) {
         this.id_lineafactura = id_lineafactura;
         this.id_producto = id_producto;
         this.precio_producto = precio_producto;
@@ -36,6 +38,24 @@ public class ProductoLinea {
         this.id_factura = id_factura;
         this.foto_producto=foto_producto;
         this.referencia_producto=referencia_producto;
+        this.estado_factura=estado_factura;
+        this.fecha_factura=fecha_factura;
+    }
+
+    public String getFecha_factura() {
+        return fecha_factura;
+    }
+
+    public void setFecha_factura(String fecha_factura) {
+        this.fecha_factura = fecha_factura;
+    }
+    
+    public String getEstado_factura() {
+        return estado_factura;
+    }
+
+    public void setEstado_factura(String estado_factura) {
+        this.estado_factura = estado_factura;
     }
     
     public int getId_factura() {
