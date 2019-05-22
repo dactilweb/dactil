@@ -67,40 +67,40 @@ public class ProductosDAO {
          public void getListaProductos (ArrayList<Productos> listaProductos,String apartado){
         
         if(apartado.equals("interior")){
-              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=1";
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=1 AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("exterior")){
-              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=2";
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=2  AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("inicio")){
             sql= "SELECT * FROM tbl_productos WHERE `disponibilidad_producto`=1";
         }
         if(apartado.equals("piscinas")){
-              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=3";
+              sql= "SELECT * FROM tbl_productos INNER JOIN tbl_subcategoria ON tbl_productos.id_subcategoria=tbl_subcategoria.id_subcategoria INNER JOIN tbl_categoria ON tbl_subcategoria.id_categoria=tbl_categoria.id_categoria WHERE tbl_categoria.id_categoria=3  AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("bombillasled")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=1";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=1  AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("lamparas")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=2";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=2  AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("tirasled")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=3";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=3  AND `disponibilidad_producto`=1";
 
         }
         if(apartado.equals("exteriorLed")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=4";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=4  AND `disponibilidad_producto`=1";
 
         }if(apartado.equals("exteriorFocos")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=5";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=5  AND `disponibilidad_producto`=1";
 
         }if(apartado.equals("exteriorApliques")){
-            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=6";
+            sql= "SELECT * FROM tbl_productos WHERE `id_subcategoria`=6  AND `disponibilidad_producto`=1";
 
         }
         try {

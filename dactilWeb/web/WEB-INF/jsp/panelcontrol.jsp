@@ -23,7 +23,7 @@
              <div class="contenido2">
         <a href="verPedidos"><h5>Ver Pedidos</h5></a>
         <a href="verUsers"><h5>Ver Usuarios</h5></a>
-        <a href="verProductos"><h5>Ver Productos</h5></a>
+        <a href="verProductosAll"><h5>Ver Productos</h5></a>
          </div>
          </div>
           <jsp:include page="footer.jsp" />

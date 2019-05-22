@@ -380,14 +380,14 @@ public class DactilController {
 
             pdao.getListaProductos(listaProductos, apartado);
             model.addAttribute("listaProductos", listaProductos);
-            return "verProductos";
+            return "verProductosAll";
         }
     }
 
     @RequestMapping(value = "eliminarProd", method = RequestMethod.GET)
     public RedirectView eliminarProductoController(@RequestParam("id") int id) throws SQLException {
         ProductosDAO pdao = new ProductosDAO();
-        RedirectView respuesta = new RedirectView("verProductos");
+        RedirectView respuesta = new RedirectView("verProductosAll");
         pdao.eliminarProducto(id);
         return respuesta;
     }
@@ -421,7 +421,7 @@ public class DactilController {
 
     @RequestMapping(value = "modificarProducto", method = RequestMethod.POST)
     public RedirectView modificarProdController(@ModelAttribute("productos") Productos productos) throws SQLException {
-        RedirectView respuesta = new RedirectView("verProductos");
+        RedirectView respuesta = new RedirectView("verProductosAll");
         ProductosDAO pdao = new ProductosDAO();
         pdao.modificarProductos(productos);
         return respuesta;

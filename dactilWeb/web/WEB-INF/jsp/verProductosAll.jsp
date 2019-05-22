@@ -50,7 +50,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        <a href="verProductos"><h5>Mostrar Disponibles</h5></a>
+        <a href="crearProducto"><h5>Insertar Productos</h5></a>
         <a href="panelcontrol"><h5>Volver</h5></a>
     </body>
 </html>
