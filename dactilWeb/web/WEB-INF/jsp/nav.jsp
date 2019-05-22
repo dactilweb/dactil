@@ -6,11 +6,11 @@
         $("#boton").click(function () {
             //alert("hola");
             var pasar = true
-            if ($("#nom_user").val() === "") {
-                $("#error_nombre").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+            if ($("#nom_user2").val() === "") {
+                $("#error_nombre2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
-                $("#error_nombre").html("");
+                $("#error_nombre2").html("");
             }
 
             if ($("#cognom_user").val() === "") {
@@ -34,24 +34,24 @@
                 $("#error_telefono").html("");
             }
 
-            var email = $("#email_user").val();
+            var email = $("#email_user2").val();
             var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
             if (email === "" || !expre.test(email)) {
-                $("#error_email").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                $("#error_email2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
 
                 pasar = false;
             } else {
-                $("#error_email").html("");
+                $("#error_email2").html("");
             }
 
 
-            if ($("#passwd_user").val() === "") {
-                $("#error_passwd").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
+            if ($("#passwd_user2").val() === "") {
+                $("#error_passwd2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
 
 
                 pasar = false;
             } else {
-                $("#error_passwd").html("");
+                $("#error_passwd2").html("");
             }
             return pasar;
         });
@@ -311,8 +311,8 @@ if(titulo.equals("Editar_Perfil")){
                         <div class="row">
                             <div class="col-md-6">
                                 Nombre:
-                                <form:input path="nombre_cliente" id="nom_user" type="text" class="form-control"/>  
-                                <span id="error_nombre"></span>
+                                <form:input path="nombre_cliente" id="nom_user2" type="text" class="form-control"/>  
+                                <span id="error_nombre2"></span>
                                 <form:errors path="nombre_cliente"/><br/>
                             </div>
                             <div class="col-md-6">
@@ -346,16 +346,16 @@ if(titulo.equals("Editar_Perfil")){
                             <div class="col-md-6">
 
                                 Email:
-                                <form:input path="email_cliente" id="email_user" type="email" class="form-control"/> 
-                                <span id="error_email"></span>
+                                <form:input path="email_cliente" id="email_user2" type="email" class="form-control"/> 
+                                <span id="error_email2"></span>
                                 <form:errors path="email_cliente"/><br/>
                             </div>
                             <div class="col-md-6">
 
                                 Contraseña:
-                                <form:input path="contrasena_cliente" id="passwd_user" type="password" class="form-control"/>     
+                                <form:input path="contrasena_cliente" id="passwd_user2" type="password" class="form-control"/>     
                                 <form:errors path="contrasena_cliente"/>
-                                <span id="error_passwd" ></span><br/>
+                                <span id="error_passwd2" ></span><br/>
                             </div>
                         </div>
                         <input type="submit" value="Crear" class="btn btn-primary" id="boton"/>
