@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <% String titulo = (String) request.getAttribute("titulo"); %>
 <html>
@@ -34,7 +35,7 @@
             
             <form:form modelAttribute="lineaFactura" action="carrito" method="POST">
             Cantidad:
-            <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="1"/>  <br>
+            <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="1" value="1"/>  <br>
             <span id="error_nombre"></span>
             <form:hidden path="id_producto"/>
             <input type="submit" value="Añadir" class="btn btn-success" id="boton"/> 
@@ -44,7 +45,13 @@
     </div>
   </div>
 </div>
-            <h2>Productos Similares</h2>
+           
+            <c:choose>
+                <c:when test="${fn:length(listaSimilares)>0}">
+                     <h2>Productos Similares</h2>
+                </c:when>
+            </c:choose>
+                     
            <div class="row">
   
      <c:forEach var="prod" items="${listaSimilares}">

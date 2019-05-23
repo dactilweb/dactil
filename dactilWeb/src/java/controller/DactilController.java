@@ -650,7 +650,6 @@ public class DactilController {
     }
     @RequestMapping(value = "misPedidos", method = RequestMethod.GET)
     public String misPedidosController(Model model,HttpServletRequest request,@RequestParam(defaultValue = "0") String compra) throws SQLException {
-        
         model.addAttribute("numeroCarrito",numeroCarrito);
         ProductosDAO pdao = new ProductosDAO();
         model.addAttribute("titulo", "Mis_Pedidos");
@@ -660,14 +659,13 @@ public class DactilController {
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
         LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
-        lineafacturadao.getPedidos(user.getId_cliente(),this.listaPedidos);
         if(compra.equals("1")){
            FacturaDAO fdao = new FacturaDAO();
            Date myDate = new Date();
-          String fechabd= new SimpleDateFormat("yyyy-MM-dd").format(myDate);
-          
+           String fechabd= new SimpleDateFormat("yyyy-MM-dd").format(myDate);
            fdao.actualizarFactura(user.getId_cliente(),fechabd);
         }
+        lineafacturadao.getPedidos(user.getId_cliente(),this.listaPedidos);
         model.addAttribute("listaPedidos", listaPedidos);
          
         return "misPedidos";

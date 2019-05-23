@@ -33,7 +33,7 @@ public class FacturaDAO {
     public void getListaPedidos(ArrayList<Factura> listaFactura) {
         sql = "SELECT tbl_productos.nombre_producto,tbl_facturas.id_cliente,tbl_facturas.estado_factura,tbl_productos.precio_producto, tbl_facturas.fecha_factura,tbl_facturas.id_factura, tbl_lineafactura.cantidad_compra, tbl_clientes.nombre_cliente, tbl_clientes.apellido_cliente\n"
                 + "FROM tbl_clientes INNER JOIN tbl_facturas ON tbl_clientes.id_cliente=tbl_facturas.id_cliente INNER JOIN tbl_lineafactura ON tbl_facturas.id_factura=tbl_lineafactura.id_factura INNER JOIN tbl_productos ON tbl_lineafactura.id_producto=tbl_productos.id_producto\n"
-                + "ORDER BY tbl_facturas.id_factura";
+                + "WHERE tbl_facturas.estado_factura='en proceso' OR tbl_facturas.estado_factura='completado y enviado' ORDER BY tbl_facturas.id_factura";
         
         try {
             Statement st = cn.createStatement();
