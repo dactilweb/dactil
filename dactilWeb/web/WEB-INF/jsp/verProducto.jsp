@@ -51,34 +51,55 @@
                      <h2>Productos Similares</h2>
                 </c:when>
             </c:choose>
+                      <c:forEach var="prod" items="${listaSimilares}">
+         <article class="card card-product">
+	<div class="card-body">
+	<div class="row">
+		<aside class="col-sm-3">
+                    <div class="img-wrap"><img src="imgProductos/${prod.getFoto_producto()}" height="250px"></div>
+		</aside> <!-- col.// -->
+		<article class="col-sm-6">
+			
+				<h4 class="title">${prod.nombre_producto}  </h4>
+				
+				<p> ${prod.descripcion_producto}</p>
+				<dl class="dlist-align">
+				  <dt>Disponibilidad</dt>
+				  <dd>${prod.cantidad_producto} disponibles</dd>
+				</dl>  <!-- item-property-hor .// -->
+				<dl class="dlist-align">
+				  <dt>Entrega</dt>
+				  <dd>Entre 3-5 días</dd>
+				</dl>  <!-- item-property-hor .// -->
+				<dl class="dlist-align">
+				  <dt>Envío</dt>
+				  <dd>Europa, USA y China</dd>
+				</dl>  <!-- item-property-hor .// -->
+			
+		</article> <!-- col.// -->
+		<aside class="col-sm-3 border-left">
+			<div class="action-wrap">
+				<div class="price-wrap h4">
+					<span class="price"> ${prod.precio_producto} €</span>	
+					
+				</div> <!-- info-price-detail // -->
+				<p class="text-success">Envío Gratis</p>
+				<br>
+				<p>
+					<a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary"> Añadir al Carrito </a>
+					<a href="verProducto?id=${prod.id_producto}" class="btn btn-secondary"> Ver más  </a>
+				</p>
+				
+			</div> <!-- action-wrap.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+	</div> <!-- card-body .// -->
+</article> <!-- product-list.// -->            
+            </c:forEach>          
                      
-           <div class="row">
-  
-     <c:forEach var="prod" items="${listaSimilares}">
-     <div class="col-sm-3">
-    <div class="card">
-        
-        <img class="card-img-top" src="imgProductos/${prod.getFoto_producto()}" alt="Card image cap">
-      <div class="card-body">
-         
-        <h5 class="card-title">${prod.nombre_producto}</h5>
-        <p class="card-text">${prod.cantidad_producto} Articulos disponibles</p>
-        <p class="card-text">${prod.precio_producto}€ / Coste unidad</p><br><br>
-        <div class="">
-            <a class="btn btn-primary" href="añadirCarrito?id=${prod.id_producto}" role="button"> <i class="fas fa-shopping-cart"></i> Añadir al carrito</a><br>
-    <a href="verProducto?id=${prod.id_producto}" class="card-link"><i class="fas fa-info-circle"></i> Ver más</a>
- 
-  </div>
-      </div>
-    </div>
-  </div>
-     </c:forEach>
-          
-     
-     
-     
-</div>
-           
+                     
+                     
+                     
        </div>
    
     <jsp:include page="footer.jsp" />

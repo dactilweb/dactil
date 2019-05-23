@@ -43,18 +43,39 @@
     </head>
    
     <body>
-   <div id="logreg-forms">
+        
+   <div class="card">
+       <article class="card-body">
+           
+           <h4 class="card-title text-center mb-4 mt-1">Iniciar Sesión</h4>
        <form:form modelAttribute="usuarios" action="login" method="POST">
            
        
-        <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Iniciar Sesión</h1>
-           <form:input path="email_cliente" id="inputEmail" type="text" class="form-control" placeholder="Dirección de correo electrónico"/> <br/>
-           <span id="error_nombre"></span>
+        <form class="form-group">
+           <div class="form-group">
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+             <form:input path="email_cliente" id="inputEmail" type="email" class="form-control" placeholder="Dirección de correo electrónico"/> <br/>
+		<span id="error_nombre"></span>
            <form:errors path="nombre_cliente"/><br/>
-            <form:input path="contrasena_cliente" id="inputPassword" type="password" class="form-control" placeholder="Contraseña"/> <br/>
+	</div> <!-- input-group.// -->
+	</div> 
+          
+           
+           <div class="form-group">
+	<div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		 </div>
+             <form:input path="contrasena_cliente" id="inputPassword" type="password" class="form-control" placeholder="******"/> <br/>
             <form:errors path="contrasena_cliente"/>
             <span id="error_passwd" ></span><br/>
+	</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+        
+           
             <button class="btn btn-success btn-block" id="boton" type="submit"><i class="fas fa-sign-in-alt"></i> Acceder</button>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
@@ -64,8 +85,11 @@
            
            </form:form>
             <br>
-            
+       </article>
     </div>
+        
+
+
     <p style="text-align:center">
         <a href="http://bit.ly/2RjWFMfunction toggleResetPswd(e){
     e.preventDefault();
