@@ -15,12 +15,25 @@
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     </head>
     <body>
+       
         <jsp:include page="nav.jsp" />
 
 
         <div class="contenido">
             <div class="contenido2">
-                <table class="table table-hover">
+             <c:choose>
+    <c:when test="${totalprecio==0}">
+      
+      <div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Tu carrito está vacío!</h4>
+  <p>¿Aún no sabes lo que quieres? :(</p>
+  <hr>
+  <p class="mb-0">Puedes añadir productos desde nuestra <a href="index">tienda</a>.</p>
+</div>
+        <br />
+    </c:when>    
+    <c:otherwise>
+       <table class="table table-hover">
                     <thead>
                         <tr>
                             <th  scope="col">Producto</th>
@@ -68,36 +81,21 @@
     <input type="hidden" name="quantity_${c}" value="${linea.cantidad_compra}" />
 </c:forEach>
 
-<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+    <input type="image" src="imagenes/pagarahora.png" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet." height="38px" class="img-fluid" alt="Responsive image">
 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 </form>
 
 
 
                                 </div>
+    </c:otherwise>
+</c:choose>
+                
             </div>
                             
         </div>
 
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmar eliminacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Estás segur@ de que deseas eliminar el producto del carrito?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Confirmar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
+
         <jsp:include page="footer.jsp" />
     </body>
 </html>

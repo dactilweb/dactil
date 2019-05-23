@@ -109,4 +109,18 @@ public class LineaFacturaDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+      public int getNumeroCarrito (int id_cliente){
+        sql= "SELECT count(cantidad_compra) FROM tbl_lineafactura INNER JOIN tbl_facturas ON tbl_lineafactura.id_factura=tbl_facturas.id_factura WHERE tbl_facturas.estado_factura='activo' AND tbl_facturas.id_cliente="+id_cliente+"";
+      
+   try {
+           Statement st = cn.createStatement();
+           ResultSet rsz= st.executeQuery(sql);
+      rsz.next();
+      int numCarrito= rsz.getInt(1);
+      return numCarrito;
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, ex);
+           return 0;
+        }
+    }
     }

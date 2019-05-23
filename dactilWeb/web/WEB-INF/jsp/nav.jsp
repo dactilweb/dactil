@@ -123,7 +123,7 @@
             <c:when test="${sessionScope.us != null}">
                 <div class="ml-auto">
 
-                    <a class="nav-link" href="carritover"> <span style="color:black;"><i class="fas fa-shopping-cart"></i> </a>
+                    <a class="nav-link" href="carritover"> <span style="color:black;"><i class="fas fa-shopping-cart"></i> <span class="badge badge-secondary"> ${numeroCarrito}</span> </a>
                 </div>
                 <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
                     <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">

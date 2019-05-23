@@ -61,13 +61,13 @@ public class DactilController {
     ArrayList<Productos> listaSimilares = new ArrayList<>();
     private int id_facturaactual=0;
     String apartado = "";
-
+    int numeroCarrito=0;
     public DactilController() {
 
     }
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String indexController(Model model) {
+    public String indexController(Model model,HttpServletRequest request) {
         ProductosDAO pdao = new ProductosDAO();
         model.addAttribute("titulo", "Inicio");
         apartado = "inicio";
@@ -75,8 +75,15 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-  
-         
+        //Calcular Numero Carrito
+        HttpSession misession = (HttpSession) request.getSession();
+        Usuarios user = (Usuarios) misession.getAttribute("us");
+        if (misession.getAttribute("us") != null) {
+             LineaFacturaDAO lfdao = new LineaFacturaDAO();
+            numeroCarrito=lfdao.getNumeroCarrito(user.getId_cliente());
+            model.addAttribute("numeroCarrito",numeroCarrito);
+        }
+       
         return "index";
     }
 
@@ -90,7 +97,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -104,7 +111,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -118,7 +125,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -132,7 +139,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -146,7 +153,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -160,7 +167,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -174,7 +181,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -188,7 +195,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -201,7 +208,7 @@ public class DactilController {
         model.addAttribute("listaProductos", listaProductos);
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "index";
     }
 
@@ -237,7 +244,9 @@ public class DactilController {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Panel");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "panelcontrol";
+        
     }
     
      @RequestMapping(value = "quienesomos", method = RequestMethod.GET)
@@ -245,6 +254,7 @@ public class DactilController {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Quienes_somos");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "quienesomos";
     }
     
@@ -253,6 +263,7 @@ public class DactilController {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Donde_estamos");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "dondestamos";
     }
        @RequestMapping(value = "plazoEntrega", method = RequestMethod.GET)
@@ -260,6 +271,7 @@ public class DactilController {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Plazo Entrega");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "plazoEntrega";
     }
       @RequestMapping(value = "formaPago", method = RequestMethod.GET)
@@ -267,6 +279,7 @@ public class DactilController {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Forma_Entrega");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "formaPago";
     }
      @RequestMapping(value = "funcionEnvio", method = RequestMethod.GET)
@@ -274,6 +287,7 @@ public class DactilController {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Funcionamiento_Envio");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "funcionEnvio";
     }
     
@@ -282,6 +296,7 @@ public class DactilController {
          Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("titulo", "Garantias_y_Devoluciones");
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "garantiasyDevoluciones";
     }
     
@@ -290,11 +305,13 @@ public class DactilController {
     public String crearUsuarioController(Model model) {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "crearUsuario";
     }
 
     @RequestMapping(value = "nuevoUsuario", method = RequestMethod.POST)
     public String nuevoUsuario(@Valid @ModelAttribute("usuarios") Usuarios usuarios, BindingResult resultado, Model model) throws SQLException {
+        model.addAttribute("numeroCarrito",numeroCarrito);
         if (resultado.hasErrors()) {
             model.addAttribute("usuarios", usuarios);
             return "index";
@@ -310,6 +327,7 @@ public class DactilController {
         cerrarSesion.setComplete();
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         RedirectView respuesta = new RedirectView("index");
         return respuesta;
     }
@@ -319,6 +337,7 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
         udao.getListaUsuarios(listaUsuarios);
         model.addAttribute("listaUsuarios", listaUsuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "verUsers";
     }
 
@@ -338,6 +357,7 @@ public class DactilController {
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
         model.addAttribute("listaCategoria", listaCategoria);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "modificarUsuario";
     }
 
@@ -357,6 +377,7 @@ public class DactilController {
 
     @RequestMapping(value = "crearProducto", method = RequestMethod.GET)
     public String crearProductoController(Model model) {
+        model.addAttribute("numeroCarrito",numeroCarrito);
         Productos productos = new Productos();
         model.addAttribute("productos", productos);
         CategoriaDAO cdao = new CategoriaDAO();
@@ -367,7 +388,7 @@ public class DactilController {
 
     @RequestMapping(value = "nuevoProducto", method = RequestMethod.POST)
     public String nuevoProductoController(@Valid @ModelAttribute("productos") Productos productos, BindingResult resultado, Model model) throws SQLException, FileNotFoundException, IOException {
-
+        model.addAttribute("numeroCarrito",numeroCarrito);
         CommonsMultipartFile uploaded = productos.getFichero();
         productos.setFoto_producto(uploaded.getOriginalFilename());
         File localFile = new File("C:/Users/PC-OMEN/Documents/NetBeansProjects/dactil/dactilWeb/web/imgProductos/" + uploaded.getOriginalFilename());
@@ -400,6 +421,7 @@ public class DactilController {
         ProductosDAO prodao = new ProductosDAO();
         prodao.getListaProductos(listaProductos, apartado);
         model.addAttribute("listaProductos", listaProductos);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "verProductos";
     }
 
@@ -408,6 +430,7 @@ public class DactilController {
         FacturaDAO fdao = new FacturaDAO();
         fdao.getListaPedidos(listaFactura);
         model.addAttribute("listaFactura", listaFactura);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "verPedidos";
     }
 
@@ -419,6 +442,7 @@ public class DactilController {
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
         model.addAttribute("listaCategoria", listaCategoria);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "modificarProducto";
     }
 
@@ -435,6 +459,7 @@ public class DactilController {
         ProductosDAO prodao = new ProductosDAO();
         prodao.getListaProductosAll(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "verProductosAll";
     }
 
@@ -451,6 +476,7 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
         udao.getListaUsuariosAll(listaUsuarios);
         model.addAttribute("listaUsuarios", listaUsuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "verUsersAll";
     }
 
@@ -466,12 +492,14 @@ public class DactilController {
     public String crearUsuarioAdminController(Model model) {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "crearUsuarioAdmin";
     }
 
     @RequestMapping(value = "nuevoUsuarioAdmin", method = RequestMethod.POST)
     public String nuevoUsuarioAdmin(@Valid @ModelAttribute("usuarios") Usuarios usuarios, BindingResult resultado, Model model) throws SQLException {
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         return "crearUsuarioAdmin";
     }
 
@@ -482,6 +510,7 @@ public class DactilController {
         model.addAttribute("productos", productos);
         pdao.getListaSimilares(listaSimilares, id);
         model.addAttribute("listaSimilares", listaSimilares);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         model.addAttribute("titulo", "Detalle");
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
@@ -513,6 +542,7 @@ public class DactilController {
         Usuarios user = (Usuarios) misession.getAttribute("us");
         LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
         lineafacturadao.getCarrito(user.getId_cliente(),this.listaCarrito);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         double totalprecio = 0;
         double subprecio = 0;
         
@@ -526,6 +556,7 @@ public class DactilController {
         totalprecio=Math.floor(totalprecio);
         totalprecio= totalprecio/100;
         model.addAttribute("totalprecio",totalprecio);
+        model.addAttribute("numeroCarrito",numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
         return "carrito";
     }
@@ -534,8 +565,10 @@ public class DactilController {
     public RedirectView nuevaLineaController(@ModelAttribute("lineaFactura") LineaFactura lineaFactura, Model model, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
         HttpSession misession = (HttpSession) request.getSession();
+        model.addAttribute("numeroCarrito",numeroCarrito);
         RedirectView respuesta = new RedirectView("carritover");
         FacturaDAO fdao = new FacturaDAO();
+        numeroCarrito=numeroCarrito+1;
         Usuarios user = (Usuarios) misession.getAttribute("us");
         try {
          
@@ -563,6 +596,8 @@ public class DactilController {
         ModelAndView mav = new ModelAndView();
         HttpSession misession = (HttpSession) request.getSession();
         RedirectView respuesta = new RedirectView("carritover");
+        numeroCarrito=numeroCarrito+1;
+        model.addAttribute("numeroCarrito",numeroCarrito);
         FacturaDAO fdao = new FacturaDAO();
         Usuarios user = (Usuarios) misession.getAttribute("us");
         try {
@@ -591,6 +626,7 @@ public class DactilController {
     public String editarPerfilController(Model model,HttpServletRequest request) {
         UsuariosDAO udao = new UsuariosDAO();
         HttpSession misession = (HttpSession) request.getSession();
+        model.addAttribute("numeroCarrito",numeroCarrito);
         Usuarios user = (Usuarios) misession.getAttribute("us");
         Usuarios usuarios = udao.getUsuario(user.getId_cliente());
         model.addAttribute("usuarios", usuarios);
@@ -604,16 +640,18 @@ public class DactilController {
     @RequestMapping(value = "eliminarCarrito", method = RequestMethod.GET)
     public RedirectView eliminarCarritoController(@RequestParam("id") int id) throws SQLException {        
         RedirectView respuesta = new RedirectView("carritover");
+      
         UsuariosDAO udao = new UsuariosDAO();
         udao.eliminarPersona(id);
         LineaFacturaDAO lfdao = new LineaFacturaDAO();
         lfdao.eliminarLinea(id);
+        numeroCarrito = numeroCarrito-1;
         return respuesta;
     }
     @RequestMapping(value = "misPedidos", method = RequestMethod.GET)
     public String misPedidosController(Model model,HttpServletRequest request,@RequestParam(defaultValue = "0") String compra) throws SQLException {
         
-        
+        model.addAttribute("numeroCarrito",numeroCarrito);
         ProductosDAO pdao = new ProductosDAO();
         model.addAttribute("titulo", "Mis_Pedidos");
         apartado = "pedidos";
