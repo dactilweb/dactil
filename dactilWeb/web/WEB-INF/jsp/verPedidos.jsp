@@ -42,8 +42,7 @@
                             <a href="modificarFact?id=${fact.id_factura}"><button type="button" class="btn btn-info">Modificar</button></a>
                         
                         </td>
-                        <td>
-                            <a href="eliminarFact?id=${fact.id_factura}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                       
                     </tr>
                 </c:forEach>
             </tbody>

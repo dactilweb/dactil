@@ -105,7 +105,18 @@ body{
 .fa-trash {
     color: black !important;
 }
-
+.loginCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5% !important;
+}
+#loginIdCard{
+    width: 30%;
+}
+#imagenProductos{
+ width: 10px !important;   
+}
 /*footer*/
 .footer{
     margin-top: 7% !important;
