@@ -95,14 +95,15 @@
 			
 		</div>
 		<figcaption class="info-wrap">
-                    <a href="#" class="title">${prod.nombre_producto}</a><br>
-                    <p>${prod.cantidad_producto} Articulos disponibles</p><br>
+                    <h5>${prod.nombre_producto}</h5><br>
+                    <p>${prod.cantidad_producto} Articulos disponibles</p>
                     <a class="" href="verProducto?id=${prod.id_producto}"><i class="fas fa-info-circle"></i> Ver más</a>
 			<div class="action-wrap">
-                            <a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary btn-sm float-right"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a><br>
+                           
 				<div class="price-wrap h5">
-					<span class="price-new">${prod.precio_producto}€</span>
+                                    <br><span class="price-new">${prod.precio_producto}€</span>
 				</div> <!-- price-wrap.// -->
+                                 <a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary btn-sm float-right"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a><br>
 			</div> <!-- action-wrap -->
 		</figcaption>
 	</figure> <!-- card // -->
