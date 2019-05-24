@@ -736,4 +736,19 @@ model.addAttribute("listaCarrito", listaCarrito);
         }
         
     }
+      @RequestMapping(value = "modificarFact", method = RequestMethod.GET)
+    public String modificarController(@RequestParam("id") int id, Model model) {
+        FacturaDAO fdao = new FacturaDAO();
+        Factura factura = new Factura();
+        factura.setId_factura(id);
+        model.addAttribute("factura",factura);
+        
+        return "modificarFact";
+    }
+     @RequestMapping(value = "modificarFact", method = RequestMethod.POST)
+    public String modificarfacturaController(@ModelAttribute("factura") Factura factura) {
+        FacturaDAO fdao = new FacturaDAO();
+        fdao.modificarFactura(factura);
+        return "verPedidos";
+    }
 }

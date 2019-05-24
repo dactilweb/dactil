@@ -114,5 +114,14 @@ public int recuperarIdFactura(int id_cliente){
             } catch (Exception e) {
             }
         }
+    
+    public void modificarFactura (Factura factura){
+        sql="UPDATE tbl_facturas SET estado_factura='"+factura.getEstado_factura()+"'WHERE id_factura="+factura.getId_factura()+"";
+        try {
+                PreparedStatement modificar=cn.prepareStatement(sql);
+                int n=modificar.executeUpdate();
+            } catch (Exception e) {
+            }
+    }
 }
 
