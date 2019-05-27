@@ -4,6 +4,7 @@
     Author     : Manu
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -13,20 +14,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Dactil: Todos los productos</title>
+        <jsp:include page="style.jsp" />
     </head>
     <body>
+         <jsp:include page="nav.jsp" />
+        <div class="contenido">
         <h1>Todos los productos</h1>
-        <table>
+        <table class="table table-hover">
             <thead>
                 
                 <tr align="center">
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Referencia</th>
-                    <th>Disponibilidad</th>
-                   
+                    <th th scope="col">Nombre</th>
+                    <th th scope="col">Descripcion</th>
+                    <th th scope="col">Cantidad</th>
+                    <th th scope="col">Precio</th>
+                    <th th scope="col">Referencia</th>
+                    <th th scope="col">Disponibilidad</th>
+                    <th th scope="col"></th>
+                    <th th scope="col"></th>
                     
                 </tr>
             </thead>
@@ -52,5 +57,7 @@
         </table>
         <a href="crearProducto"><h5>Insertar Productos</h5></a>
         <a href="panelcontrol"><h5>Volver</h5></a>
+        </div>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>

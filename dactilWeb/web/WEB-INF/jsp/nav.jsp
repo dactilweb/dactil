@@ -91,22 +91,22 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li <% out.println((titulo.equals("Inicio"))?"class='nav-item active'":""); %>>
+            <li <% out.println((titulo.equals("Inicio")) ? "class='nav-item active'" : ""); %>>
                 <a class="nav-link" href="index">Inicio</a>
             </li>
-            <li <% out.println((titulo.equals("Interior"))?"class='nav-item active'":""); %>>
+            <li <% out.println((titulo.equals("Interior")) ? "class='nav-item active'" : ""); %>>
                 <a class="nav-link" href="interior">Interior</a>
             </li>
-            <li <% out.println((titulo.equals("Exterior"))?"class='nav-item active'":""); %>>
+            <li <% out.println((titulo.equals("Exterior")) ? "class='nav-item active'" : ""); %>>
                 <a class="nav-link" href="exterior">Exterior</a>
             </li>
-            <li <% out.println((titulo.equals("Piscinas"))?"class='nav-item active'":""); %>>
+            <li <% out.println((titulo.equals("Piscinas")) ? "class='nav-item active'" : ""); %>>
                 <a class="nav-link" href="piscinas">Iluminación Piscinas</a>
             </li>
 
             <c:choose>
                 <c:when test="${us.getNivel() == 1}">
-                    <li <% out.println((titulo.equals("Panel"))?"class='nav-item active'":""); %>>
+                    <li <% out.println((titulo.equals("Panel")) ? "class='nav-item active'" : ""); %>>
                         <a class="nav-link" href="panelcontrol">Panel De Control</a>
                     </li>
                 </c:when>
@@ -124,85 +124,85 @@
         <c:choose>
 
             <c:when test="${sessionScope.us != null}">
-         
 
 
-                   
-                    <article class="box">
-	<div class="icontext">
-		
-		<div class="text-wrap dropdown">
-			<small></small>
-			<a href="#" class="b" data-toggle="dropdown" data-offset="20,10" aria-expanded="false"> 
-                            <div class="" style="color:black;"><i class="fas fa-shopping-cart"></i><span class="badge">${numeroCarrito}</span><i class="fas fa-caret-down"></i></div>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right" style="min-width: 250px; position: absolute; transform: translate3d(-87px, 42px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-end">
-				<article class="p-2">			
+
+
+                <article class="box">
+                    <div class="icontext">
+
+                        <div class="text-wrap dropdown">
+                            <small></small>
+                            <a href="#" class="b" data-toggle="dropdown" data-offset="20,10" aria-expanded="false"> 
+                                <div class="" style="color:black;"><i class="fas fa-shopping-cart"></i><span class="badge">${numeroCarrito}</span><i class="fas fa-caret-down"></i></div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="min-width: 250px; position: absolute; transform: translate3d(-87px, 42px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-end">
+                                <article class="p-2">			
                                     <h4>Carrito</h4>
                                     <c:forEach items="${listaCarrito}" var="linea">
-					<hr>
-					<figure class="media">
-						<div class="img-wrap"><img height="50px" src="imgProductos/${linea.foto_producto}" class=""></div>
-						<figcaption class="media-body">
-							<a style="color:black;"href="verProducto?id=${linea.id_producto}">${linea.nombre_producto} </a>  <a href="eliminarCarrito?id=${linea.id_lineafactura}"> <i style="color:red;"class="fas fa-times"></i></a><br>
-                                                        <span class="text-muted">Cantidad: ${linea.cantidad_compra}</span><br>
-							<span class="text-muted">Precio: ${linea.precio_producto} €</span>
-						</figcaption>
-					</figure> <!-- media.// -->
+                                        <hr>
+                                        <figure class="media">
+                                            <div class="img-wrap"><img height="50px" src="imgProductos/${linea.foto_producto}" class=""></div>
+                                            <figcaption class="media-body">
+                                                <a style="color:black;"href="verProducto?id=${linea.id_producto}">${linea.nombre_producto} </a>  <a href="eliminarCarrito?id=${linea.id_lineafactura}"> <i style="color:red;"class="fas fa-times"></i></a><br>
+                                                <span class="text-muted">Cantidad: ${linea.cantidad_compra}</span><br>
+                                                <span class="text-muted">Precio: ${linea.precio_producto} €</span>
+                                            </figcaption>
+                                        </figure> <!-- media.// -->
                                     </c:forEach>
-                                        <hr>
-                                       <c:choose>
-                <c:when test="${fn:length(listaCarrito)>0}">
-                     <figure class="media">
-						
-						<figcaption class="media-body">
-							<span class="text-muted">Total: ${totalprecio} €</span> <a class="btn btn-primary" href="carritover" role="button">Ver más</a><br>
-						</figcaption>
-					</figure> <!-- media.// -->
-                            
-                                        <hr>
-					<figure class="media">
-						
-						<figcaption class="media-body">
-                                                    
-							<div class="paypalboton" style="margin-left: 5%;">
-                            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST" target="_top">
-                                <input type="hidden" name="business" value="10000189.joan23@fje.edu"/>
-                                <input type="hidden" name="return" value="${initParam['urlretorno']}"/>
-                                <input type="hidden" name="cmd" value="_cart"/>
-                                <input type="hidden" name="upload" value="1"/>
-                                <input type="hidden" name="currency_code" value="EUR">
-                                <input type="hidden" name="lc" value="ES">
-                                <input type="hidden" name="country" value="ES">
-                                <c:forEach items="${listaCarrito}" var="linea">
-                                    <c:set var="c" value="${c+1}"/>
-                                    <input type="hidden" name="item_name_${c}" value="${linea.nombre_producto}" />
-                                    <input type="hidden" name="item_number_${c}" value="${linea.id_producto}" />
-                                    <input type="hidden" name="amount_${c}" value="${linea.precio_producto}" />
-                                    <input type="hidden" name="quantity_${c}" value="${linea.cantidad_compra}" />
-                                </c:forEach>
+                                    <hr>
+                                    <c:choose>
+                                        <c:when test="${fn:length(listaCarrito)>0}">
+                                            <figure class="media">
 
-                                <input type="image" src="imagenes/pagarahora.png" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet." height="38px" class="img-fluid" alt="Responsive image">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-                            </form>
+                                                <figcaption class="media-body">
+                                                    <span class="text-muted">Total: ${totalprecio} €</span> <a class="btn btn-primary" href="carritover" role="button">Ver más</a><br>
+                                                </figcaption>
+                                            </figure> <!-- media.// -->
+
+                                            <hr>
+                                            <figure class="media">
+
+                                                <figcaption class="media-body">
+
+                                                    <div class="paypalboton" style="margin-left: 5%;">
+                                                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST" target="_top">
+                                                            <input type="hidden" name="business" value="10000189.joan23@fje.edu"/>
+                                                            <input type="hidden" name="return" value="${initParam['urlretorno']}"/>
+                                                            <input type="hidden" name="cmd" value="_cart"/>
+                                                            <input type="hidden" name="upload" value="1"/>
+                                                            <input type="hidden" name="currency_code" value="EUR">
+                                                            <input type="hidden" name="lc" value="ES">
+                                                            <input type="hidden" name="country" value="ES">
+                                                            <c:forEach items="${listaCarrito}" var="linea">
+                                                                <c:set var="c" value="${c+1}"/>
+                                                                <input type="hidden" name="item_name_${c}" value="${linea.nombre_producto}" />
+                                                                <input type="hidden" name="item_number_${c}" value="${linea.id_producto}" />
+                                                                <input type="hidden" name="amount_${c}" value="${linea.precio_producto}" />
+                                                                <input type="hidden" name="quantity_${c}" value="${linea.cantidad_compra}" />
+                                                            </c:forEach>
+
+                                                            <input type="image" src="imagenes/pagarahora.png" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet." height="38px" class="img-fluid" alt="Responsive image">
+                                                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                                                        </form>
 
 
 
-                        </div>
-						</figcaption>
-                                	</figure> <!-- media.// -->
-                </c:when>
-                <c:otherwise>
-                    <p>Tu carrito está vacío, porfavor añade productos para continuar.</p>
-                </c:otherwise>
-            </c:choose>
-					
-				
-				</article>
-			</div> <!--  dropdown-menu .// -->
-		</div> <!-- text-wrap.// -->
-	</div> <!-- icontext.// -->
-</article> <!-- box.// -->
+                                                    </div>
+                                                </figcaption>
+                                            </figure> <!-- media.// -->
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>Tu carrito está vacío, porfavor añade productos para continuar.</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+                                </article>
+                            </div> <!--  dropdown-menu .// -->
+                        </div> <!-- text-wrap.// -->
+                    </div> <!-- icontext.// -->
+                </article> <!-- box.// -->
 
                 <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
                     <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
@@ -225,111 +225,133 @@
 
     </div>
 </nav>
-<% 
-  if(!titulo.equals("Detalle")){
-        
+<%
+    if (!titulo.equals("Detalle")) {
+
 %>  
 <div class="contenidoBanner">
-    <img class="banner" src="">
-    <% 
-    if(titulo.equals("Interior")){
-        if(subtitulo.equals("bombillas")){
+   
+    <%        if (titulo.equals("Interior")) {
+            if (subtitulo.equals("bombillas")) {
     %>
     <div class="img"><img src="imagenes/bombillas.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }if(subtitulo.equals("lamparas")){
+            }
+            if (subtitulo.equals("lamparas")) {
         %>
     <div class="img"><img src="imagenes/lamparas.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }if(subtitulo.equals("tirasled")){
+            }
+            if (subtitulo.equals("tirasled")) {
         %>
     <div class="img"><img src="imagenes/tled.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }if(subtitulo.equals("interior")){
+            }
+            if (subtitulo.equals("interior")) {
         %> 
     <div class="img"><img src="imagenes/interior.png" class="img-fluid" alt="Responsive image"></div>
         <%
-     }
- }
+                }
+            }
         %>
-        <% 
-     if(titulo.equals("Inicio")){
+        <%
+            if (titulo.equals("Inicio")) {
         %> 
     <div class="img"><img src="imagenes/inicio.png" class="img-fluid" alt="Responsive image"></div>
         <%
-     }
+            }
         %>
-        <% 
-     if(titulo.equals("Exterior")){
-         if(subtitulo.equals("extLed")){
+        <%
+            if (titulo.equals("Exterior")) {
+                if (subtitulo.equals("extLed")) {
         %>
     <div class="img"><img src="imagenes/extled.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-        if(subtitulo.equals("extFocoLed")){
+            }
+            if (subtitulo.equals("extFocoLed")) {
         %>
     <div class="img"><img src="imagenes/extfoco.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-    if(subtitulo.equals("extApliques")){
+            }
+            if (subtitulo.equals("extApliques")) {
         %>
     <div class="img"><img src="imagenes/apliques.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-        if(subtitulo.equals("exterior")){
+            }
+            if (subtitulo.equals("exterior")) {
         %> 
     <div class="img"><img src="imagenes/exterior.png" class="img-fluid" alt="Responsive image"></div>
         <%
+                }
             }
-     }
         %>
-        <% 
-     if(titulo.equals("Piscinas")){
+        <%
+            if (titulo.equals("Piscinas")) {
         %> 
     <div class="img"><img src="imagenes/piscinas.png" class="img-fluid" alt="Responsive image"></div>
         <%
-     }
-     if(titulo.equals("Carrito")){
+            }
+            if (titulo.equals("Carrito")) {
         %>
     <div class="img"><img src="imagenes/carrito.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Quienes_somos")){
+            }
+            if (titulo.equals("Quienes_somos")) {
         %>
     <div class="img"><img src="imagenes/qsomos.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Donde_estamos")){
+            }
+            if (titulo.equals("Donde_estamos")) {
         %>
     <div class="img"><img src="imagenes/dondestamos.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Garantias_y_Devoluciones")){
+            }
+            if (titulo.equals("Garantias_y_Devoluciones")) {
         %>
     <div class="img"><img src="imagenes/garydev.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Forma_Entrega")){
+            }
+            if (titulo.equals("Forma_Entrega")) {
         %>
     <div class="img"><img src="imagenes/fpago.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Funcionamiento_Envio")){
+            }
+            if (titulo.equals("Funcionamiento_Envio")) {
         %>
     <div class="img"><img src="imagenes/envios.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Panel")){
+            }
+            if (titulo.equals("Panel")) {
         %>
     <div class="img"><img src="imagenes/panelcontrol.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-if(titulo.equals("Editar_Perfil")){
+            }
+            if (titulo.equals("Editar_Perfil")) {
         %>
     <div class="img"><img src="imagenes/editperf.png" class="img-fluid" alt="Responsive image"></div>
         <%
-        }
-}
+            }
+            if (titulo.equals("Mis_Pedidos")) {
+        %>
+    <div class="img"><img src="imagenes/mispedidos.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+            }
+            if (titulo.equals("pedidos")) {
+        %>
+    <div class="img"><img src="imagenes/pedidos.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+            }
+            if (titulo.equals("verUsers")) {
+        %>
+    <div class="img"><img src="imagenes/usuarios.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+            }
+            if (titulo.equals("productosAll")) {
+        %>
+    <div class="img"><img src="imagenes/productos.png" class="img-fluid" alt="Responsive image"></div>
+        <%
+                }
+            }
         %>
 
 

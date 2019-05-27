@@ -47,8 +47,11 @@
                 });
             });
          </script>
+         <jsp:include page="style.jsp" />
     </head>
     <body>
+         <jsp:include page="nav.jsp" />
+        <div class="contenido">
         <h1>Insertar Producto</h1>
              <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data">
             Nombre:
@@ -76,6 +79,8 @@
                 </form:select><br>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
         </form:form> 
-            <a href="verProductos"><h5>Volver</h5></a>
+            <a href="verProductosAll"><h5>Volver</h5></a>
+            </div>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>

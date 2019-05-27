@@ -15,6 +15,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="style.jsp" />
         <title>Dactil: Registro</title>
          <script type="text/javascript"> 
                $(document).ready(function(){
@@ -74,6 +75,8 @@
          </script>
     </head>
     <body>
+        <jsp:include page="nav.jsp" />
+        <div class="contenido">
         <h1>Creación de usuarios</h1>
            <form:form modelAttribute="usuarios" action="nuevoUsuario" method="POST">
             Nombre:
@@ -111,6 +114,8 @@
              <span id="error_passwd" ></span><br/>
             <input type="submit" value="Crear" class="btn btn-success" id="boton"/>
         </form:form> 
-            <a href="login"><h5>Volver</h5></a>
+            <a href="verUsers"><h5>Volver</h5></a>
+            </div>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>

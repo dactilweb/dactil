@@ -3,32 +3,34 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <title>Dactil: Pedidos</title>
+        <jsp:include page="style.jsp" />
     </head>
 
     <body>
-        <h1>Pedidos realizados</h1>
-       <table>
+        <jsp:include page="nav.jsp" />
+        <div class="contenido">
+       <table class="table table-hover">
             <thead>
                 
                 <tr align="center">
-                    <th>Numero Factura</th>
-                    <th>Nombre Cliente</th>
-                    <th>Fecha Factura</th>
-                    <th>Nombre Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad Compra</th> 
-                    <th>Estado</th> 
+                    <th scope="col">Numero Factura</th>
+                    <th scope="col">Nombre Cliente</th>
+                    <th scope="col">Fecha Factura</th>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad Compra</th> 
+                    <th scope="col">Estado</th> 
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="fact" items="${listaFactura}">
+                    
                     <tr align="center">
                         <td>${fact.id_factura}</td>
                         <td>${fact.nombre_cliente} ${fact.apellido_cliente}</td>
@@ -48,5 +50,7 @@
             </tbody>
         </table>
         <a href="panelcontrol"><h5>Volver</h5></a>
+        </div>
+        <jsp:include page="footer.jsp" />
     </body>
 </html>
