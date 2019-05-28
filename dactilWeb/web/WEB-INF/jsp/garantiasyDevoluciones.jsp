@@ -21,7 +21,7 @@
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
              <div class="contenido2">
-        <h1>Garantias y devoluciones</h1>
+        <h1>Garantías y devoluciones</h1>
         <br>
         <p>
             La Garantía total está incluida en nuestros productos sin costes extra. Podrás consultar la duración en la página del producto. El plazo empieza en el momento que se hace la factura de compra del producto.<br>

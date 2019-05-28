@@ -33,7 +33,7 @@
           <img src="imagenes/envio.png"class="imagenenvio"/>
         
           <br>
-        <h2>¡Con un metodo de envio como este todo son ventajas!</h2>
+        <h2>¡Con un método de envío como este todo son ventajas!</h2>
         </div>
         </div>
         <jsp:include page="footer.jsp" />

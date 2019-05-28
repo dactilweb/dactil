@@ -30,7 +30,7 @@
             <b>Puedes pagar tu compra online con:</b><br><br>
 
             Tu tarjeta de crédito o débito (VISA, Mastercard, American Express, Discover Network, etc.).<br><br>
-    A través de tu cuenta PayPal. Con PayPal, puedes pagar de forma segura todas tus compras en IKEA.es sin costes adicionales.
+    A través de tu cuenta PayPal.
         </p>
         <img src="imagenes/formaspago.png"class="imagenenvio"/>
         </div>

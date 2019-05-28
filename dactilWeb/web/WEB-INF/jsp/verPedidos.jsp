@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Pedidos</title>
+        <title>Pedidos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <jsp:include page="style.jsp" />
@@ -20,7 +20,7 @@
                 <thead>
 
                     <tr align="center">
-                        <th scope="col">Numero Factura</th>
+                        <th scope="col">Número Factura</th>
                         <th scope="col">Nombre Cliente</th>
                         <th scope="col">Fecha Factura</th>
                         <th scope="col">Nombre Producto</th>
@@ -44,7 +44,7 @@
 
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${fact.id_factura}">
-                                    Modificar
+                                   <i class="fas fa-edit"></i> Modificar
                                 </button>
                             </td>
 
@@ -54,7 +54,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modificar Estado</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -81,7 +81,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <a href="panelcontrol"><h5>Volver</h5></a>
+            <a href="panelcontrol" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
         </div>
         <jsp:include page="footer.jsp" />
     </body>

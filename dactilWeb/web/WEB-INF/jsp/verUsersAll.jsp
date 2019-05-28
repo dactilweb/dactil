@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Usuarios Deshabilitados</title>
+        <title>Usuarios Deshabilitados</title>
          <jsp:include page="style.jsp" />
     </head>
     <body>
@@ -27,9 +27,9 @@
                     <th th scope="col">Nombre</th>
                     <th th scope="col">Apellido</th>
                     <th th scope="col">Segundo Apellido</th>
-                    <th th scope="col">Direccion cliente</th>
+                    <th th scope="col">Dirección cliente</th>
                     <th th scope="col">Email cliente</th>
-                    <th th scope="col">Telefono cliente</th>
+                    <th th scope="col">Teléfono cliente</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -45,11 +45,11 @@
                         <td>${users.telefono_cliente}</td>
                         
                         <td>
-                            <a href="modificar?id=${users.id_cliente}"><button type="button" class="btn btn-info">Modificar</button></a>
+                            <a href="modificar?id=${users.id_cliente}"><button type="button" class="btn btn-primary"><i class="fas fa-user-edit"></i> Modificar</button></a>
                         
                         </td>
                         <td>
-                            <a href="habilitar?id=${users.id_cliente}"><button type="button" class="btn btn-warning">Habilitar</button></a>
+                            <a href="habilitar?id=${users.id_cliente}"><button type="button" class="btn btn-warning"><i class="far fa-check-circle"></i> Habilitar</button></a>
                         
                         </td>
                         
@@ -57,7 +57,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        <a href="verUsers"><h5>Volver</h5></a>
+        <a href="verUsers" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
         </div>
         <jsp:include page="footer.jsp" />
     </body>

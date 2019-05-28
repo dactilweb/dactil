@@ -24,21 +24,21 @@
         <h1>Modificar Usuarios</h1>
         <form:form modelAttribute="usuarios" action="modificarUsuario" method="POST">
 
-            Nombre:
+            Nombre
             <form:input path="nombre_cliente"/> <br/>
-            Apellido:
+            Apellido
             <form:input path="apellido_cliente"/> <br/>
-            Apellido 2:
+            Apellido 2
             <form:input path="apellido2_cliente"/> <br/>
-            Direccion:
+            Dirección:
             <form:input path="direccion_cliente"/> <br/>
-            Direccion 2:
+            Dirección 2
             <form:input path="direccion2_cliente"/> <br/>
-            Telefono:
+            Teléfono
             <form:input path="telefono_cliente"/> <br/>
-            Email:
+            Email
             <form:input path="email_cliente"/> <br/>
-            Tipo de usuario:
+            Tipo de usuario
             <form:select path="nivel">
                 <form:option value="1" label="Administrador"/>
                 <form:option value="2" label="Usuario"/>
@@ -46,9 +46,9 @@
           
         
             <form:hidden path="id_cliente"/>
-            <input type="submit" value="Modificar" class="btn btn-success" id="boton"/>
+            <input type="submit" value="Modificar" class="btn btn-primary" id="boton"/>
       </form:form> 
-            <a href="verUsers"><h5>Volver</h5></a>
+            <a href="verUsers" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
             </div>
         <jsp:include page="footer.jsp" />
     </body>

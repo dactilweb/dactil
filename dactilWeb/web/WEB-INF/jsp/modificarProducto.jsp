@@ -25,30 +25,30 @@
            <h1>Modificar Productos</h1>
         <form:form modelAttribute="productos" action="modificarProducto" method="POST">
 
-            Nombre:
+            Nombre
             <form:input path="nombre_producto"/> <br/>
-            Descripción:
+            Descripción
             <form:input path="descripcion_producto"/> <br/>
-            Cantidad:
+            Cantidad
             <form:input path="cantidad_producto"/> <br/>
-            Precio:
+            Precio
             <form:input path="precio_producto"/> <br/>
-            Foto:
+            Foto
             <form:input path="foto_producto"/> <br/>
-            Numero de referencia:
+            Número de referencia
             <form:input path="referencia_producto"/> <br/>
             
-            Categoria:
+            Categoria
 		<form:select path="id_subcategoria">
                      <c:forEach var="cat" items="${listaCategoria}">
 			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} - ${cat.nombre_subcategoria}"/>
 			</c:forEach>
                 </form:select><br>
-            <form:hidden path="id_producto"/>
-            <input type="submit" value="Modificar" class="btn btn-success" id="boton"/>
+                <form:hidden path="id_producto"/><br>
+            <input type="submit" value="Modificar" class="btn btn-primary" id="boton"/>
         </form:form>
              
-            <a href="verProductosAll"><h5>Volver</h5></a>
+            <a href="verProductosAll" class="btn btn-secondary active" role="button" aria-pressed="true">Volver</a>
              </div>
         <jsp:include page="footer.jsp" />
     </body>

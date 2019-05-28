@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dactil: Todos los productos</title>
+        <title>Todos los productos</title>
         <jsp:include page="style.jsp" />
     </head>
     <body>
@@ -25,7 +25,7 @@
                 
                 <tr align="center">
                     <th th scope="col">Nombre</th>
-                    <th th scope="col">Descripcion</th>
+                    <th th scope="col">Descripción</th>
                     <th th scope="col">Cantidad</th>
                     <th th scope="col">Precio</th>
                     <th th scope="col">Referencia</th>
@@ -46,17 +46,64 @@
                         <td>${prod.disp_prod}</td>
                        
                         <td>
-                            <a href="modificarProd?id=${prod.id_producto}"><button type="button" class="btn btn-info">Modificar</button></a>
+                            <a href="modificarProd?id=${prod.id_producto}"><button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Modificar</button></a>
                         
                         </td>
                         <td>
-                            <a href="eliminarProdDef?id=${prod.id_producto}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <a href="eliminarProdDef?id=${prod.id_producto}"><button type="button" class="btn btn-danger"><i class="fas fa-minus-circle"></i> Eliminar</button></a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <a href="crearProducto"><h5>Insertar Productos</h5></a>
-        <a href="panelcontrol"><h5>Volver</h5></a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearProducto">
+                                    <i class="fas fa-plus-circle"></i> Nuevo Producto
+                                </button>
+        <a href="panelcontrol" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
+        <div class="modal fade" id="crearProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data">
+            Nombre:
+            <form:input path="nombre_producto" id="nombre_producto" type="text"/>  <br>
+            <span id="error_nombre"></span>
+            Descripcion:
+            <form:input path="descripcion_producto" id="descripcion_producto" type="text"/> <br>
+            <span id="error_descripcion"></span>
+            Cantidad:
+            <form:input path="cantidad_producto" id="cantidad_producto" type="text"/> <br>
+            <span id="error_cantidad"></span>
+            Precio:
+            <form:input path="precio_producto" id="precio_producto" type="text"/> <br>
+            <span id="error_precio"></span>
+            Foto:
+            <form:input type="file" name="file" size="50" path="fichero" id="fichero"></form:input><br>
+            Referencia:
+            <form:input path="referencia_producto" id="referencia_producto" type="text"/> <br>
+            <span id="error_referencia"></span>
+            Categoria:
+		<form:select path="id_subcategoria">
+                     <c:forEach var="cat" items="${listaCategoria}">
+			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} - ${cat.nombre_subcategoria}"/>
+			</c:forEach>
+                </form:select><br>
+           
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Crear Producto</button>
+        </form:form> 
+      </div>
+    </div>
+  </div>
+</div>
         </div>
         <jsp:include page="footer.jsp" />
     </body>

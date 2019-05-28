@@ -374,7 +374,20 @@ public class DactilController {
             return "login";
         }
     }
-
+    @RequestMapping(value = "crearUsuarioAd", method = RequestMethod.POST)
+    public RedirectView crearUsuarioAd(@Valid @ModelAttribute("usuarios") Usuarios usuarios, BindingResult resultado, Model model) throws SQLException {
+ 
+        if (resultado.hasErrors()) {
+            model.addAttribute("usuarios", usuarios);
+            RedirectView respuesta = new RedirectView("index");
+            return respuesta;
+        } else {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.nuevoUsuario(usuarios);
+            RedirectView respuesta = new RedirectView("verUsers");
+            return respuesta;
+        }
+    }
     @RequestMapping("logout")
     public RedirectView logoutController(SessionStatus cerrarSesion, Model model) {
         cerrarSesion.setComplete();
@@ -418,7 +431,7 @@ public class DactilController {
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
-        model.addAttribute("titulo", "modificar");
+        model.addAttribute("titulo", "verUsers");
         return "modificarUsuario";
     }
 
@@ -460,7 +473,7 @@ public class DactilController {
     }
 
     @RequestMapping(value = "nuevoProducto", method = RequestMethod.POST)
-    public String nuevoProductoController(@Valid @ModelAttribute("productos") Productos productos, BindingResult resultado, Model model) throws SQLException, FileNotFoundException, IOException {
+    public RedirectView nuevoProductoController(@Valid @ModelAttribute("productos") Productos productos, BindingResult resultado, Model model) throws SQLException, FileNotFoundException, IOException {
         model.addAttribute("numeroCarrito", numeroCarrito);
         CommonsMultipartFile uploaded = productos.getFichero();
         productos.setFoto_producto(uploaded.getOriginalFilename());
@@ -470,14 +483,16 @@ public class DactilController {
         os.write(uploaded.getBytes());
         if (resultado.hasErrors()) {
             model.addAttribute("productos", productos);
-            return "crearProducto";
+            RedirectView respuesta = new RedirectView("index");
+            return respuesta;
         } else {
             ProductosDAO pdao = new ProductosDAO();
             pdao.nuevoProducto(productos);
 
             pdao.getListaProductos(listaProductos, apartado);
             model.addAttribute("listaProductos", listaProductos);
-            return "verProductosAll";
+            RedirectView respuesta = new RedirectView("verProductosAll");
+            return respuesta;
         }
     }
 
@@ -549,6 +564,11 @@ public class DactilController {
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
         model.addAttribute("titulo", "productosAll");
+         Productos productos = new Productos();
+        model.addAttribute("productos", productos);
+        CategoriaDAO cdao = new CategoriaDAO();
+        cdao.getListaCat(listaCategoria);
+        model.addAttribute("listaCategoria", listaCategoria);
         return "verProductosAll";
     }
 

@@ -21,9 +21,10 @@
          <jsp:include page="nav.jsp" />
          <div class="contenido">
              <div class="contenido2">
-        <a href="verPedidos"><h5>Ver Pedidos</h5></a>
-        <a href="verUsers"><h5>Ver Usuarios</h5></a>
-        <a href="verProductosAll"><h5>Ver Productos</h5></a>
+                 <a href="verPedidos" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class="fas fa-box-open"></i> Ver Pedidos</a>
+                  <a href="verUsers" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class="fas fa-users"></i> Ver Usuarios</a>
+                   <a href="verProductosAll" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i class="far fa-newspaper"></i> Ver Productos</a>
+ 
          </div>
          </div>
           <jsp:include page="footer.jsp" />

@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>¿Quienes somos?</title>
+        <title>¿Quiénes somos?</title>
      
             <jsp:include page="style.jsp" />
        
@@ -14,7 +14,7 @@
                 <jsp:include page="nav.jsp" />
         <div class="contenido">
              <div class="contenido2">
-        <h1>¿Quienes somos?</h1>
+        <h1>¿Quiénes somos?</h1>
         
         <p>
             Dactil se fundó en 1990 en Barcelona, 
