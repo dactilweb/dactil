@@ -8,6 +8,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Dactil: Pedidos</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
         <jsp:include page="style.jsp" />
     </head>
 
@@ -47,15 +49,17 @@
                             </td>
 
                         </tr>
+
                     <div class="modal fade" id="exampleModalCenter${fact.id_factura}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            
+                            <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modificar Estado</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                                <div class="modal-body">
                                     <form:form modelAttribute="factura" action="modificarFact" method="POST">
                                         Estado:
                                         <form:select path="estado_factura">
@@ -63,13 +67,15 @@
                                             <form:option value="completado y enviado" label="completado y enviado"/>
                                         </form:select>
                                         <form:hidden path="id_factura" value="${fact.id_factura}"/>
-                                
+
+                                   
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                     <input type="submit" value="Modificar" class="btn btn-primary" id="boton"/>
-                                    </form:form>
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                     </form:form>
                                 </div>
-                            
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
