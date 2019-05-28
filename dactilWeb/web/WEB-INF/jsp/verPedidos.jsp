@@ -14,42 +14,68 @@
     <body>
         <jsp:include page="nav.jsp" />
         <div class="contenido">
-       <table class="table table-hover">
-            <thead>
-                
-                <tr align="center">
-                    <th scope="col">Numero Factura</th>
-                    <th scope="col">Nombre Cliente</th>
-                    <th scope="col">Fecha Factura</th>
-                    <th scope="col">Nombre Producto</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Cantidad Compra</th> 
-                    <th scope="col">Estado</th> 
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="fact" items="${listaFactura}">
-                    
+            <table class="table table-hover">
+                <thead>
+
                     <tr align="center">
-                        <td>${fact.id_factura}</td>
-                        <td>${fact.nombre_cliente} ${fact.apellido_cliente}</td>
-                        <td>${fact.fecha_factura}</td>
-                        <td>${fact.nombre_producto}</td>
-                        <td>${fact.precio_producto}</td>
-                        <td>${fact.cantidad_compra}</td>
-                        <td>${fact.estado_factura}</td>
-                       
-                        <td>
-                            <a href="modificarFact?id=${fact.id_factura}"><button type="button" class="btn btn-info">Modificar</button></a>
-                        
-                        </td>
-                       
+                        <th scope="col">Numero Factura</th>
+                        <th scope="col">Nombre Cliente</th>
+                        <th scope="col">Fecha Factura</th>
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad Compra</th> 
+                        <th scope="col">Estado</th> 
+                        <th scope="col"></th>
                     </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="fact" items="${listaFactura}">
+
+                        <tr align="center">
+                            <td>${fact.id_factura}</td>
+                            <td>${fact.nombre_cliente} ${fact.apellido_cliente}</td>
+                            <td>${fact.fecha_factura}</td>
+                            <td>${fact.nombre_producto}</td>
+                            <td>${fact.precio_producto}</td>
+                            <td>${fact.cantidad_compra}</td>
+                            <td>${fact.estado_factura}</td>
+
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${fact.id_factura}">
+                                    Modificar
+                                </button>
+                            </td>
+
+                        </tr>
+                    <div class="modal fade" id="exampleModalCenter${fact.id_factura}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modificar Estado</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                    <form:form modelAttribute="factura" action="modificarFact" method="POST">
+                                        Estado:
+                                        <form:select path="estado_factura">
+                                            <form:option value="en proceso" label="en proceso"/>
+                                            <form:option value="completado y enviado" label="completado y enviado"/>
+                                        </form:select>
+                                        <form:hidden path="id_factura" value="${fact.id_factura}"/>
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                     <input type="submit" value="Modificar" class="btn btn-primary" id="boton"/>
+                                    </form:form>
+                                </div>
+                            
+                        </div>
+                    </div>
                 </c:forEach>
-            </tbody>
-        </table>
-        <a href="panelcontrol"><h5>Volver</h5></a>
+                </tbody>
+            </table>
+            <a href="panelcontrol"><h5>Volver</h5></a>
         </div>
         <jsp:include page="footer.jsp" />
     </body>

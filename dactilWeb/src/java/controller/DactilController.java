@@ -508,6 +508,8 @@ public class DactilController {
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
         model.addAttribute("titulo", "pedidos");
+        Factura factura = new Factura();
+        model.addAttribute("factura",factura);
         return "verPedidos";
     }
 
@@ -793,9 +795,12 @@ model.addAttribute("listaCarrito", listaCarrito);
         return "modificarFact";
     }
      @RequestMapping(value = "modificarFact", method = RequestMethod.POST)
-    public String modificarfacturaController(@ModelAttribute("factura") Factura factura) {
+    public RedirectView modificarfacturaController(@ModelAttribute("factura") Factura factura, Model model) {
         FacturaDAO fdao = new FacturaDAO();
         fdao.modificarFactura(factura);
-        return "verPedidos";
+        model.addAttribute("titulo", "pedidos");
+          RedirectView respuesta = new RedirectView("verPedidos");
+        return respuesta;
     }
 }
+   
