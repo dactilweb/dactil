@@ -103,7 +103,15 @@
 				<div class="price-wrap h5">
                                     <br><span class="price-new">${prod.precio_producto}€</span>
 				</div> <!-- price-wrap.// -->
-                                 <a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary btn-sm float-right"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a><br>
+                                    <c:choose>
+                                        <c:when test="${prod.cantidad_producto<=0}">
+                                           <a href="" class="btn btn-primary btn-sm float-right disabled"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a><br>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary btn-sm float-right"> <i class="fas fa-shopping-cart"></i> Añadir al carrito </a><br>
+                                        </c:otherwise>
+                                    </c:choose>
+                                
 			</div> <!-- action-wrap -->
 		</figcaption>
 	</figure> <!-- card // -->

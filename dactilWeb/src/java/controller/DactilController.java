@@ -65,7 +65,6 @@ public class DactilController {
     int numeroCarrito = 0;
     int id_cliente = 0;
     double totalprecio = 0;
-
     public DactilController() {
 
     }
@@ -778,9 +777,11 @@ public class DactilController {
         numeroCarrito = numeroCarrito - 1;
         return respuesta;
     }
+ 
 
     @RequestMapping(value = "misPedidos", method = RequestMethod.GET)
-    public String misPedidosController(Model model, HttpServletRequest request, @RequestParam(defaultValue = "0") String compra) throws SQLException {
+   // public String misPedidosController(Model model, HttpServletRequest request, @RequestParam(defaultValue = "0") String compra) throws SQLException {
+    public String misPedidosController(Model model, HttpServletRequest request,@RequestParam(defaultValue = "0") String compra) throws SQLException {
         try {
             model.addAttribute("numeroCarrito", numeroCarrito);
             ProductosDAO pdao = new ProductosDAO();
@@ -791,11 +792,8 @@ public class DactilController {
             HttpSession misession = (HttpSession) request.getSession();
             Usuarios user = (Usuarios) misession.getAttribute("us");
             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
-
             LineaFacturaDAO lfdao = new LineaFacturaDAO();
-            lfdao.getCarritoHecho(id_cliente, lineasPedidos);
             model.addAttribute("lineasPedidos", lineasPedidos);
-
             if (compra.equals("1")) {
                 FacturaDAO fdao = new FacturaDAO();
                 Date myDate = new Date();
@@ -807,9 +805,12 @@ public class DactilController {
                     pro.setCantidad_producto(pro.getCantidad_producto() - p.getCantidad_compra());
                     pdao.gestionStock(pro);
                 }
+                
                 fdao.actualizarFactura(user.getId_cliente(), fechabd);
+                
                 numeroCarrito = 0;
             }
+            lfdao.getCarritoHecho(id_cliente, lineasPedidos);
             lineafacturadao.getPedidos(user.getId_cliente(), this.listaPedidos);
             model.addAttribute("listaPedidos", listaPedidos);
             model.addAttribute("listaCarrito", listaCarrito);
