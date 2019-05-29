@@ -38,7 +38,7 @@
             <form:input path="cantidad_compra" id="cantidad_compra" type="number" max="${productos.getCantidad_producto()}" min="1" value="1"/>  <br>
             <span id="error_nombre"></span>
             <form:hidden path="id_producto"/>
-            <input type="submit" value="Añadir" class="btn btn-success" id="boton"/> 
+            <input type="submit" value="Añadir" class="btn btn-primary" id="boton"/> 
         </form:form> 
             
         </div>
@@ -86,8 +86,8 @@
 				<p class="text-success">Envío Gratis</p>
 				<br>
 				<p>
-					<a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary"> Añadir al Carrito </a>
-					<a href="verProducto?id=${prod.id_producto}" class="btn btn-secondary"> Ver más  </a>
+                                    <a href="addCarrito?id=${prod.id_producto}" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Añadir al Carrito </a><br><br>
+					<a href="verProducto?id=${prod.id_producto}" class="btn btn-secondary"><i class="fas fa-info-circle"></i> Ver más  </a>
 				</p>
 				
 			</div> <!-- action-wrap.// -->

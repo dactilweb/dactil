@@ -107,7 +107,7 @@
             <c:choose>
                 <c:when test="${us.getNivel() == 1}">
                     <li <% out.println((titulo.equals("Panel")) ? "class='nav-item active'" : ""); %>>
-                        <a class="nav-link" href="panelcontrol">Panel De Control</a>
+                        <a class="nav-link" href="panelcontrol">Panel De Control (<i>beta</i>)</a>
                     </li>
                 </c:when>
             </c:choose>

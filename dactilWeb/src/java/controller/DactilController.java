@@ -52,6 +52,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @SessionAttributes("us")
 public class DactilController {
 
+    ArrayList<ProductoLinea> lineasPedidos = new ArrayList<>();
     ArrayList<ProductoLinea> listaCarrito = new ArrayList<>();
     ArrayList<ProductoLinea> listaPedidos = new ArrayList<>();
     ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
@@ -83,12 +84,13 @@ public class DactilController {
         Usuarios user = (Usuarios) misession.getAttribute("us");
         if (misession.getAttribute("us") != null) {
             LineaFacturaDAO lfdao = new LineaFacturaDAO();
+            id_cliente = user.getId_cliente();
             numeroCarrito = lfdao.getNumeroCarrito(user.getId_cliente());
             model.addAttribute("numeroCarrito", numeroCarrito);
             //le pasamos array con carrito entero
             lfdao.getCarrito(user.getId_cliente(), listaCarrito);
             model.addAttribute("listaCarrito", listaCarrito);
-            
+
             double subprecio = 0;
 
             for (ProductoLinea p : listaCarrito) {
@@ -282,7 +284,7 @@ public class DactilController {
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
-        
+
         return "panelcontrol";
 
     }
@@ -358,13 +360,12 @@ public class DactilController {
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
 
-        
         return "crearUsuario";
     }
 
     @RequestMapping(value = "nuevoUsuario", method = RequestMethod.POST)
     public String nuevoUsuario(@Valid @ModelAttribute("usuarios") Usuarios usuarios, BindingResult resultado, Model model) throws SQLException {
- 
+
         if (resultado.hasErrors()) {
             model.addAttribute("usuarios", usuarios);
             return "index";
@@ -374,9 +375,10 @@ public class DactilController {
             return "login";
         }
     }
+
     @RequestMapping(value = "crearUsuarioAd", method = RequestMethod.POST)
     public RedirectView crearUsuarioAd(@Valid @ModelAttribute("usuarios") Usuarios usuarios, BindingResult resultado, Model model) throws SQLException {
- 
+
         if (resultado.hasErrors()) {
             model.addAttribute("usuarios", usuarios);
             RedirectView respuesta = new RedirectView("index");
@@ -388,6 +390,7 @@ public class DactilController {
             return respuesta;
         }
     }
+
     @RequestMapping("logout")
     public RedirectView logoutController(SessionStatus cerrarSesion, Model model) {
         cerrarSesion.setComplete();
@@ -403,7 +406,7 @@ public class DactilController {
         udao.getListaUsuarios(listaUsuarios);
         model.addAttribute("listaUsuarios", listaUsuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
-         Usuarios usuarios = new Usuarios();
+        Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
@@ -440,17 +443,17 @@ public class DactilController {
         RedirectView respuesta = new RedirectView("verUsers");
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
-        if(usuarios.getNivel()==0){
-          if (user.getNivel() == 2) {
-            respuesta.setUrl("editarPerfil");
-            usuarios.setNivel(2);
+        if (usuarios.getNivel() == 0) {
+            if (user.getNivel() == 2) {
+                respuesta.setUrl("editarPerfil");
+                usuarios.setNivel(2);
+            }
+            if (user.getNivel() == 1) {
+                respuesta.setUrl("editarPerfil");
+                usuarios.setNivel(1);
+            }
         }
-        if (user.getNivel() == 1) {
-            respuesta.setUrl("editarPerfil");
-            usuarios.setNivel(1);
-        }   
-        }
-       
+
         UsuariosDAO udao = new UsuariosDAO();
         udao.modificarUsuarios(usuarios);
         return respuesta;
@@ -463,7 +466,7 @@ public class DactilController {
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
         model.addAttribute("listaCategoria", listaCategoria);
-         Usuarios usuarios = new Usuarios();
+        Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
@@ -517,6 +520,7 @@ public class DactilController {
         FacturaDAO fdao = new FacturaDAO();
         fdao.getListaPedidos(listaFactura);
         model.addAttribute("listaFactura", listaFactura);
+
         Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
@@ -524,7 +528,7 @@ public class DactilController {
         model.addAttribute("totalprecio", totalprecio);
         model.addAttribute("titulo", "pedidos");
         Factura factura = new Factura();
-        model.addAttribute("factura",factura);
+        model.addAttribute("factura", factura);
         return "verPedidos";
     }
 
@@ -558,13 +562,13 @@ public class DactilController {
         ProductosDAO prodao = new ProductosDAO();
         prodao.getListaProductosAll(listaProductos);
         model.addAttribute("listaProductos", listaProductos);
-         Usuarios usuarios = new Usuarios();
+        Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
         model.addAttribute("titulo", "productosAll");
-         Productos productos = new Productos();
+        Productos productos = new Productos();
         model.addAttribute("productos", productos);
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
@@ -585,7 +589,7 @@ public class DactilController {
         UsuariosDAO udao = new UsuariosDAO();
         udao.getListaUsuariosAll(listaUsuarios);
         model.addAttribute("listaUsuarios", listaUsuarios);
-         Usuarios usuarios = new Usuarios();
+        Usuarios usuarios = new Usuarios();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
@@ -660,30 +664,30 @@ public class DactilController {
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
         try {
-             LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
-        lineafacturadao.getCarrito(user.getId_cliente(), this.listaCarrito);
-        model.addAttribute("numeroCarrito", numeroCarrito);
-        double totalprecio = 0;
-        double subprecio = 0;
+            LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
+            lineafacturadao.getCarrito(user.getId_cliente(), this.listaCarrito);
+            model.addAttribute("numeroCarrito", numeroCarrito);
+            double totalprecio = 0;
+            double subprecio = 0;
 
-        for (ProductoLinea p : listaCarrito) {
+            for (ProductoLinea p : listaCarrito) {
 
-            subprecio = p.getCantidad_compra() * p.getPrecio_producto();
-            totalprecio = totalprecio + subprecio;
+                subprecio = p.getCantidad_compra() * p.getPrecio_producto();
+                totalprecio = totalprecio + subprecio;
 
-        }
-        totalprecio = totalprecio * 100;
-        totalprecio = Math.floor(totalprecio);
-        totalprecio = totalprecio / 100;
-        model.addAttribute("totalprecio", totalprecio);
-        model.addAttribute("numeroCarrito", numeroCarrito);
-        model.addAttribute("listaCarrito", listaCarrito);
-        return "carrito";
+            }
+            totalprecio = totalprecio * 100;
+            totalprecio = Math.floor(totalprecio);
+            totalprecio = totalprecio / 100;
+            model.addAttribute("totalprecio", totalprecio);
+            model.addAttribute("numeroCarrito", numeroCarrito);
+            model.addAttribute("listaCarrito", listaCarrito);
+            return "carrito";
         } catch (Exception e) {
             return "login";
-            
+
         }
-       
+
     }
 
     @RequestMapping(value = "carrito", method = RequestMethod.POST)
@@ -779,48 +783,60 @@ public class DactilController {
     public String misPedidosController(Model model, HttpServletRequest request, @RequestParam(defaultValue = "0") String compra) throws SQLException {
         try {
             model.addAttribute("numeroCarrito", numeroCarrito);
-        ProductosDAO pdao = new ProductosDAO();
-        model.addAttribute("titulo", "Mis_Pedidos");
-        apartado = "pedidos";
-        Usuarios usuarios = new Usuarios();
-        model.addAttribute("usuarios", usuarios);
-        HttpSession misession = (HttpSession) request.getSession();
-        Usuarios user = (Usuarios) misession.getAttribute("us");
-        LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
-        if (compra.equals("1")) {
-            FacturaDAO fdao = new FacturaDAO();
-            Date myDate = new Date();
-            String fechabd = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
-            fdao.actualizarFactura(user.getId_cliente(), fechabd);
-            numeroCarrito=0;
-        }
-        lineafacturadao.getPedidos(user.getId_cliente(), this.listaPedidos);
-        model.addAttribute("listaPedidos", listaPedidos);
-model.addAttribute("listaCarrito", listaCarrito);
-        model.addAttribute("totalprecio", totalprecio);
-        return "misPedidos";
+            ProductosDAO pdao = new ProductosDAO();
+            model.addAttribute("titulo", "Mis_Pedidos");
+            apartado = "pedidos";
+            Usuarios usuarios = new Usuarios();
+            model.addAttribute("usuarios", usuarios);
+            HttpSession misession = (HttpSession) request.getSession();
+            Usuarios user = (Usuarios) misession.getAttribute("us");
+            LineaFacturaDAO lineafacturadao = new LineaFacturaDAO();
+
+            LineaFacturaDAO lfdao = new LineaFacturaDAO();
+            lfdao.getCarritoHecho(id_cliente, lineasPedidos);
+            model.addAttribute("lineasPedidos", lineasPedidos);
+
+            if (compra.equals("1")) {
+                FacturaDAO fdao = new FacturaDAO();
+                Date myDate = new Date();
+                String fechabd = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+                lineafacturadao.getCarrito(user.getId_cliente(), listaCarrito);
+
+                for (ProductoLinea p : listaCarrito) {
+                    Productos pro = pdao.getProducto(p.getId_producto());
+                    pro.setCantidad_producto(pro.getCantidad_producto() - p.getCantidad_compra());
+                    pdao.gestionStock(pro);
+                }
+                fdao.actualizarFactura(user.getId_cliente(), fechabd);
+                numeroCarrito = 0;
+            }
+            lineafacturadao.getPedidos(user.getId_cliente(), this.listaPedidos);
+            model.addAttribute("listaPedidos", listaPedidos);
+            model.addAttribute("listaCarrito", listaCarrito);
+            model.addAttribute("totalprecio", totalprecio);
+            return "misPedidos";
         } catch (Exception e) {
             return "login";
-            
+
         }
-        
+
     }
-      @RequestMapping(value = "modificarFact", method = RequestMethod.GET)
+
+    @RequestMapping(value = "modificarFact", method = RequestMethod.GET)
     public String modificarController(@RequestParam("id") int id, Model model) {
         FacturaDAO fdao = new FacturaDAO();
         Factura factura = new Factura();
         factura.setId_factura(id);
-        model.addAttribute("factura",factura);
-        
+        model.addAttribute("factura", factura);
         return "modificarFact";
     }
-     @RequestMapping(value = "modificarFact", method = RequestMethod.POST)
+
+    @RequestMapping(value = "modificarFact", method = RequestMethod.POST)
     public RedirectView modificarfacturaController(@ModelAttribute("factura") Factura factura, Model model) {
         FacturaDAO fdao = new FacturaDAO();
         fdao.modificarFactura(factura);
         model.addAttribute("titulo", "pedidos");
-          RedirectView respuesta = new RedirectView("verPedidos");
+        RedirectView respuesta = new RedirectView("verPedidos");
         return respuesta;
     }
 }
-   

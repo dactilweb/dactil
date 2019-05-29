@@ -123,4 +123,39 @@ public class LineaFacturaDAO {
            return 0;
         }
     }
+      public void getCarritoHecho (int id,ArrayList<ProductoLinea> lineasPedidos){
+        sql= "SELECT tbl_facturas.id_factura, tbl_productos.nombre_producto, tbl_productos.id_producto, tbl_lineafactura.id_lineafactura, tbl_lineafactura.cantidad_compra, tbl_productos.precio_producto, tbl_productos.descripcion_producto, tbl_productos.foto_producto, tbl_productos.referencia_producto\n" +
+"\n" +
+"FROM tbl_facturas INNER JOIN tbl_lineafactura ON tbl_facturas.id_factura=tbl_lineafactura.id_factura INNER JOIN tbl_productos ON tbl_productos.id_producto=tbl_lineafactura.id_producto\n" +
+"\n" +
+"WHERE tbl_facturas.id_cliente="+id+" AND tbl_facturas.estado_factura='en proceso' OR tbl_facturas.estado_factura='completado y enviado'";
+        try {
+            Statement st=cn.createStatement();
+           
+            ResultSet rs=st.executeQuery(sql);
+            lineasPedidos.clear();
+            while(rs.next()){
+                ProductoLinea productolinea=new ProductoLinea();
+               /* usuario.setId_cliente(rs.getInt("id_cliente"));
+                usuario.setNombre_cliente(rs.getString("nombre_cliente"));
+                */
+               productolinea.setId_factura(rs.getInt("id_factura"));
+               productolinea.setNombre_producto(rs.getString("nombre_producto"));
+               productolinea.setId_producto(rs.getInt("id_producto"));
+               productolinea.setId_lineafactura(rs.getInt("id_lineafactura"));
+               productolinea.setCantidad_compra(rs.getInt("cantidad_compra"));
+               productolinea.setPrecio_producto(rs.getDouble("precio_producto"));
+               productolinea.setDescripcion_producto(rs.getString("descripcion_producto"));
+               productolinea.setFoto_producto(rs.getString("foto_producto"));
+               productolinea.setReferencia_producto(rs.getString("referencia_producto"));
+               //añadir al arraylit 
+               lineasPedidos.add(productolinea);
+            }
+              rs.close();
+              
+             
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     }

@@ -250,6 +250,14 @@ public class ProductosDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     } 
+          public void gestionStock (Productos pro){
+                sql="UPDATE `tbl_productos` SET `cantidad_producto`= "+pro.getCantidad_producto()+" WHERE id_producto="+pro.getId_producto();
+            try {
+                PreparedStatement eliminar=cn.prepareStatement(sql);
+                int n=eliminar.executeUpdate();
+            } catch (Exception e) {
+            }
+          }
 }
 
 

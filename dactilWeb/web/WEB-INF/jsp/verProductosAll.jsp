@@ -8,7 +8,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
+       <c:if test="${sessionScope.us == null}">
+    <% response.sendRedirect("index");%>
+</c:if> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,11 +71,11 @@
         </button>
       </div>
       <div class="modal-body">
-       <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data">
+       <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
             Nombre:
             <form:input path="nombre_producto" id="nombre_producto" type="text"/>  <br>
             <span id="error_nombre"></span>
-            Descripcion:
+            Descripción:
             <form:input path="descripcion_producto" id="descripcion_producto" type="text"/> <br>
             <span id="error_descripcion"></span>
             Cantidad:
