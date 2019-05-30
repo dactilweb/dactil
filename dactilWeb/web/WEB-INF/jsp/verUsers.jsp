@@ -63,8 +63,9 @@
                                 </button>
         <a href="verUsersAll" class="btn btn-warning active" role="button" aria-pressed="true"><i class="far fa-times-circle"></i> Ver usuarios deshabilitados</a>
         <a href="panelcontrol" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
-        <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+        
+        <div class="modal fade bd-example-modal-lg" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Crear Usuario</h5>
@@ -74,35 +75,54 @@
       </div>
       <div class="modal-body">
        <form:form modelAttribute="usuarios" action="crearUsuarioAd" method="POST">
+           <div class="form-row">
+               <div class="col-md-6">
             Nombre
-            <form:input path="nombre_cliente" id="nom_user" type="text"/>  
+            <form:input path="nombre_cliente" id="nom_user" type="text" class="form-control"/>  
             <span id="error_nombre"></span>
             <form:errors path="nombre_cliente"/><br/>
+            </div>    
+            <div class="col-md-6">
              Apellido
-            <form:input path="apellido_cliente" id="cognom_user" type="text"/> 
+            <form:input path="apellido_cliente" id="cognom_user" type="text" class="form-control"/> 
             <span id="error_cognom"></span>
             <form:errors path="apellido_cliente"/><br/>
+            </div>    
+            <div class="col-md-6">
             Segundo Apellido
-            <form:input path="apellido2_cliente" id="cognom2_user" type="text"/> <br/>
+            <form:input path="apellido2_cliente" id="cognom2_user" type="text" class="form-control"/> <br/>
+            </div>    
+            <div class="col-md-6">
+                
              Dirección
-            <form:input path="direccion_cliente" id="direccio_user" type="text"/> <br/>
+            <form:input path="direccion_cliente" id="direccio_user" type="text" class="form-control"/> <br/>
             <span id="error_direccion"></span>
             <form:errors path="direccion_cliente"/>
+            </div>    
+            <div class="col-md-6">
              Dirección 2
-            <form:input path="direccion2_cliente" id="direccio2_user" type="text"/> <br/>
+            <form:input path="direccion2_cliente" id="direccio2_user" type="text" class="form-control"/> <br/>
+            </div>    
+            <div class="col-md-6">   
             Teléfono 
-            <form:input path="telefono_cliente" id="telefono_user" type="text"/> 
+            <form:input path="telefono_cliente" id="telefono_user" type="text" class="form-control"/> 
             <span id="error_telefono"></span>
             <form:errors path="telefono_cliente"/><br/>
+            </div>    
+            <div class="col-md-6">
              Email
-            <form:input path="email_cliente" id="email_user" type="text"/> 
+            <form:input path="email_cliente" id="email_user" type="text" class="form-control"/> 
             <span id="error_email"></span>
             <form:errors path="email_cliente"/><br/>
+            </div>    
+            <div class="col-md-6">        
             Contraseña:
-            <form:input path="contrasena_cliente" id="passwd_user" type="password"/>     
+            <form:input path="contrasena_cliente" id="passwd_user" type="password" class="form-control"/>     
             <form:errors path="contrasena_cliente"/>
              <span id="error_passwd" ></span><br/>
+             </div>    
       </div>
+             </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="submit" class="btn btn-primary">Crear Usuario</button>

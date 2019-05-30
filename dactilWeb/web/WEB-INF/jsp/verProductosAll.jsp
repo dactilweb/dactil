@@ -61,8 +61,9 @@
                                     <i class="fas fa-plus-circle"></i> Nuevo Producto
                                 </button>
         <a href="panelcontrol" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
-        <div class="modal fade" id="crearProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+       
+        <div class="modal fade bd-example-modal-lg" id="crearProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Producto</h5>
@@ -71,31 +72,49 @@
         </button>
       </div>
       <div class="modal-body">
+          
        <form:form modelAttribute="productos" action="nuevoProducto" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
+           <div class="form-row">
+           <div class="col-md-6">
             Nombre:
-            <form:input path="nombre_producto" id="nombre_producto" type="text"/>  <br>
+            <form:input path="nombre_producto" id="nombre_producto" class="form-control" type="text"/>  <br>
             <span id="error_nombre"></span>
-            Descripción:
-            <form:input path="descripcion_producto" id="descripcion_producto" type="text"/> <br>
-            <span id="error_descripcion"></span>
+            </div>
+            <div class="col-md-6">
             Cantidad:
-            <form:input path="cantidad_producto" id="cantidad_producto" type="text"/> <br>
+            <form:input path="cantidad_producto" id="cantidad_producto" class="form-control" type="text"/> <br>
             <span id="error_cantidad"></span>
+             </div>
+            <div class="col-md-12">
+            Descripción:
+            <form:input path="descripcion_producto" id="descripcion_producto" class="form-control"  type="text"/> <br>
+            <span id="error_descripcion"></span>
+            </div>
+             
+             <div class="col-md-6">
             Precio:
-            <form:input path="precio_producto" id="precio_producto" type="text"/> <br>
+            <form:input path="precio_producto" id="precio_producto" class="form-control" type="text"/> <br>
             <span id="error_precio"></span>
-            Foto:
-            <form:input type="file" name="file" size="50" path="fichero" id="fichero"></form:input><br>
+             </div>
+            <div class="col-md-6">
             Referencia:
-            <form:input path="referencia_producto" id="referencia_producto" type="text"/> <br>
+            <form:input path="referencia_producto" id="referencia_producto" class="form-control" type="text"/> <br>
             <span id="error_referencia"></span>
+              </div>
+             <div class="col">
+            Foto:
+            <form:input type="file" name="file" size="50" path="fichero" class="form-control" id="fichero"></form:input><br>
+             </div>
+              
+             <div class="col">
             Categoria:
-		<form:select path="id_subcategoria">
+		<form:select path="id_subcategoria" class="form-control">
                      <c:forEach var="cat" items="${listaCategoria}">
 			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} - ${cat.nombre_subcategoria}"/>
 			</c:forEach>
+                </div>
                 </form:select><br>
-           
+           </div>
        
       </div>
       <div class="modal-footer">
@@ -107,6 +126,7 @@
   </div>
 </div>
         </div>
+    </div>
         <jsp:include page="footer.jsp" />
     </body>
 </html>
