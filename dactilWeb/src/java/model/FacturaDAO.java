@@ -43,7 +43,7 @@ public class FacturaDAO {
             while (rs.next()) {
                 Factura factura = new Factura();
                 factura.setNombre_producto(rs.getString("nombre_producto"));
-                factura.setPrecio_producto(rs.getInt("precio_producto"));
+                factura.setPrecio_producto(rs.getFloat("precio_producto"));
                 factura.setFecha_factura(rs.getString("fecha_factura"));
                 factura.setCantidad_compra(rs.getInt("cantidad_compra"));
                 factura.setNombre_cliente(rs.getString("nombre_cliente"));

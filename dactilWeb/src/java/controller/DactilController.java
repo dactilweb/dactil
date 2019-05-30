@@ -438,10 +438,11 @@ public class DactilController {
     }
 
     @RequestMapping(value = "modificarUsuario", method = RequestMethod.POST)
-    public RedirectView modificarUsuarioController(@ModelAttribute("usuarios") Usuarios usuarios, HttpServletRequest request) throws SQLException {
+    public RedirectView modificarUsuarioController(@ModelAttribute("usuarios") Usuarios usuarios, HttpServletRequest request,Model model) throws SQLException {
         RedirectView respuesta = new RedirectView("verUsers");
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
+        model.addAttribute("us", usuarios);
         if (usuarios.getNivel() == 0) {
             if (user.getNivel() == 2) {
                 respuesta.setUrl("editarPerfil");
@@ -544,7 +545,7 @@ public class DactilController {
         model.addAttribute("numeroCarrito", numeroCarrito);
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
-        model.addAttribute("titulo", "pedidos");
+        model.addAttribute("titulo", "productosAll");
         return "modificarProducto";
     }
 
@@ -807,7 +808,8 @@ public class DactilController {
                 }
                 
                 fdao.actualizarFactura(user.getId_cliente(), fechabd);
-                
+            lineafacturadao.getCarrito(user.getId_cliente(), this.listaCarrito);
+            
                 numeroCarrito = 0;
             }
             lfdao.getCarritoHecho(id_cliente, lineasPedidos);

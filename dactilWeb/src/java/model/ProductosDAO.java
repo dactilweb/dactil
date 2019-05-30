@@ -251,7 +251,12 @@ public class ProductosDAO {
         }
     } 
           public void gestionStock (Productos pro){
-                sql="UPDATE `tbl_productos` SET `cantidad_producto`= "+pro.getCantidad_producto()+" WHERE id_producto="+pro.getId_producto();
+              if(pro.getCantidad_producto()>0){
+                  sql="UPDATE `tbl_productos` SET `cantidad_producto`= "+pro.getCantidad_producto()+" WHERE id_producto="+pro.getId_producto();
+              }else{
+                  sql="UPDATE `tbl_productos` SET `cantidad_producto`= "+pro.getCantidad_producto()+",`disponibilidad_producto`= 2 WHERE id_producto="+pro.getId_producto();
+              }
+                
             try {
                 PreparedStatement eliminar=cn.prepareStatement(sql);
                 int n=eliminar.executeUpdate();

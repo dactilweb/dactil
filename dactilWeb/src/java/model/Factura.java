@@ -24,13 +24,13 @@ public class Factura {
     private String apellido_cliente;
     private String nombre_producto;
     private int total_factura;
-    private int precio_producto;
+    private float precio_producto;
  
    
     public Factura() {
     }
 
-    public Factura(int id_factura, int id_cliente, String fecha_factura, String estado_factura, int cantidad_compra, String nombre_cliente, String apellido_cliente, String nombre_producto, int total_factura, int precio_producto) {
+    public Factura(int id_factura, int id_cliente, String fecha_factura, String estado_factura, int cantidad_compra, String nombre_cliente, String apellido_cliente, String nombre_producto, int total_factura, float precio_producto) {
         this.id_factura = id_factura;
         this.id_cliente = id_cliente;
         this.fecha_factura = fecha_factura;
@@ -115,11 +115,11 @@ public class Factura {
         this.total_factura = total_factura;
     }
 
-    public int getPrecio_producto() {
+    public float getPrecio_producto() {
         return precio_producto;
     }
 
-    public void setPrecio_producto(int precio_producto) {
+    public void setPrecio_producto(float precio_producto) {
         this.precio_producto = precio_producto;
     }
 

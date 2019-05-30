@@ -30,7 +30,7 @@
                 <tr align="center">
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
-                    <th scope="col">Segundo Apellido</th>
+                    
                     <th scope="col">Dirección cliente</th>
                     <th scope="col">Email cliente</th>
                     <th scope="col">Teléfono cliente</th>
@@ -42,8 +42,8 @@
                 <c:forEach var="users" items="${listaUsuarios}">
                     <tr align="center">
                         <td>${users.nombre_cliente}</td>
-                        <td>${users.apellido_cliente}</td>
-                        <td>${users.apellido2_cliente}</td>
+                        <td>${users.apellido_cliente} ${users.apellido2_cliente}</td>
+                        
                         <td>${users.direccion_cliente}</td>
                         <td>${users.email_cliente}</td>
                         <td>${users.telefono_cliente}</td>

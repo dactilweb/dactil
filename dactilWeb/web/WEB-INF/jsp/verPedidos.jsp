@@ -38,18 +38,43 @@
                     <c:forEach var="fact" items="${listaFactura}">
 
                         <tr align="center">
-                            <td>${fact.id_factura}</td>
+                            <td>
+                            <c:choose>
+                                <c:when test="${fact.id_factura != idAnt}">
+                            
+                       ${fact.id_factura}
+                    
+                    
+                        </c:when>
+                        <c:otherwise>
+                            <i class="fas fa-plus-circle"></i>
+                        </c:otherwise>       
+                    </c:choose>
+                            </td>
                             <td>${fact.nombre_cliente} ${fact.apellido_cliente}</td>
                             <td>${fact.fecha_factura}</td>
                             <td>${fact.nombre_producto}</td>
-                            <td>${fact.precio_producto}</td>
+                            <td>${fact.precio_producto}€</td>
                             <td>${fact.cantidad_compra}</td>
-                            <td>${fact.estado_factura}</td>
-
                             <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${fact.id_factura}">
-                                   <i class="fas fa-edit"></i> Modificar
-                                </button>
+                             <c:choose>
+                                 <c:when test="${fact.id_factura != idAnt}">
+                                     ${fact.estado_factura}
+                                 </c:when>
+                             </c:choose>
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${fact.id_factura != idAnt}">
+                                        
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${fact.id_factura}">
+                                            <i class="fas fa-edit"></i> Modificar
+                                        </button>
+                                            
+
+                                    </c:when>
+                                    
+                                </c:choose>
                             </td>
 
                         </tr>
@@ -72,16 +97,17 @@
                                         </form:select>
                                         <form:hidden path="id_factura" value="${fact.id_factura}"/>
 
-                                   
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                     </form:form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <c:set var = "idAnt" value = "${fact.id_factura}"/>
                 </c:forEach>
                 </tbody>
             </table>
