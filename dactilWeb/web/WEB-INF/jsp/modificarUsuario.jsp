@@ -74,46 +74,52 @@
 
         <div class="contenido">
         <h1>Modificar Usuarios</h1>
-        <form:form modelAttribute="usuarios" action="modificarUsuario" method="POST">
+        <form:form modelAttribute="users" action="modificarUsuario" method="POST">
+             <div class="form-row">
             <div class="col-md-6">
             Nombre
-            <form:input path="nombre_cliente"/> <br/>
+            <form:input path="nombre_cliente" class="form-control"/> <br/>
             <span id="error_nombre3"></span>
             </div>
              <div class="col-md-6">
             Apellido
-            <form:input path="apellido_cliente"/> <br/>
+            <form:input path="apellido_cliente" class="form-control"/> <br/>
             <span id="error_apellido3"></span>
              </div>
-            
+             <div class="col-md-6">
             Apellido 2
-            <form:input path="apellido2_cliente"/> <br/>
+            <form:input path="apellido2_cliente" class="form-control"/> <br/>
+             </div>
             <div class="col-md-6">
             Dirección:
-            <form:input path="direccion_cliente"/> <br/>
+            <form:input path="direccion_cliente" class="form-control"/> <br/>
             <span id="error_direccion3"></span>
             </div>
+            <div class="col-md-6">
             Dirección 2
-            <form:input path="direccion2_cliente"/> <br/>
+            <form:input path="direccion2_cliente" class="form-control"/> <br/>
+            </div>
             <div class="col-md-6">
             Teléfono
-            <form:input path="telefono_cliente"/> <br/>
+            <form:input path="telefono_cliente" class="form-control"/> <br/>
             <span id="error_telefono3"></span>
             </div>
             <div class="col-md-6">
             Email
-            <form:input path="email_cliente" id="email_cliente2"/> <br/>
+            <form:input path="email_cliente" id="email_cliente2" class="form-control"/> <br/>
             <span id="error_email3"></span>
             </div>
+             <div class="col-md-6">
             Tipo de usuario
-            <form:select path="nivel">
+            <form:select path="nivel" class="form-control">
                 <form:option value="1" label="Administrador"/>
                 <form:option value="2" label="Usuario"/>
             </form:select><br>
-          
+             </div>
         
             <form:hidden path="id_cliente"/>
             <input type="submit" value="Modificar" class="btn btn-primary" id="botonmod"/>
+             </div>
       </form:form> 
             <a href="verUsers" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
             </div>

@@ -88,17 +88,13 @@
              <span id="error_descripcion"></span>
              </div>
              
-             <div class="col-md-6">
+             <div class="col-md-3">
             Precio
             <form:input path="precio_producto" id="pre_producto" class="form-control"/> <br/>
             <span id="error_precio"></span>
              </div>
-             <div class="col-md-6">
-            Foto
-            <form:input path="foto_producto" class="form-control"/> <br/>
-             </div>
-            
-            <div class="col-md-6">
+             
+            <div class="col-md-3">
                 Número de referencia
             <form:input path="referencia_producto" id="ref_producto" class="form-control"/> <br/>
             <span id="error_referencia"></span>

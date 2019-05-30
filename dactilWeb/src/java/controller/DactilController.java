@@ -434,6 +434,7 @@ public class DactilController {
         model.addAttribute("listaCarrito", listaCarrito);
         model.addAttribute("totalprecio", totalprecio);
         model.addAttribute("titulo", "verUsers");
+        model.addAttribute("users", usuarios);
         return "modificarUsuario";
     }
 
