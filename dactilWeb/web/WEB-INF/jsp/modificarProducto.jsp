@@ -71,46 +71,52 @@
         <div class="contenido">
            <h1>Modificar Productos</h1>
         <form:form modelAttribute="productos" action="modificarProducto" method="POST">
+            <div class="form-row">
            <div class="col-md-6">
             Nombre
-            <form:input path="nombre_producto" id="nom_prod"/> <br/>
+            <form:input path="nombre_producto" id="nom_prod" class="form-control"/> <br/>
             <span id="error_nombrecito"></span>
            </div>   
-             <div class="col-md-6">
-            Descripción
-            <form:input path="descripcion_producto" id="des_prod"/> <br/>
-             <span id="error_descripcion"></span>
-             </div>
-             <div class="col-md-6">
+            <div class="col-md-6">
             Cantidad
-            <form:input path="cantidad_producto" id="can_producto"/> <br/>
+            <form:input path="cantidad_producto" id="can_producto" class="form-control"/> <br/>
              <span id="error_cantidad"></span>
              </div>
+             <div class="col-md-12">
+            Descripción
+            <form:input path="descripcion_producto" id="des_prod" class="form-control"/> <br/>
+             <span id="error_descripcion"></span>
+             </div>
+             
              <div class="col-md-6">
             Precio
-            <form:input path="precio_producto" id="pre_producto"/> <br/>
+            <form:input path="precio_producto" id="pre_producto" class="form-control"/> <br/>
             <span id="error_precio"></span>
              </div>
-            
+             <div class="col-md-6">
             Foto
-            <form:input path="foto_producto"/> <br/>
-            Número de referencia
+            <form:input path="foto_producto" class="form-control"/> <br/>
+             </div>
+            
             <div class="col-md-6">
-            <form:input path="referencia_producto" id="ref_producto"/> <br/>
+                Número de referencia
+            <form:input path="referencia_producto" id="ref_producto" class="form-control"/> <br/>
             <span id="error_referencia"></span>
             </div>
-            
+            <div class="col-md-6">
             Categoria
-		<form:select path="id_subcategoria">
+		<form:select path="id_subcategoria" class="form-control">
                      <c:forEach var="cat" items="${listaCategoria}">
 			<form:option value="${cat.id_subcategoria}" label="${cat.nombre_categoria} - ${cat.nombre_subcategoria}"/>
 			</c:forEach>
                 </form:select><br>
+            </div>
                 <form:hidden path="id_producto"/><br>
             <input type="submit" value="Modificar" class="btn btn-primary" id="btncreacion"/>
+            </div>
         </form:form>
              
-            <a href="verProductosAll" class="btn btn-secondary active" role="button" aria-pressed="true">Volver</a>
+            <a href="verProductosAll" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fas fa-undo-alt"></i> Volver</a>
              </div>
         <jsp:include page="footer.jsp" />
     </body>

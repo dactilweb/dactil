@@ -23,7 +23,7 @@
         $("#botoneditar").click(function () {
             var pasar = true
             if ($("#nombre_cliente").val() === "") {
-                alert("nombre");
+               
                 $("#error_nombre5").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -31,7 +31,7 @@
             }
 
             if ($("#apellido_cliente").val() === "") {
-                alert("apellido");
+               
                 $("#error_cognom5").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un apellido<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -39,7 +39,7 @@
             }
 
             if ($("#direccion_cliente").val() === "") {
-                alert("direccion");
+               
                 $("#error_direccion5").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una dirección<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -47,7 +47,7 @@
             }
 
             if ($("#telefono_cliente").val() === "") {
-                alert("telefono");
+               
                 $("#error_telefono5").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un telefono<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -57,7 +57,7 @@
             var email = $("#email_cliente2").val();
             var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
             if (email === "" || !expre.test(email)) {
-                alert("email");
+               
                 $("#error_email5").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
 
                 pasar = false;
@@ -75,39 +75,39 @@
         <div class="contenido">
             <div class="contenido2">
            <form:form modelAttribute="usuarios" action="modificarUsuario" method="POST">
-            <div class="row">
+            <div class="form-row">
                 <div class="col-md-6">
                      
             Nombre:
-            <form:input path="nombre_cliente"/> <br/>  
+            <form:input path="nombre_cliente" class="form-control"/> <br/>  
             <span id="error_nombre5"></span>
                 </div>
                 <div class="col-md-6">
                      Apellido:
-            <form:input path="apellido_cliente"/> <br/>
+            <form:input path="apellido_cliente" class="form-control"/> <br/>
              <span id="error_cognom5"></span>
                 </div>
                 <div class="col-md-6">
                      Apellido 2:
-            <form:input path="apellido2_cliente"/> <br/>
+            <form:input path="apellido2_cliente" class="form-control"/> <br/>
                 </div>
                 <div class="col-md-6">
                      Direccion:
-            <form:input path="direccion_cliente"/> <br/>
+            <form:input path="direccion_cliente" class="form-control"/> <br/>
              <span id="error_direccion5"></span>
                 </div>
                 <div class="col-md-6">
             Direccion 2:
-            <form:input path="direccion2_cliente"/> <br/>
+            <form:input path="direccion2_cliente" class="form-control"/> <br/>
                 </div>
                 <div class="col-md-6">
                      Telefono:
-            <form:input path="telefono_cliente"/> <br/>
+            <form:input path="telefono_cliente" class="form-control"/> <br/>
              <span id="error_telefono5"></span>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                      Email:
-            <form:input path="email_cliente" id="email_cliente2"/> <br/>
+            <form:input path="email_cliente" id="email_cliente2" class="form-control"/> <br/>
             <span id="error_email5"></span>
                 </div>
             <form:hidden path="id_cliente"/>

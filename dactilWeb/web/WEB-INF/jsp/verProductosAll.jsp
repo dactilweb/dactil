@@ -20,10 +20,10 @@
          <script type="text/javascript">
     $(document).ready(function () {
         $("#crearbtn").click(function () {
-            //alert("hola");
+        
             var pasar = true
             if ($("#nombre_producto").val() === "") {
-                alert("jjjkjhjh");
+                
                 $("#error_nombreproductillo").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {

@@ -23,7 +23,7 @@
         $("#botonmod").click(function () {
             var pasar = true
             if ($("#nombre_cliente").val() === "") {
-                alert("nombre");
+               
                 $("#error_nombre3").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -31,7 +31,7 @@
             }
 
             if ($("#apellido_cliente").val() === "") {
-                alert("apellido");
+               
                 $("#error_apellido3").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un apellido<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -39,7 +39,7 @@
             }
 
             if ($("#direccion_cliente").val() === "") {
-                alert("direccion");
+              
                 $("#error_direccion3").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una dirección<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -47,7 +47,7 @@
             }
 
             if ($("#telefono_cliente").val() === "") {
-                alert("telefono");
+               
                 $("#error_telefono3").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un telefono<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -57,7 +57,7 @@
             var email = $("#email_cliente2").val();
             var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
             if (email === "" || !expre.test(email)) {
-                alert("email");
+               
                 $("#error_email3").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
 
                 pasar = false;

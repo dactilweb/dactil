@@ -22,10 +22,10 @@
          <script type="text/javascript">
     $(document).ready(function () {
         $("#btncreacion").click(function () {
-            //alert("hola");
+           
             var pasar = true
             if ($("#nom_user").val() === "") {
-                alert("nombre");
+                
                 $("#error_nombre4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -33,7 +33,7 @@
             }
 
             if ($("#cognom_user").val() === "") {
-                alert("cognom");
+               
                 $("#error_cognom4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un apellido para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -41,7 +41,7 @@
             }
 
             if ($("#direccio_user2").val() === "") {
-                alert("direccio");
+                
                 $("#error_direccion4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una dirección para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -49,7 +49,7 @@
             }
 
             if ($("#telefono_user2").val() === "") {
-                alert("telefono");
+               
                 $("#error_telefono4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un telefono<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
                 pasar = false;
             } else {
@@ -59,7 +59,7 @@
             var email = $("#email_user").val();
             var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
             if (email === "" || !expre.test(email)) {
-                alert("email");
+               
                 $("#error_email4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
 
                 pasar = false;
@@ -69,7 +69,7 @@
 
 
             if ($("#passwd_user").val() === "") {
-                alert("passwd");
+               
                 $("#error_passwd4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
 
 
