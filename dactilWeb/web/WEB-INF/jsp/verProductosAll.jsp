@@ -17,6 +17,52 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Todos los productos</title>
         <jsp:include page="style.jsp" />
+         <script type="text/javascript">
+    $(document).ready(function () {
+        $("#crearbtn").click(function () {
+            //alert("hola");
+            var pasar = true
+            if ($("#nombre_producto").val() === "") {
+                alert("jjjkjhjh");
+                $("#error_nombreproductillo").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_nombreproductillo").html("");
+            }
+
+            if ($("#descripcion_producto").val() === "") {
+                $("#error_descripcion").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una descripción para el producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_descripcion").html("");
+            }
+
+            if ($("#cantidad_producto").val() === "") {
+                $("#error_cantidad").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una cantidad para el producto<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_cantidad").html("");
+            }
+
+            if ($("#precio_producto").val() === "") {
+                $("#error_precio").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un precio<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_precio").html("");
+            }
+            
+            if ($("#referencia_producto").val() === "") {
+                $("#error_referencia").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una referencia<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_referencia").html("");
+            }
+            
+            
+            return pasar;
+        });
+    });
+</script>
     </head>
     <body>
          <jsp:include page="nav.jsp" />
@@ -78,7 +124,7 @@
            <div class="col-md-6">
             Nombre:
             <form:input path="nombre_producto" id="nombre_producto" class="form-control" type="text"/>  <br>
-            <span id="error_nombre"></span>
+            <span id="error_nombreproductillo"></span>
             </div>
             <div class="col-md-6">
             Cantidad:
@@ -103,7 +149,7 @@
               </div>
              <div class="col">
             Foto:
-            <form:input type="file" name="file" size="50" path="fichero" class="form-control" id="fichero"></form:input><br>
+            <form:input type="file" name="file" size="50" path="fichero" class="form-control" id="fichero" required="true"></form:input><br>
              </div>
               
              <div class="col">
@@ -119,7 +165,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Crear Producto</button>
+        <button type="submit" id="crearbtn" class="btn btn-primary">Crear Producto</button>
         </form:form> 
       </div>
     </div>

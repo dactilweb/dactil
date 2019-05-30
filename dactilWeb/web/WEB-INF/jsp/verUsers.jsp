@@ -10,7 +10,7 @@
     <% response.sendRedirect("index");%>
 </c:if>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
        
 <!DOCTYPE html>
 <html>
@@ -19,6 +19,68 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestión de Usuarios</title>
          <jsp:include page="style.jsp" />
+         <script type="text/javascript">
+    $(document).ready(function () {
+        $("#btncreacion").click(function () {
+            //alert("hola");
+            var pasar = true
+            if ($("#nom_user").val() === "") {
+                alert("nombre");
+                $("#error_nombre4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un nombre para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_nombre4").html("");
+            }
+
+            if ($("#cognom_user").val() === "") {
+                alert("cognom");
+                $("#error_cognom4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un apellido para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_cognom4").html("");
+            }
+
+            if ($("#direccio_user2").val() === "") {
+                alert("direccio");
+                $("#error_direccion4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una dirección para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_direccion4").html("");
+            }
+
+            if ($("#telefono_user2").val() === "") {
+                alert("telefono");
+                $("#error_telefono4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un telefono<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+                pasar = false;
+            } else {
+                $("#error_telefono4").html("");
+            }
+
+            var email = $("#email_user").val();
+            var expre = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+            if (email === "" || !expre.test(email)) {
+                alert("email");
+                $("#error_email4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa un email para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br><br>");
+
+                pasar = false;
+            } else {
+                $("#error_email4").html("");
+            }
+
+
+            if ($("#passwd_user").val() === "") {
+                alert("passwd");
+                $("#error_passwd4").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>Ingresa una contraseña para el nuevo usuario<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><br>");
+
+
+                pasar = false;
+            } else {
+                $("#error_passwd4").html("");
+            }
+            return pasar;
+        });
+    });
+</script>
     </head>
     <body>
         
@@ -79,14 +141,12 @@
                <div class="col-md-6">
             Nombre
             <form:input path="nombre_cliente" id="nom_user" type="text" class="form-control"/>  
-            <span id="error_nombre"></span>
-            <form:errors path="nombre_cliente"/><br/>
+            <span id="error_nombre4"></span>
             </div>    
             <div class="col-md-6">
              Apellido
-            <form:input path="apellido_cliente" id="cognom_user" type="text" class="form-control"/> 
-            <span id="error_cognom"></span>
-            <form:errors path="apellido_cliente"/><br/>
+            <form:input path="apellido_cliente" id="cognom_user2" type="text" class="form-control"/> 
+            <span id="error_cognom4"></span>
             </div>    
             <div class="col-md-6">
             Segundo Apellido
@@ -95,9 +155,8 @@
             <div class="col-md-6">
                 
              Dirección
-            <form:input path="direccion_cliente" id="direccio_user" type="text" class="form-control"/> <br/>
-            <span id="error_direccion"></span>
-            <form:errors path="direccion_cliente"/>
+            <form:input path="direccion_cliente" id="direccio_user2" type="text" class="form-control"/> <br/>
+            <span id="error_direccion4"></span>
             </div>    
             <div class="col-md-6">
              Dirección 2
@@ -105,27 +164,24 @@
             </div>    
             <div class="col-md-6">   
             Teléfono 
-            <form:input path="telefono_cliente" id="telefono_user" type="text" class="form-control"/> 
-            <span id="error_telefono"></span>
-            <form:errors path="telefono_cliente"/><br/>
+            <form:input path="telefono_cliente" id="telefono_user2" type="text" class="form-control"/> 
+            <span id="error_telefono4"></span>
             </div>    
             <div class="col-md-6">
              Email
             <form:input path="email_cliente" id="email_user" type="text" class="form-control"/> 
-            <span id="error_email"></span>
-            <form:errors path="email_cliente"/><br/>
+            <span id="error_email4"></span>
             </div>    
             <div class="col-md-6">        
             Contraseña:
             <form:input path="contrasena_cliente" id="passwd_user" type="password" class="form-control"/>     
-            <form:errors path="contrasena_cliente"/>
-             <span id="error_passwd" ></span><br/>
+             <span id="error_passwd4" ></span><br/>
              </div>    
       </div>
              </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        <button type="submit" id="btncreacion" class="btn btn-primary">Crear Usuario</button>
         </form:form> 
       </div>
     </div>
