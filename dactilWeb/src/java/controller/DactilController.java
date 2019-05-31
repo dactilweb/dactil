@@ -443,7 +443,6 @@ public class DactilController {
         RedirectView respuesta = new RedirectView("verUsers");
         HttpSession misession = (HttpSession) request.getSession();
         Usuarios user = (Usuarios) misession.getAttribute("us");
-        model.addAttribute("us", usuarios);
         if (usuarios.getNivel() == 0) {
             if (user.getNivel() == 2) {
                 respuesta.setUrl("editarPerfil");
@@ -766,6 +765,8 @@ public class DactilController {
         CategoriaDAO cdao = new CategoriaDAO();
         cdao.getListaCat(listaCategoria);
         model.addAttribute("listaCategoria", listaCategoria);
+        model.addAttribute("listaCarrito", listaCarrito);
+            model.addAttribute("totalprecio", totalprecio);
         return "editarPerfil";
     }
 
